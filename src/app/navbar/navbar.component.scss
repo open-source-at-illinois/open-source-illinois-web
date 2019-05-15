@@ -1,0 +1,11 @@
+a {
+  color: limegreen;
+  font-size: 100%;
+}
+*{
+  background-color: black;
+}
+.navbar{
+  border-bottom: 5px solid limegreen;
+}
+@import '~bootstrap/dist/css/bootstrap.min.css';
