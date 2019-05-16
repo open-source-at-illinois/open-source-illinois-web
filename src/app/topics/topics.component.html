@@ -1,0 +1,5 @@
+<div class='grid grid-pad'>
+  <a *ngFor='let topic of main_topics' (click)='onSelect(topic)'>
+    <div class='module'>{{topic.name}}</div>
+  </a>
+</div>

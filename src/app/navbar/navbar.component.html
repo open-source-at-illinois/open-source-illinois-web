@@ -1,7 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+<nav class="navbar navbar-fixed-top navbar-dark justify-content-right">
     <div class="container">
-        <a class="navbar-brand">{{ title }}</a>
+      <button class = "btn btn-success">
+        <img src='assets/house_icon.png' height='25px' width='25px' />
+      </button>
+      <p class="navbar-brand">{{ title }}</p>
+      <button class = "btn btn-success">
+        <img src='assets/profile_icon.png' height='25px' width='25px' />
+      </button>
     </div>
 </nav>
+<br />
+<app-topics></app-topics>
 <router-outlet></router-outlet>
