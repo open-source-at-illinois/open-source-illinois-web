@@ -1,8 +1,8 @@
 import { Topic } from './topic';
 
 export const MAIN_TOPICS: Topic[] = [
-  {id: 1, name: 'Members'},
-  {id: 2, name: 'Projects'},
-  {id: 3, name: 'Workshops'},
-  {id: 4, name: 'Calendar'}
+  {url: 'members', name: 'Members'},
+  {url: 'projects', name: 'Projects'},
+  {url: 'workshops', name: 'Workshops'},
+  {url: 'calendar', name: 'Calendar'}
 ]

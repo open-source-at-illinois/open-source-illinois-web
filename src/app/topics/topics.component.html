@@ -1,5 +1,7 @@
+<br />
 <div class='grid grid-pad'>
-  <a *ngFor='let topic of main_topics' (click)='onSelect(topic)'>
+  <a *ngFor='let topic of main_topics' routerLink='{{topic.url}}'>
     <div class='module'>{{topic.name}}</div>
+    <br />
   </a>
 </div>
