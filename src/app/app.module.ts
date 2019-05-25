@@ -7,22 +7,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TopicsComponent } from './topics/topics.component';
-import { ProjectComponent } from './projects-mod/project/project.component';
+import { WorkshopComponent } from './workshop-mod/workshop/workshop.component';
 
-const appRoutes: Routes = [
+import { ProjectsModModule } from './projects-mod/projects-mod.module';
+import { WorkshopModModule } from './workshop-mod/workshop-mod.module';
 
-];
+const appRoutes: Routes = [];
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     TopicsComponent,
-    ProjectComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    ProjectsModModule,
+    WorkshopModModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

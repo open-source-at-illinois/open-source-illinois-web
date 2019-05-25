@@ -1,7 +1,11 @@
 <br />
 <div class='grid grid-pad'>
-  <h3>Project 1: Overthrow iClicker </h3>
-  <h3>Project 2: Electronic Lock</h3>
-  <h3>Project 3: Smart Plug</h3>
-
+  <div *ngFor='let project of projects'
+  (click) = onSelect(project)>
+    <div class='module'>+ {{project.name}}</div>
+    <div *ngIf = 'project === selectedProject'>
+      <app-project-detail [project]='selectedProject'></app-project-detail>
+    </div>
+    <br />
+  </div>
 </div>
