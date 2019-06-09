@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectComponent } from './projects-mod/project/project.component';
 import { TopicsComponent } from './topics/topics.component';
 import { WorkshopComponent } from './workshop-mod/workshop/workshop.component';
+import { MembersComponent } from './members-mod/members/members.component';
 
 const routes: Routes = [
+  {path: 'members', component: MembersComponent},
   {path: 'workshops', component: WorkshopComponent },
   {path: 'projects', component: ProjectComponent},
   {path: '', component: TopicsComponent}
