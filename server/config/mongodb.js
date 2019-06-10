@@ -1,8 +1,11 @@
 //Initialize db connection
 const mongoose = require('mongoose');
+
 //Secure call to password for database
 const url = require('./config.js');
-mongoose.connect(url.url(), {useNewUrlParser: true});
+
+//Connect to database and make sure it works
+mongoose.connect(url.testUrl(), {useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
