@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Workshop } from '../workshop-class';
+import { WorkshopService } '../workshop.service';
 
 @Component({
   selector: 'app-workshop-detail',
@@ -8,10 +9,19 @@ import { Workshop } from '../workshop-class';
 })
 export class WorkshopDetailComponent implements OnInit {
   @Input() workshop: Workshop;
+  workshops: Workshop[];
 
-  constructor() { }
+  constructor(private workshopService: WorkshopService) { }
 
   ngOnInit() {
+    this.getAllWorkshops();
+  }
+
+  getAllWorkshops(): void {
+    this.workshopService.getAllWorkshops()
+    .subscribe(
+      workshops => this.workshops = workshops
+    );
   }
 
 }

@@ -2,7 +2,7 @@
 <div class='grid grid-pad'>
   <div *ngFor='let project of projects'
   (click) = onSelect(project)>
-    <div class='module'>+ {{project.name}}</div>
+    <div class='module'>+ {{project.title}}</div>
     <div *ngIf = 'project === selectedProject'>
       <app-project-detail [project]='selectedProject'></app-project-detail>
     </div>

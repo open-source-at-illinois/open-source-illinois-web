@@ -15,7 +15,7 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getAllMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>('http://localhost:3000/api/members')
+    return this.http.get<Member[]>('http://localhost:3000/api/member/all')
                     .pipe(
                       tap(members => console.log(members)),
                       // map(members => members)

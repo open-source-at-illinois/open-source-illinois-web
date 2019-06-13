@@ -2,15 +2,21 @@ import { Project } from './project-class';
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Overthrow iClicker',
-    description: 'A project to overthrow iClicker'
+    title: 'Overthrow iClicker',
+    description: 'A project to overthrow iClicker',
+    status: true,
+    github: ""
   },
   {
-    name: 'Electronic Lock',
-    description: 'A project to build an Electronic lock'
+    title: 'Electronic Lock',
+    description: 'A project to build an Electronic lock',
+    status: true,
+    github: ""
   },
   {
-    name: 'Smart Plug',
-    description: 'A project to build an intelligent plug that will one day overthrow mankind'
+    title: 'Smart Plug',
+    description: 'A project to build an intelligent plug that will one day overthrow mankind',
+    status: true,
+    github: ""
   }
 ];

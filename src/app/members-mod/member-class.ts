@@ -1,3 +1,7 @@
 export class Member{
-  name: string;
+  firstname: string;
+  lastname: string;
+  password: string;
+  email: string;
+  github: string;
 }

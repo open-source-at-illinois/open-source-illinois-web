@@ -30,7 +30,8 @@ exports.member = (req, res) => {
 exports.addMember = (req, res) => {
   var body = req.body[0];
   var newMember = new Member({    //Try to add a constructor to member.model
-    name: body.name,
+    firstname: body.firstname,
+    lastname: body.lastname,
     email: body.email,
     password: body.password,
     github: body.github
@@ -42,7 +43,7 @@ exports.addMember = (req, res) => {
     else{
       res.status(200);
       res.json({
-        message: body.name + ' successfully registered'
+        message: body.firstname + " "+ body.lastname + ' successfully registered'
       });
     }
   })

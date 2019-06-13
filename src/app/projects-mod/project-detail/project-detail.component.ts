@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../project-class';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -9,9 +10,19 @@ import { Project } from '../project-class';
 export class ProjectDetailComponent implements OnInit {
   @Input() project: Project;
 
-  constructor() { }
+  projects: Project[];
+
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
+    this.getAllProjects();
+  }
+
+  getAllProjects(): void {
+    this.projectService.getAllProjects()
+    .subscribe(
+      projects => this.projects = projects
+    );
   }
 
 }
