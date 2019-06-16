@@ -11,10 +11,10 @@ export class WorkshopService {
 
   constructor(private http: HttpClient) { }
 
-  getAllWorkshops(): void {
-    return this.http.get<Workshop[]>('http://localhost:3000/api/workshop/all')
-      .pipe(
-        tap(workshops => console.log(workshops))
-      );
-  }
+  // getAllWorkshops(): void {
+  //   return this.http.get<Workshop[]>('http://localhost:3000/api/workshop/all')
+  //     .pipe(
+  //       tap(workshops => console.log(workshops))
+  //     );
+  // }
 }

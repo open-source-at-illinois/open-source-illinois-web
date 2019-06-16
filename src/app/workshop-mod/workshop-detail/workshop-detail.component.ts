@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Workshop } from '../workshop-class';
-import { WorkshopService } '../workshop.service';
+import { WorkshopService } from '../workshop.service';
 
 @Component({
   selector: 'app-workshop-detail',
@@ -14,14 +14,14 @@ export class WorkshopDetailComponent implements OnInit {
   constructor(private workshopService: WorkshopService) { }
 
   ngOnInit() {
-    this.getAllWorkshops();
+    // this.getAllWorkshops();
   }
 
-  getAllWorkshops(): void {
-    this.workshopService.getAllWorkshops()
-    .subscribe(
-      workshops => this.workshops = workshops
-    );
-  }
+  // getAllWorkshops(): void {
+  //   this.workshopService.getAllWorkshops()
+  //   .subscribe(
+  //     workshops => this.workshops = workshops
+  //   );
+  // }
 
 }

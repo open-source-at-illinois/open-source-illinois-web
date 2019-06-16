@@ -2,6 +2,19 @@
 
 Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open-source@illinois website is built to be maintainable, readable and expandable. The following is comprehensive documentation designed to explain the high-level logic of the site and how to add the project. However, if you have questions, first try to solve it yourself. After that, feel free to contact lead developer Thomas Driscoll at thomasdriscoll98@gmail.com . He'll reach out to you within 5 business days.
 
+##Installation
+1) Install npm
+2) Install Node.js
+3) Download from the master branch on Github
+4) npm commands in open-source-illinois-web root folder
+  - 1) npm install
+  - 2) npm install rxjs
+  - 3) npm install rxjs-compat
+  - 4) npm install express
+  - 5) npm install mongoose
+  *At this point, front-end development can be run. Further steps are for back-end developers and those who need access to the database*
+5)
+
 ## Angular
 The front-end is implemented using Angular. The choice was multi-faceted. Angular uses Typescript, which would allow a singular language across the stack; it is open-source, keeping in the methodology of the club; and, most importantly, Thomas used Angular at his summer internship, allowing him to develop and teach others.
 
