@@ -2,7 +2,7 @@
 
 Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open-source@illinois website is built to be maintainable, readable and expandable. The following is comprehensive documentation designed to explain the high-level logic of the site and how to add the project. However, if you have questions, first try to solve it yourself. After that, feel free to contact lead developer Thomas Driscoll at thomasdriscoll98@gmail.com . He'll reach out to you within 5 business days.
 
-##Installation
+## Installation
 1) Install Node.js
 2) Download from the master branch on Github
   - If you do not have git installed, download it!
