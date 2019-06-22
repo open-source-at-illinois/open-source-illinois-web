@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project} from '../project-class';
-import { PROJECTS } from '../projects';
+// import { PROJECTS } from '../projects';
 import { ProjectDetailComponent } from '../project-detail/project-detail.component';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-project',
@@ -10,16 +11,21 @@ import { ProjectDetailComponent } from '../project-detail/project-detail.compone
 })
 export class ProjectComponent implements OnInit {
   // Potentially turn projects into a service
-  projects = PROJECTS;
+  projects: Project[]
   selectedProject: Project;
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
+    this.getAllProjects();
+  }
+
+  getAllProjects(): void {
+    this.projectService.getAllProjects()
+    .subscribe(projects => this.projects = projects);
   }
 
   onSelect(project: Project): void{
     this.selectedProject = project;
   }
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../project-class';
 import { ProjectService } from '../project.service';
+import { MatCardModule } from '@angular/material';
 
 @Component({
   selector: 'app-project-detail',
@@ -12,17 +13,8 @@ export class ProjectDetailComponent implements OnInit {
 
   projects: Project[];
 
-  constructor(private projectService: ProjectService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getAllProjects();
   }
-
-  getAllProjects(): void {
-    this.projectService.getAllProjects()
-    .subscribe(
-      projects => this.projects = projects
-    );
-  }
-
 }
