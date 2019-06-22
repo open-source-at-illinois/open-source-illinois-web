@@ -9,7 +9,7 @@ Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open
 3) npm commands in open-source-illinois-web root folder
   - 1) npm install
   - 2) npm install rxjs rxjs-compat express mongoose
-  *At this point, front-end development can be run. Further steps are for back-end developers and those who need access to the database*
+  *At this point, front-end development can be run. Further steps are for back-end developers and those who need access to the database* 
 4)
 
 ## Angular
