@@ -1,12 +1,13 @@
 const express = require('express');
-const member_controller = require('../controllers/member.controller');
+const MemberController = require('../controllers/member.controller');
 const router = express.Router();
 
+var member_controller = new MemberController('member');
 //Get member routes
-router.get('/all', member_controller.allMembers);
-router.get('/:name', member_controller.member); //Add some password authentication
+router.get('/all', member_controller.all);
+router.get('/:name', member_controller.getone); //Add some password authentication
 
 //Add member
-router.post('/addMember', member_controller.addMember);
+router.post('/addMember', member_controller.add);
 
 module.exports = router;

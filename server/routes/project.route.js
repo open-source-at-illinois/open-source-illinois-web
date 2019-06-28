@@ -1,7 +1,8 @@
 const express = require('express');
-const project_controller = require('../controllers/project.controller');
+const ProjectController = require('../controllers/project.controller');
 const router = express.Router();
 
-router.get('/all', project_controller.allProjects);
+var project_controller = new ProjectController('project');
+router.get('/all', project_controller.all);
 
 module.exports = router;

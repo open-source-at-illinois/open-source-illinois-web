@@ -1,8 +1,11 @@
 <br />
-<div class='grid grid-pad'>
-  <div *ngFor='let member of members'>
-    <div class='module'>+ {{member.firstname}} and email is {{member.email}}</div>
 
-    <br />
-  </div>
-</div>
+<mat-card *ngFor='let member of members'>
+  <mat-card-header>
+    <mat-card-title>{{member.firstname}} {{member.lastname}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    Github: {{member.github}} <br />
+    
+  </mat-card-content>
+</mat-card>

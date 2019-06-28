@@ -6,5 +6,6 @@
   <mat-card-content>{{project.description}}</mat-card-content>
 </mat-card> -->
 <div class='selected-description' *ngIf='project'>
+  <p class='github'>Github: {{project.github}}</p>
   {{project.description}}
 </div>
