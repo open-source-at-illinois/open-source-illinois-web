@@ -1,7 +1,8 @@
 const express = require('express');
-const workshop_controller = require('../controllers/workshop.controller');
+const WorkshopController = require('../controllers/workshop.controller');
 const router = express.Router();
 
-router.get('/all', workshop_controller.allWorkshops);
-
+var workshop_controller = new WorkshopController('workshop');
+router.get('/all', workshop_controller.all);
+router.post('/add', workshop_controller.add);
 module.exports = router;

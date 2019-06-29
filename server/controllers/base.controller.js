@@ -3,17 +3,19 @@ const express = require('express');
 const router = express.Router();
 
 class BaseController{
+  //Passes name and associated model to controllers
+  //Binds functions to controller
   constructor(name){
     this.name = name;
-    console.log('../models/'+name+'.model')
     this.model = require('../models/'+name+'.model');
     this.all = this.all.bind(this);
     this.getone = this.getone.bind(this);
     this.add = this.add.bind(this);
   }
-
+  //Get all records
   all(req, res, next){
     this.model.find({}, (err, records) => {
+      console.log("Getting all records of " + this.name);
       if(err){
         console.log('Error occured');     //Write error handler
       }
@@ -22,9 +24,9 @@ class BaseController{
       }
     });
   }
-
+  //Get single record
   getone(req, res, next){
-    console.log(req.params.name)
+    console.log("Getting record of " + req.params.name + " in "+this.name);
     var name = req.params.name;
     this.model.find({firstname: name}, (err, member)=>{
       if(err){
@@ -36,10 +38,6 @@ class BaseController{
     })
   }
   add(req, res, next){}
-  // this.all = (req, res) => {};
-  // this.add = (req, res) => {};
-  // this.put = (req, res) => {};
-  // this.del = (req, res) => {};
 }
 
 module.exports = BaseController;

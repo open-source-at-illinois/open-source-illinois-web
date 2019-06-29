@@ -2,7 +2,7 @@
 <div class='grid grid-pad'>
   <div *ngFor='let workshop of workshops'
   (click) = onSelect(workshop)>
-    <div class='module'>+ {{workshop.name}}</div>
+    <div class='module'>+ {{workshop.title}}</div>
     <div *ngIf = 'workshop === selectedWorkshop'>
       <app-workshop-detail [workshop]='selectedWorkshop'></app-workshop-detail>
     </div>

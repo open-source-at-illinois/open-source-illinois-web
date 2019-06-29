@@ -1,4 +1,4 @@
-const Member = require('../models/member.model');
+// const Member = require('../models/member.model');
 const BaseController = require('./base.controller');
 
 class MemberController extends BaseController{
@@ -8,7 +8,7 @@ class MemberController extends BaseController{
   //Add new member
   add(req, res, next){
     var body = req.body[0];
-    var newMember = new Member({    //Try to add a constructor to member.model
+    var newMember = new this.model({    //Try to add a constructor to member.model
       firstname: body.firstname,
       lastname: body.lastname,
       email: body.email,

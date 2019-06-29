@@ -1,12 +1,13 @@
-// const mongoose = require('mongoose');
-// const officer = require('./officer.model');
-//
-//
-// var workshopSchema = new Schema({
-//   title: String,
-//   description: String,
-//   date: Date,
-//   presenters: [{type: mongoose.Schema.Types.ObjectId, ref: 'Officer'}]
-// });
-//
-// module.exports = mongoose.model('Workshop', workshopSchema);
+const mongoose = require('mongoose');
+const Officer = require('./officer.model');
+
+var ObjectId = mongoose.Schema.ObjectId;
+var workshopSchema = new mongoose.Schema({
+  id : ObjectId,
+  title: String,
+  description: String,
+  date: Date,
+  presenters: [{type: mongoose.Schema.ObjectId, ref: 'Officer'}]
+});
+
+module.exports = mongoose.model('Workshop', workshopSchema);
