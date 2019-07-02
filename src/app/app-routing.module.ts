@@ -5,12 +5,13 @@ import { TopicsComponent } from './topics/topics.component';
 import { WorkshopComponent } from './workshop-mod/workshop/workshop.component';
 import { MembersComponent } from './members-mod/members/members.component';
 import { UserComponent } from './user-mod/user/user.component';
-
+import { LoginComponent } from './login-mod/login/login.component';
 const routes: Routes = [
   {path: 'members', component: MembersComponent},
   {path: 'workshops', component: WorkshopComponent },
   {path: 'projects', component: ProjectComponent},
   {path: 'user', component: UserComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', component: TopicsComponent}
   //Need to make a 404 page
 ];

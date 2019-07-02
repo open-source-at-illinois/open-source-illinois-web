@@ -11,13 +11,13 @@ import { TopicsComponent } from './topics/topics.component';
 import { WorkshopComponent } from './workshop-mod/workshop/workshop.component';
 import { UserComponent } from './user-mod/user/user.component';
 import { UserDetailComponent } from './user-mod/user-detail/user-detail.component';
+import { LoginComponent } from './login-mod/login/login.component';
 
 import { ProjectsModModule } from './projects-mod/projects-mod.module';
 import { WorkshopModModule } from './workshop-mod/workshop-mod.module';
 import { MembersModModule } from './members-mod/members-mod.module';
 import { UserModModule} from './user-mod/user.module';
 import { AngularMaterialsModModule } from './angular-materials-mod/angular-materials-mod.module';
-
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -27,6 +27,7 @@ const appRoutes: Routes = [];
     TopicsComponent,
     UserComponent,
     UserDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
