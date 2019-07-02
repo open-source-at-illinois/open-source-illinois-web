@@ -16,7 +16,7 @@ import { ProjectsModModule } from './projects-mod/projects-mod.module';
 import { WorkshopModModule } from './workshop-mod/workshop-mod.module';
 import { MembersModModule } from './members-mod/members-mod.module';
 import { UserModModule} from './user-mod/user.module';
-// import { AngularMaterialsModModule } from './angular-materials-mod/angular-materials-mod.module';
+import { AngularMaterialsModModule } from './angular-materials-mod/angular-materials-mod.module';
 
 const appRoutes: Routes = [];
 
@@ -27,7 +27,6 @@ const appRoutes: Routes = [];
     TopicsComponent,
     UserComponent,
     UserDetailComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -37,7 +36,7 @@ const appRoutes: Routes = [];
     WorkshopModModule,
     MembersModModule,
     HttpClientModule,
-    // AngularMaterialsModModule,
+    AngularMaterialsModModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
