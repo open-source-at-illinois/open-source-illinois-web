@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http'
 import { Project } from './project-class';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
-
 @Injectable({
   providedIn: 'root'
 })

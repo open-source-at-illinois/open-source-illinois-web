@@ -1,1 +1,11 @@
-<app-user-detail></app-user-detail>
+<br />
+<div *ngIf = 'user'>
+  <div class = 'grid grid-pad'>
+    <mat-card>
+      <mat-card-content>
+        Name : {{user.firstname}} {{user.lastname}}
+      </mat-card-content>
+    </mat-card>
+    <p>Position: {{user.position}}</p>
+  </div>
+</div>

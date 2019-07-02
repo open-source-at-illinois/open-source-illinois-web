@@ -1,9 +1,11 @@
+import { Workshop } from '../workshop-mod/workshop-class';
+
 export class User{
+  email: string;
   firstname: string;
+  github: string;
   lastname: string;
   password: string;
-  email: string;
-  github: string;
   position: string;
-  // workshops: Array[Workshop]
-}
+  workshops: null;
+};
