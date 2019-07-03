@@ -1,4 +1,6 @@
 export class Workshop{
-  name: string;
+  title: string;
   description: string;
+  date: Date;
+  // presenters: []
 }

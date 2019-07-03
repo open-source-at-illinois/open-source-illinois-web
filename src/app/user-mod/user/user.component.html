@@ -1,0 +1,17 @@
+<br />
+<div *ngIf = 'user'>
+  <div class = 'grid grid-pad'>
+    <mat-list>
+      <h3 mat-subheader>Name</h3>
+      <mat-list-item>{{user.firstname}} {{user.lastname}}</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <h3 mat-subheader>Position</h3>
+      <mat-list-item>{{user.position}}</mat-list-item>
+      <mat-divider></mat-divider>
+
+      <h3 mat-subheader>Github</h3>
+      <mat-list-item>{{user.github}}</mat-list-item>
+    </mat-list>
+  </div>
+</div>
