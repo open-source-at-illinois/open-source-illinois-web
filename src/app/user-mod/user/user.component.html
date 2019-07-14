@@ -2,16 +2,34 @@
 <div *ngIf = 'user'>
   <div class = 'grid grid-pad'>
     <mat-list>
-      <h3 mat-subheader>Name</h3>
-      <mat-list-item>{{user.firstname}} {{user.lastname}}</mat-list-item>
-      <mat-divider></mat-divider>
-
-      <h3 mat-subheader>Position</h3>
-      <mat-list-item>{{user.position}}</mat-list-item>
+      <mat-list-item>
+        <p *ngIf='editNameFlag'><span></span></p>
+        <ng-template #elseBlock>{{user.firstname}} {{user.lastname}}</ng-template>
+        <button mat-button>Edit</button>
+      </mat-list-item>
       <mat-divider></mat-divider>
 
       <h3 mat-subheader>Github</h3>
-      <mat-list-item>{{user.github}}</mat-list-item>
+      <mat-list-item>
+        <p><span>{{user.github}}</span></p>
+        <button mat-button>Edit</button>
+      </mat-list-item>      
     </mat-list>
   </div>
+  <div *ngIf = 'user.position'>
+    <app-user-detail [user]="user"></app-user-detail>
+  </div>
 </div>
+
+<mat-card *ngFor='let project of projects'>
+    <mat-card-header>
+    <mat-card-title>{{project.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    Description: {{project.description}} <br />
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="rejectProject(project)">Reject</button>
+        <button mat-button (click)="approveProject(project)">Approve</button>
+    </mat-card-actions>
+</mat-card>

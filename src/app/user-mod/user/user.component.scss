@@ -10,5 +10,9 @@
 }
 
 mat-list{
-  background-color: white;
+  background-color: blue;
+}
+
+@media (max-width: 750px){
+  margin-top: 30%;
 }

@@ -1,11 +1,15 @@
 p {
-  color: limegreen;
+  color: blue;
   font-size: 100%;
 }
 *{
-  background-color: black;
+  background-color: orange;
 }
 .navbar{
-  border-bottom: 5px solid limegreen;
+  border-bottom: 5px solid blue;
+}
+.btn-success, .btn-success:hover, .btn-success:active {
+  background-color: blue;
+  border-color: blue;
 }
 @import '~bootstrap/dist/css/bootstrap.min.css';

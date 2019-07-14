@@ -1,6 +1,8 @@
 export class Project{
+  id: string;
   title: string;
   description: string;
-  status: boolean;
+  status: string;
   github: string;
+  category: string;
 };

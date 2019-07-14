@@ -9,6 +9,7 @@
 
 # sensitive info
 /server/config/config.js
+.env
 
 #node modules
 /node_modules

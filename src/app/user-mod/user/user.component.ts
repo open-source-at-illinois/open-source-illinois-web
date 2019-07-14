@@ -11,8 +11,11 @@ import { UserService } from '../user.service';
 export class UserComponent implements OnInit {
 
   user: User;
+  editNameFlag : boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) { 
+    this.editNameFlag = false;
+  }
 
   ngOnInit() {
     this.getUser();
@@ -22,5 +25,16 @@ export class UserComponent implements OnInit {
     this.userService.getUser()
     .subscribe(user => this.user = user[0]);
   }
+
+  getUserMember(): void{
+    this.userService.getUserMember()
+    .subscribe(user => this.user = user[0]);
+  }
+
+  // editName(): void{
+  //   console.log('reached');
+  //   this.editNameFlag = !this.editNameFlag;
+  // }
+
 
 }

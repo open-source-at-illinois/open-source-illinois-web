@@ -1,0 +1,17 @@
+.grid {
+    margin: 0;
+  }
+  
+  .grid-pad {
+    padding: 10px 0;
+  }
+  .grid-pad > [class*='col-']:last-of-type {
+    padding-right: 20px;
+  }
+  
+  mat-list{
+    background-color: blue;
+    height: 100%;
+  }
+  
+ 
