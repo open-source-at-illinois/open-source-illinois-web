@@ -6,18 +6,23 @@ Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open
 1) Follow the instructions to download Angular from its website
 2) Download from the master branch on Github
   - If you do not have git installed, download it!
-3) npm commands in open-source-illinois-web root folder
-  - 1) npm install
-  - 2) npm install rxjs rxjs-compat express mongoose
-  *At this point, front-end development can be run. Further steps are for back-end developers and those who need access to the database* 
-4)
+3) Run "npm install" in open-source-illinois-web root folder
+
+## Running
+*As of July 15th, 2019*
+1) Since this is still development, please open two terminals(or command line in Windows)
+2) In the first, navigate to the "server" folder of open-source-illinois-web and run "node index.js"
+3) In the second, navigate to the root folder of open-source-illinois-web and run "ng serve --o"
 
 ## Angular
-The front-end is implemented using Angular. The choice was multi-faceted. Angular uses Typescript, which would allow a singular language across the stack; it is open-source, keeping in the methodology of the club; and, most importantly, Thomas used Angular at his summer internship, allowing him to develop and teach others.
+The front-end is implemented using Angular. The choice was multi-faceted. Angular uses Typescript (a typed flavor of Javascript), which would allow a singular language across the stack; it is open-source, keeping in the methodology of the club; and, most importantly, Thomas used Angular at his summer internship, allowing him to develop and teach others.
+
+### Imported Modules
+Thomas set up a helper module to import Angular materials so that the website can be developed with those materials in mind (since he believes they enable better and faster UI development)
 
 ### Navbar
 The navigation bar is handled in an Angular Component called navbar, located in src/app/navbar . This was separated from app.component.ts as Thomas expected later development to make the navbar sufficiently complex to justify modularization.
-It displays the title of the website, a Home button that links back to the Topics component and the Profile page.
+It displays the title of the website, a Home button that links back to the Topics component and the User page.
 
 ### Topics
 The topics component is the main page on launch of the website. It loads in the static array from main_topics.ts that fills out divs linking the user to the Members, Workshops, Projects, Calendar and Scrum Board modules. The Calendar module is simply a link to a Google calendar where general info (workshops, meeting times, etc) will be placed.
@@ -33,7 +38,35 @@ On init, members.service makes a request to the server for all members signed up
 - Enable pictures stored in Google Cloud api for each member (nonessential)
 
 ### Projects
-The Project page's purpose is to display all projects
+The Project page's purpose is to display all projects, both completed and in progress.
+
+Same basic process as members for getting projects. 
+
+--- UPCOMING ---
+- Users should be able to sign up for project 
+- Project display should be updated with Angular materials
+
+### Workshops
+The Workshop page's purpose is to display all workshops, both completed and in progress.
+
+Same basic process as members for getting projects. 
+
+--- UPCOMING ---
+- Users should be able to sign up for workshop 
+- Workshop display should be updated with Angular materials
+
+### User Page
+The User page's purpose is to display information unique to the user. Currently, it is being designed and implemented with the following objectives in mind:
+- If the user is an officer, they should be able to approve or reject suggested project or workshop ideas
+
+### Login
+Yeah, this is just technically challenging and Thomas is handling it after his internship is over. There's database integration and security for the front-end and the back-end. It's a whole thing. Don't worry about it.
 
 
 ## Node.js Server
+### Index.js
+### Routes
+### Controllers
+### Models
+
+## MongoDB Database
