@@ -7,6 +7,7 @@ var workshopSchema = new mongoose.Schema({
   title: String,
   description: String,
   date: Date,
+  status: String,
   presenters: [{type: mongoose.Schema.ObjectId, ref: 'Officer'}]
 });
 

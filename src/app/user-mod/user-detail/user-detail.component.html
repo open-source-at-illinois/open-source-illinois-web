@@ -2,11 +2,10 @@
     <h3 mat-subheader>Position</h3>
     <mat-list-item>
         <p><span>{{user.position}}</span></p>
-        <button mat-button onclick="changeUserPosition()">Edit</button>
     </mat-list-item>
     <mat-divider></mat-divider>
 
-    <h3 mat-subheader>Pending Projects</h3>
+    <h3 mat-subheader>Suggested Projects</h3>
     <!-- <mat-list-item> -->
         <mat-card *ngFor='let project of projects'>
             <mat-card-header>
@@ -22,4 +21,17 @@
         </mat-card>
         <br />
     <!-- </mat-list-item> -->
+    <h3 mat-subheader>Suggested Workshops</h3>
+        <mat-card *ngFor='let workshop of workshops'>
+            <mat-card-header>
+            <mat-card-title>{{workshop.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                Description: {{workshop.description}} <br />
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Reject</button>
+                <button mat-button>Approve</button>
+            </mat-card-actions>
+        </mat-card>
 </mat-list>

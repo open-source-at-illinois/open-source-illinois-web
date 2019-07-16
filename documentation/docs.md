@@ -3,7 +3,7 @@
 Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open-source@illinois website is built to be maintainable, readable and expandable. The following is comprehensive documentation designed to explain the high-level logic of the site and how to add the project. However, if you have questions, first try to solve it yourself. After that, feel free to contact lead developer Thomas Driscoll at thomasdriscoll98@gmail.com . He'll reach out to you within 5 business days.
 
 ## Installation
-1) Install Node.js
+1) Follow the instructions to download Angular from its website
 2) Download from the master branch on Github
   - If you do not have git installed, download it!
 3) npm commands in open-source-illinois-web root folder
@@ -20,15 +20,20 @@ The navigation bar is handled in an Angular Component called navbar, located in 
 It displays the title of the website, a Home button that links back to the Topics component and the Profile page.
 
 ### Topics
-The topics component is the main page on launch of the website. It loads in the static array from main_topics.ts that fills out divs linking the user to the Members, Workshops, Projects and Calendar modules.
+The topics component is the main page on launch of the website. It loads in the static array from main_topics.ts that fills out divs linking the user to the Members, Workshops, Projects, Calendar and Scrum Board modules. The Calendar module is simply a link to a Google calendar where general info (workshops, meeting times, etc) will be placed.
 
 ### Member
 The Member page purpose is to display all members and officers of the club, their Github accounts and links to their various projects.
 
-On init, members.service makes a request to the server for all members signed up with the club. This is returned via members.service to member.component.ts, where a ngFor loop fills out everything.
+On init, members.service makes a request to the server for all members signed up with the club. This is returned via members.service to member.component.ts, where a ngFor loop fills out everything. Angular Materials are utilized to fill out each members card.
+
+--- UPCOMING ---
+- Each member will have associated projects
+- Each officer will have associate projects AND workshops they lead
+- Enable pictures stored in Google Cloud api for each member (nonessential)
 
 ### Projects
-
+The Project page's purpose is to display all projects
 
 
 ## Node.js Server

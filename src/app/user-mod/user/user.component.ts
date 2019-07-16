@@ -14,10 +14,10 @@ export class UserComponent implements OnInit {
   editNameFlag : boolean;
 
   constructor(private userService: UserService) { 
-    this.editNameFlag = false;
   }
 
   ngOnInit() {
+    this.editNameFlag = false;
     this.getUser();
   }
 

@@ -11,6 +11,12 @@
 
 mat-list{
   background-color: blue;
+  h6{
+    color: white;
+  }
+  span{
+    color: white;
+  }
 }
 
 @media (max-width: 750px){

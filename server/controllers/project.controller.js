@@ -3,17 +3,17 @@ const BaseController = require('./base.controller');
 class ProjectController extends BaseController{
   constructor(name){
     super(name);
-    this.pending = this.pending.bind(this);
+    this.suggested = this.suggested.bind(this);
   }
 
-  pending(req, res, next){
+  suggested(req, res, next){
     var position = req.params.position;
     console.log(position);
     if(position == 'Web Director'){
       var category = 'web development';
     }
-    this.model.find({category: category, status: "pending"}, (err, projects)=>{
-      console.log('Getting pending projects for '+position)
+    this.model.find({category: category, status: "suggested"}, (err, projects)=>{
+      console.log('Getting suggested projects for '+position)
       if(err){
         console.log('Error occured');
       }

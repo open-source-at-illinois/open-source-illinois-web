@@ -2,17 +2,15 @@
 <div *ngIf = 'user'>
   <div class = 'grid grid-pad'>
     <mat-list>
+      <h6 mat-subheader>Name</h6>
       <mat-list-item>
-        <p *ngIf='editNameFlag'><span></span></p>
-        <ng-template #elseBlock>{{user.firstname}} {{user.lastname}}</ng-template>
-        <button mat-button>Edit</button>
+        <p><span>{{user.firstname}} {{user.lastname}}</span></p>
       </mat-list-item>
       <mat-divider></mat-divider>
 
-      <h3 mat-subheader>Github</h3>
+      <h6 mat-subheader>Github</h6>
       <mat-list-item>
         <p><span>{{user.github}}</span></p>
-        <button mat-button>Edit</button>
       </mat-list-item>      
     </mat-list>
   </div>
