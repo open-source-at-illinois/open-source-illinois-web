@@ -8,14 +8,25 @@ class WorkshopController extends BaseController{
     this.suggested = this.suggested.bind(this);
   }
 
+  async all(req, res, next){
+    this.model.find({status: "active"}, (err, records) => {
+      console.log("Getting all records of " + this.name);
+      if(err){
+        console.log('Error occured');     //Write error handler
+      }
+      else{
+        return res.send(records);
+      }
+    });
+  }
+
   suggested(req, res, next){
     var position = req.params.position;
-    console.log(position);
     if(position == 'Web Director'){
       var category = 'web development';
     }
     this.model.find({category: category, status: "suggested"}, (err, projects)=>{
-      console.log('Getting suggested projects for '+position)
+      console.log('Getting suggested workshops for '+position)
       if(err){
         console.log('Error occured');
       }
@@ -26,7 +37,6 @@ class WorkshopController extends BaseController{
   }
 
   add(req, res, next){
-    console.log('reached');
     var body = req.body[0];
     var ObjectId = mongoose.Schema.ObjectId;
     console.log(ObjectId);
@@ -35,9 +45,11 @@ class WorkshopController extends BaseController{
       title: body.title,
       description: body.description,
       date: body.date,
-      presenters: body.presenters
+      location: body.location,
+      status: body.status,
+      category: body.category,
+      presenter: body.presenter
     });
-    console.log('reached');
     newWorkshop.save((err) =>{
       if(err){
         console.log('rip bro, you done fucked');
@@ -50,6 +62,17 @@ class WorkshopController extends BaseController{
       }
     })
   }
+
+  async updateStatus(req, res, next){
+    //
+    var workshop = req.body;
+    var id = workshop._id;
+    var status = workshop.status;
+    var updatingWorkshop = await this.model.findOne({_id: id});
+    updatingWorkshop.status = status;
+    await updatingWorkshop.save();
+  }
 }
+
 
 module.exports = WorkshopController;

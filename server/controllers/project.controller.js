@@ -4,11 +4,22 @@ class ProjectController extends BaseController{
   constructor(name){
     super(name);
     this.suggested = this.suggested.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
 
-  suggested(req, res, next){
+  async all(req, res, next){
+    this.model.find({status: "active"}, (err, records) => {
+      console.log("Getting all records of " + this.name);
+      if(err){
+        console.log('Error occured');     //Write error handler
+      }
+      else{
+        return res.send(records);
+      }
+    });
+  }
+  async suggested(req, res, next){
     var position = req.params.position;
-    console.log(position);
     if(position == 'Web Director'){
       var category = 'web development';
     }
@@ -23,13 +34,14 @@ class ProjectController extends BaseController{
     })
   }
 
-  updateStatus(req, res, next){
-    var project = req.body[0];
-    var id = project.id;
+  async updateStatus(req, res, next){
+    //
+    var project = req.body;
+    var id = project._id;
     var status = project.status;
-    console.log('reached');
-    this.model.update({_id: id}, {status: status});
-    console.log('reached 2');
+    var updatingProject = await this.model.findOne({_id: id});
+    updatingProject.status = status;
+    await updatingProject.save();
   }
 }
 

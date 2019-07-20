@@ -58,6 +58,7 @@ Same basic process as members for getting projects.
 ### User Page
 The User page's purpose is to display information unique to the user. Currently, it is being designed and implemented with the following objectives in mind:
 - If the user is an officer, they should be able to approve or reject suggested project or workshop ideas
+- User can remove themselves from projects
 
 ### Login
 Yeah, this is just technically challenging and Thomas is handling it after his internship is over. There's database integration and security for the front-end and the back-end. It's a whole thing. Don't worry about it.

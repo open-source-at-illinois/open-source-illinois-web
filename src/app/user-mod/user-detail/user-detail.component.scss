@@ -2,22 +2,43 @@
     margin: 0;
   }
   
-  .grid-pad {
-    padding: 10px 0;
-  }
-  .grid-pad > [class*='col-']:last-of-type {
-    padding-right: 20px;
-  }
-  
+.grid-pad {
+  padding: 10px 0;
+}
+.grid-pad > [class*='col-']:last-of-type {
+  padding-right: 20px;
+}
 
-  mat-list{
-    background-color: blue;
-    h3{
-      color: white;
-    }
-    span{
-      color: white;
-    }
+
+mat-list{
+  background-color: blue;
+  h3{
+    color: white;
   }
+  span{
+    color: white;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  h3{
+    color: white;
+  }
+  mat-form-field {
+    background-color: white;
+  }
+  button{
+    background-color: white;
+    width: 40%;
+    border-color: black;
+  }
+}
+
+.form-container > * {
+  width: 100%;
+}
   
  

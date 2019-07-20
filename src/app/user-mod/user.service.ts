@@ -21,37 +21,44 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(): Observable<User> {
-    return this.http.get<User>('http://localhost:3000/api/officer/Thomas')
-      .pipe(
-        tap(user => console.log(user))
-      );
-  }
-
-  getUserMember(): Observable<User>{
-    return this.http.get<User>('http://localhost:3000/api/member/Brian')
-      .pipe(
-        tap(user => console.log(user))
-      );
+    return this.http.get<User>('http://localhost:3000/api/officer/Thomas');
+      // .pipe(
+      //   tap(user => console.log(user))
+      // );
   }
 
   getSuggestedProjects(position: string): Observable<Project[]>{
-    return this.http.get<Project[]>('http://localhost:3000/api/project/suggested/'+position)
-    .pipe(
-      tap(project => console.log(project))
-    );
+    return this.http.get<Project[]>('http://localhost:3000/api/project/suggested/'+position);
+    // .pipe(
+    //   tap(project => console.log(project))
+    // );
   }
 
   getSuggestedWorkshops(position: string): Observable<Workshop[]>{
-    return this.http.get<Workshop[]>('http://localhost:3000/api/workshop/suggested/'+position)
+    return this.http.get<Workshop[]>('http://localhost:3000/api/workshop/suggested/'+position);
+    // .pipe(
+    //   tap(project => console.log(project))
+    // );
+  }
+
+  statusProject(project: Project): Observable<Project> {
+    return this.http.put<Project>('http://localhost:3000/api/project/updateStatus', project, httpOptions)
     .pipe(
       tap(project => console.log(project))
     );
   }
 
-  approveProject(project: Project): Observable<Project> {
-    return this.http.put<Project>('http://localhost:3000/api/project/updateStatus',project, httpOptions)
+  statusWorkshop(workshop: Workshop): Observable<Workshop> {
+    return this.http.put<Workshop>('http://localhost:3000/api/workshop/updateStatus', workshop, httpOptions)
     .pipe(
-      tap(project => console.log(project))
+      tap(workshop => console.log(workshop))
+    );
+  }
+
+  createWorkshop(workshop: Workshop): Observable<Workshop> {
+    return this.http.post<Workshop>('http://localhost:3000/api/workshop/add', workshop, httpOptions)
+    .pipe(
+      tap(workshop => console.log(workshop))
     );
   }
 }

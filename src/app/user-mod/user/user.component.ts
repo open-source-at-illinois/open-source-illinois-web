@@ -26,10 +26,10 @@ export class UserComponent implements OnInit {
     .subscribe(user => this.user = user[0]);
   }
 
-  getUserMember(): void{
-    this.userService.getUserMember()
-    .subscribe(user => this.user = user[0]);
-  }
+  // getUserMember(): void{
+  //   this.userService.getUserMember()
+  //   .subscribe(user => this.user = user[0]);
+  // }
 
   // editName(): void{
   //   console.log('reached');

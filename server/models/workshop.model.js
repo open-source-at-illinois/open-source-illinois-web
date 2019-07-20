@@ -7,8 +7,10 @@ var workshopSchema = new mongoose.Schema({
   title: String,
   description: String,
   date: Date,
+  location: String,
   status: String,
-  presenters: [{type: mongoose.Schema.ObjectId, ref: 'Officer'}]
+  category: String,
+  presenter: {type: mongoose.Schema.ObjectId, ref: 'Officer'}
 });
 
 module.exports = mongoose.model('Workshop', workshopSchema);
