@@ -1,5 +1,6 @@
 import { User } from "../user-mod/user-class";
 export class Workshop{
+  id: string;
   title: string;
   description: string;
   date: Date;

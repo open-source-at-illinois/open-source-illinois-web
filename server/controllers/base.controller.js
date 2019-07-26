@@ -13,7 +13,7 @@ class BaseController{
     this.add = this.add.bind(this);
   }
   //Get all records
-  all(req, res, next){
+  async all(req, res, next){
     this.model.find({}, (err, records) => {
       console.log("Getting all records of " + this.name);
       if(err){
@@ -25,7 +25,7 @@ class BaseController{
     });
   }
   //Get single record
-  getone(req, res, next){
+  async getone(req, res, next){
     console.log("Getting record of " + req.params.name + " in "+this.name);
     var name = req.params.name;
     this.model.find({firstname: name}, (err, member)=>{

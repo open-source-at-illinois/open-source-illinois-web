@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular-materials-mod.module';
 
 import { UserComponent } from './user.component';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -8,7 +11,14 @@ describe('UserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      imports: [ 
+        AngularMaterialsModModule,
+        ReactiveFormsModule
+      ],
+      declarations: [ 
+        UserComponent,
+        UserDetailComponent
+      ]
     })
     .compileComponents();
   }));

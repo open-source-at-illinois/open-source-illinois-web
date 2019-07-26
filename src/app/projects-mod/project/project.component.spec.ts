@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular-materials-mod.module';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ProjectComponent } from './project.component';
+import { ProjectDetailComponent } from '../project-detail/project-detail.component';
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -8,7 +11,14 @@ describe('ProjectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectComponent ]
+      imports: [
+        AngularMaterialsModModule, 
+        HttpClientTestingModule        
+      ],
+      declarations: [ 
+        ProjectComponent,
+        ProjectDetailComponent
+      ]
     })
     .compileComponents();
   }));
