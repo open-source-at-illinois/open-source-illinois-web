@@ -8,8 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TopicsComponent } from './topics/topics.component';
-import { UserComponent } from './user-mod/user/user.component';
-import { UserDetailComponent } from './user-mod/user-detail/user-detail.component';
 import { LoginComponent } from './login-mod/login/login.component';
 
 import { ProjectsModModule } from './projects-mod/projects-mod.module';
@@ -24,8 +22,6 @@ const appRoutes: Routes = [];
     AppComponent,
     NavbarComponent,
     TopicsComponent,
-    UserComponent,
-    UserDetailComponent,
     LoginComponent
   ],
   imports: [
@@ -37,6 +33,7 @@ const appRoutes: Routes = [];
     MembersModModule,
     HttpClientModule,
     AngularMaterialsModModule,
+    UserModModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
