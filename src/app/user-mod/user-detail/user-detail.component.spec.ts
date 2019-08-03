@@ -28,6 +28,15 @@ describe('UserDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserDetailComponent);
     component = fixture.componentInstance;
+    component.user = {
+      email: "thomasdriscoll98@gmail.com",
+      firstname: "Thomas",
+      github: "thomasdriscoll",
+      lastname: "Driscoll",
+      password: "password",
+      position: "Web Director",
+      workshops: null
+    };
     fixture.detectChanges();
   });
 

@@ -4,6 +4,7 @@ import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular
 import { UserComponent } from './user.component';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -13,7 +14,8 @@ describe('UserComponent', () => {
     TestBed.configureTestingModule({
       imports: [ 
         AngularMaterialsModModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientTestingModule
       ],
       declarations: [ 
         UserComponent,
