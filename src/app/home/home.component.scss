@@ -1,0 +1,40 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    .side-container{
+        width: 15%;
+        height: 100%;
+        align-self: left;
+        .large-box{
+            background-color: purple;
+            width: 100%;
+            height: 80px;
+        }
+        .box{
+            width: 80%;
+            height: 80px;
+            margin-top: 24px;
+        }
+        .lightblue{
+            background-color: lightblue;
+        }
+        .pink{
+            background-color: green;
+        }
+        .lightgrey{
+            background-color: lightgrey;
+        }
+        .orange{
+            background-color: orange;
+        }
+    }
+    .content-container{
+        display: flex;
+        width: 80%;
+        padding-left: 5%;
+    }
+}

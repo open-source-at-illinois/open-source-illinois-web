@@ -1,5 +1,8 @@
 /* Application-wide Styles */
-
+html{
+  margin: 0;
+  padding: 0;
+}
 h1 {
   color: blue;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -10,13 +13,13 @@ h2, h3 {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   font-weight: lighter;
 }
-body {
-  margin: 2em;
-}
+// body {
+//   margin: 2em;
+// }
 body, input[type="text"], button {
   color: #888;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  background-color: orange;
+  background-color: white;
 }
 /* everywhere else */
 * {
