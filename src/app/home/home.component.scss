@@ -10,7 +10,7 @@
         height: 100%;
         align-self: left;
         .large-box{
-            background-color: purple;
+            background-color: darkblue;
             width: 100%;
             height: 80px;
         }
@@ -22,11 +22,11 @@
         .lightblue{
             background-color: lightblue;
         }
-        .pink{
+        .green{
             background-color: green;
         }
-        .lightgrey{
-            background-color: lightgrey;
+        .darkred{
+            background-color: darkred;
         }
         .orange{
             background-color: orange;
@@ -34,6 +34,7 @@
     }
     .content-container{
         display: flex;
+        flex-direction: column;
         width: 80%;
         padding-left: 5%;
     }

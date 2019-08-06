@@ -26,9 +26,10 @@ class BaseController{
   }
   //Get single record
   async getone(req, res, next){
-    console.log("Getting record of " + req.params.name + " in "+this.name);
-    var name = req.params.name;
-    this.model.find({firstname: name}, (err, member)=>{
+    console.log("Getting record of " + req.params.firstname + " in "+this.name);
+    var firstname = req.params.firstname;
+    var lastname = req.params.lastname;
+    this.model.find({firstname: firstname, lastname: lastname}, (err, member)=>{
       if(err){
         console.log('Error occured');
       }

@@ -6,6 +6,7 @@ class WorkshopController extends BaseController{
   constructor(name){
     super(name);
     this.suggested = this.suggested.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
 
   async all(req, res, next){

@@ -21,7 +21,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(): Observable<User> {
-    return this.http.get<User>('http://localhost:3000/api/officer/Thomas');
+    return this.http.get<User>('http://localhost:3000/api/officer/Thomas/Driscoll');
       // .pipe(
       //   tap(user => console.log(user))
       // );
