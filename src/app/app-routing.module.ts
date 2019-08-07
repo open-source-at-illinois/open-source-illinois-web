@@ -7,6 +7,8 @@ import { UserComponent } from './user-mod/user/user.component';
 import { LoginComponent } from './login-mod/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './interceptor.service';
 
 const routes: Routes = [
   {path: 'members', component: MembersComponent},
@@ -20,6 +22,13 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ]
 })
 export class AppRoutingModule { }

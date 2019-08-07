@@ -2,6 +2,7 @@ const express = require('express');
 const MemberController = require('../controllers/member.controller');
 const router = express.Router();
 
+
 var member_controller = new MemberController('member');
 
 //Get member routes

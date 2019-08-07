@@ -14,7 +14,8 @@ export class LoginService {
     createAuth0Client({
       domain: "dev-3mntwbjz.auth0.com",
       client_id: "eKMPJ2fOh2E8hLJyZ51WBqCuDQb4MOMz",
-      redirect_uri: `${window.location.origin}/callback`
+      redirect_uri: `${window.location.origin}/callback`,
+      audience: "http://localhost:3000/"
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -36,6 +37,13 @@ export class LoginService {
   // Create a local property for login status
   loggedIn: boolean = null;
 
+  getTokenSilently$ = this.auth0Client$.pipe(
+    concatMap((client: Auth0Client) => from(client.getTokenSilently()))
+  );
+  // Create subject and public observable of access token
+  private accessTokenSubject$ = new BehaviorSubject<string>(null);
+  accessToken$ = this.accessTokenSubject$.asObservable();
+
   constructor(private router: Router) { }
   
   // getUser$() is a method because options can be passed if desired
@@ -48,24 +56,29 @@ export class LoginService {
 
   localAuthSetup() {
     // This should only be called on app initialization
-    // Set up local authentication streams
+    // Check if user already has an active session with Auth0
     const checkAuth$ = this.isAuthenticated$.pipe(
       concatMap((loggedIn: boolean) => {
         if (loggedIn) {
-          // If authenticated, get user data
-          return this.getUser$();
+          // If authenticated, return stream that emits user object and token
+          return combineLatest(
+            this.getUser$(),
+            this.getTokenSilently$
+          );
         }
         // If not authenticated, return stream that emits 'false'
         return of(loggedIn);
       })
     );
-    const checkAuthSub = checkAuth$.subscribe((response: { [key: string]: any } | boolean) => {
-      // If authenticated, response will be user object
+    const checkAuthSub = checkAuth$.subscribe((response: any[] | boolean) => {
+      // If authenticated, response will be array of user object and token
       // If not authenticated, response will be 'false'
       // Set subjects appropriately
       if (response) {
-        const user = response;
+        const user = response[0];
+        const token = response[1];
         this.userProfileSubject$.next(user);
+        this.accessTokenSubject$.next(token);
       }
       this.loggedIn = !!response;
       // Clean up subscription
@@ -99,19 +112,21 @@ export class LoginService {
         targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
       }),
       concatMap(() => {
-        // Redirect callback complete; create stream
-        // returning user data and authentication status
+        // Redirect callback complete; create stream returning
+        // user data, token, and authentication status
         return combineLatest(
           this.getUser$(),
+          this.getTokenSilently$,
           this.isAuthenticated$
         );
       })
     );
     // Subscribe to authentication completion observable
-    // Response will be an array of user and login status
-    authComplete$.subscribe(([user, loggedIn]) => {
+    // Response will be an array of user, token, and login status
+    authComplete$.subscribe(([user, token, loggedIn]) => {
       // Update subjects and loggedIn property
       this.userProfileSubject$.next(user);
+      this.accessTokenSubject$.next(token);
       this.loggedIn = loggedIn;
       // Redirect to target route after callback processing
       this.router.navigate([targetRoute]);
