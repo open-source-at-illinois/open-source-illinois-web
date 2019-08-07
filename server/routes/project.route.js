@@ -7,4 +7,5 @@ console.log('reached router');
 router.get('/all', project_controller.all);
 router.get('/suggested/:position', project_controller.suggested);
 router.put('/updateStatus', project_controller.updateStatus);
+router.post('/add', project_controller.add);
 module.exports = router;

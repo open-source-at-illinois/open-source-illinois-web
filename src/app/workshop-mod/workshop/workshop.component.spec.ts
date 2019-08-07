@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular-materials-mod.module';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { WorkshopComponent } from './workshop.component';
+import { WorkshopDetailComponent } from '../workshop-detail/workshop-detail.component';
 
 describe('WorkshopComponent', () => {
   let component: WorkshopComponent;
@@ -8,7 +11,14 @@ describe('WorkshopComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WorkshopComponent ]
+      imports: [
+        AngularMaterialsModModule, 
+        HttpClientTestingModule    
+      ],
+      declarations: [ 
+        WorkshopComponent,
+        WorkshopDetailComponent
+      ]
     })
     .compileComponents();
   }));

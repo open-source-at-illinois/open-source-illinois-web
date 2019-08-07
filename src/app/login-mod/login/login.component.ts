@@ -8,10 +8,10 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+
+  constructor(private auth: LoginService) { }
 
   ngOnInit() {
-    this.loginService.authenicate();
+    this.auth.handleAuthCallback();
   }
-
 }

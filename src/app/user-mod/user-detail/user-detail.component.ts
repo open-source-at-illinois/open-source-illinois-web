@@ -77,8 +77,8 @@ export class UserDetailComponent implements OnInit {
       this.workshopForm.controls['description'].value,
       this.workshopForm.controls['date'].value,
       this.workshopForm.controls['location'].value,
-      this.workshopForm.controls['category'].value,
       'active',
+      this.workshopForm.controls['category'].value,      
       this.user
     );
     console.log(newWorkshop);

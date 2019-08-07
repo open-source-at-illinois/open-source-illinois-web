@@ -6,6 +6,7 @@ class WorkshopController extends BaseController{
   constructor(name){
     super(name);
     this.suggested = this.suggested.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
 
   async all(req, res, next){
@@ -20,7 +21,7 @@ class WorkshopController extends BaseController{
     });
   }
 
-  suggested(req, res, next){
+  async suggested(req, res, next){
     var position = req.params.position;
     if(position == 'Web Director'){
       var category = 'web development';
@@ -36,12 +37,10 @@ class WorkshopController extends BaseController{
     })
   }
 
-  add(req, res, next){
-    var body = req.body[0];
-    var ObjectId = mongoose.Schema.ObjectId;
-    console.log(ObjectId);
+  async add(req, res, next){
+    var body = req.body;
+    console.log(body);
     var newWorkshop = new this.model({
-      id : ObjectId,
       title: body.title,
       description: body.description,
       date: body.date,
@@ -52,19 +51,15 @@ class WorkshopController extends BaseController{
     });
     newWorkshop.save((err) =>{
       if(err){
+        console.log(err);
         console.log('rip bro, you done fucked');
       }
-      else{
-        res.send(200);
-        res.json({
-          message: body.title + " succesfully entered"
-        });
-      }
-    })
+    });
+
+    res.sendStatus(200);
   }
 
   async updateStatus(req, res, next){
-    //
     var workshop = req.body;
     var id = workshop._id;
     var status = workshop.status;

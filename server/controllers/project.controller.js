@@ -18,6 +18,25 @@ class ProjectController extends BaseController{
       }
     });
   }
+  async add(req, res, next){
+    var body = req.body;
+    console.log(body);
+    var newProject = new this.model({
+      title: body.title,
+      description: body.description,
+      status: body.status,
+      github: body.github,
+      category: body.category,
+    });
+    newProject.save((err) => {
+      if(err){
+        console.log(err);
+        console.log('rip bro, you done fucked');
+      }
+    });
+
+    res.sendStatus(200);
+  }
   async suggested(req, res, next){
     var position = req.params.position;
     if(position == 'Web Director'){

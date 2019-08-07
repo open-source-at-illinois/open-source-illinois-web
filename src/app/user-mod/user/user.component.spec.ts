@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular-materials-mod.module';
 
 import { UserComponent } from './user.component';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -8,7 +12,15 @@ describe('UserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserComponent ]
+      imports: [ 
+        AngularMaterialsModModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule
+      ],
+      declarations: [ 
+        UserComponent,
+        UserDetailComponent
+      ]
     })
     .compileComponents();
   }));
