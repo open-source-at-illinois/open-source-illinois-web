@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login-mod/login.service';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @Component({
@@ -9,9 +10,10 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 export class NavbarComponent implements OnInit {
   title = 'open-source@illinois';
 
-  constructor() { }
+  constructor(public auth: LoginService) { }
 
   ngOnInit() {
+    this.auth.localAuthSetup();
   }
 
 }

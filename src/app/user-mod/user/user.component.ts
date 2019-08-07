@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user-class';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { UserService } from '../user.service';
+import { LoginService } from 'src/app/login-mod/login.service';
 
 @Component({
   selector: 'app-user',
@@ -11,13 +11,13 @@ import { UserService } from '../user.service';
 export class UserComponent implements OnInit {
 
   user: User;
-  editNameFlag : boolean;
 
-  constructor(private userService: UserService) { 
+  constructor(
+    private auth: LoginService,
+    private userService: UserService) { 
   }
 
   ngOnInit() {
-    this.editNameFlag = false;
     this.getUser();
   }
 
@@ -30,11 +30,4 @@ export class UserComponent implements OnInit {
   //   this.userService.getUserMember()
   //   .subscribe(user => this.user = user[0]);
   // }
-
-  // editName(): void{
-  //   console.log('reached');
-  //   this.editNameFlag = !this.editNameFlag;
-  // }
-
-
 }

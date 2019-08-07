@@ -31,8 +31,14 @@
           <img src='assets/profile_icon.png' height='25px' width='25px' />
         </a>
       </li>
+      <li class="nav-item">
+        <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+      </li>
+      <li class="nav-item">
+        <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+      </li>
     </ul>
   </div>
 </nav>
 <br />
-<router-outlet></router-outlet>
+
