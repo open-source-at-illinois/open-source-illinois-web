@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'projects', component: ProjectComponent},
   {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
   {path: 'callback', component: LoginComponent},
-  {path: 'signup', component: NewUserComponent},
+  {path: 'signup', component: NewUserComponent, canActivate:[AuthGuard]},
   {path: '', component: HomeComponent}
   //Need to make a 404 page
 ];

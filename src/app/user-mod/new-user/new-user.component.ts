@@ -11,6 +11,8 @@ import { Member } from '../../members-mod/member-class';
 })
 export class NewUserComponent implements OnInit {
   githubInfo : any;
+  waiting = true;
+  badActor = true;
 
   newUserForm = new FormGroup({
     firstname: new FormControl(null, Validators.required),
@@ -24,8 +26,23 @@ export class NewUserComponent implements OnInit {
 
   ngOnInit() {
     this.githubInfo = this.loginService.userInfo();
+    this.badActorCheck();
   }
 
+  badActorCheck() {
+    this.membersService.getMemberByGithub(this.githubInfo.nickname)
+      .subscribe( member => {
+        this.waiting = false;
+        if(member === null){         
+          this.badActor = false;
+        }
+        else{
+          this.badActor = true;
+          //Enable push notifications
+          this.loginService.logout();
+        }
+      });
+  }
   addNewUser(form: any){
     this.newUserForm = form;
     console.log(this.githubInfo);
