@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './interceptor.service';
+import { NewUserComponent } from './user-mod/new-user/new-user.component';
 
 const routes: Routes = [
   {path: 'members', component: MembersComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'projects', component: ProjectComponent},
   {path: 'user', component: UserComponent, canActivate:[AuthGuard]},
   {path: 'callback', component: LoginComponent},
+  {path: 'signup', component: NewUserComponent, canActivate:[AuthGuard]},
   {path: '', component: HomeComponent}
   //Need to make a 404 page
 ];

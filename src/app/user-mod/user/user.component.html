@@ -1,9 +1,7 @@
 <br />
-<pre *ngIf="auth.userProfile$ | async as profile">
-  <code>{{ profile | json }}</code>
-</pre>
-<div *ngIf = 'user'>
++<div *ngIf = 'user'>
   <div class = 'grid grid-pad'>
+    <img src= "{{user.picture}}">
     <mat-list>
       <h6 mat-subheader>Name</h6>
       <mat-list-item>

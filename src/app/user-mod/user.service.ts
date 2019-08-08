@@ -19,14 +19,6 @@ const httpOptions = {
 export class UserService {
   
   constructor(private http: HttpClient) { }
-
-  getUser(): Observable<User> {
-    return this.http.get<User>('http://localhost:3000/api/officer/Thomas/Driscoll');
-      // .pipe(
-      //   tap(user => console.log(user))
-      // );
-  }
-
   getSuggestedProjects(position: string): Observable<Project[]>{
     return this.http.get<Project[]>('http://localhost:3000/api/project/suggested/'+position);
     // .pipe(

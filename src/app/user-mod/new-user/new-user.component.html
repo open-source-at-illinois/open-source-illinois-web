@@ -1,0 +1,27 @@
+<br />
+<div *ngIf='waiting'>
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf='!badActor && !waiting'>
+  <form [formGroup]="newUserForm" (ngSubmit)="addNewUser(newUserForm)">
+    <div class="form-container">
+      <mat-form-field>
+        <input matInput placeholder="First name" formControlName="firstname">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last name" formControlName="lastname">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="email" formControlName="email">
+      </mat-form-field>
+      <button mat-button class='btn btn-default' [disabled]="!newUserForm.valid">Submit</button>
+    </div>
+  </form>
+</div>
+<div *ngIf='badActor && !waiting'>
+  <p>
+    An account for this github already exists. This github, {{this.githubInfo.nickname}}, has 
+    been flagged for review by admins
+  </p>
+</div>
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user-class';
 import { UserService } from '../user.service';
 import { LoginService } from 'src/app/login-mod/login.service';
+import { MembersService } from 'src/app/members-mod/members.service';
 
 @Component({
   selector: 'app-user',
@@ -11,19 +12,22 @@ import { LoginService } from 'src/app/login-mod/login.service';
 export class UserComponent implements OnInit {
 
   user: User;
+  githubInfo: any;
 
   constructor(
     private auth: LoginService,
-    private userService: UserService) { 
+    private userService: UserService,
+    private membersService: MembersService) { 
   }
 
   ngOnInit() {
+    this.githubInfo = this.auth.userInfo();
     this.getUser();
   }
 
   getUser(): void{
-    this.userService.getUser()
-    .subscribe(user => this.user = user[0]);
+    this.membersService.getMemberByGithub(this.githubInfo.nickname)
+    .subscribe(user => this.user = user);
   }
 
   // getUserMember(): void{
