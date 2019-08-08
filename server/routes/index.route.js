@@ -6,6 +6,7 @@ const officerRoutes = require('./officer.route');
 const router = express.Router();
 
 //connect controller routes
+console.log('reached');
 router.use('/member', memberRoutes);
 router.use('/project', projectRoutes);
 router.use('/workshop', workshopRoutes);

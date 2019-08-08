@@ -7,6 +7,7 @@ const checkJwt = require('./config/auth');
 require('./config/mongodb');  //Sets up database connection
 
 //Set up app
+
 const app = express();
 const port = 3000;
 app.set('port', port);
@@ -29,11 +30,6 @@ app.listen(port, () => {
 });
 
   // Define an endpoint that must be called with an access token
-app.get("/api/external", checkJwt, (req, res) => {
-  res.send({
-    msg: "Your Access Token was successfully validated!"
-  });
-});
 //Api
 app.use(bodyParser.json());
 app.use('/api', routes);

@@ -7,9 +7,10 @@ var member_controller = new MemberController('member');
 
 //Get member routes
 router.get('/all', member_controller.all);
-router.get('/:firstname/:lastname', member_controller.getone); //Add some password authentication
+router.get('/github/:github', member_controller.getMember);
+router.get('/name/:firstname/:lastname', member_controller.getone); 
 
 //Add member
-router.post('/addMember', member_controller.add);
+router.post('/add', member_controller.add);
 
 module.exports = router;

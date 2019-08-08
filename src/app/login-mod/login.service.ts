@@ -4,6 +4,8 @@ import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { from, of, Observable, BehaviorSubject, combineLatest, throwError } from 'rxjs';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { MembersService } from '../members-mod/members.service';
+import { User } from '../user-mod/user-class';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +46,10 @@ export class LoginService {
   private accessTokenSubject$ = new BehaviorSubject<string>(null);
   accessToken$ = this.accessTokenSubject$.asObservable();
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private membersService: MembersService
+  ) { }
   
   // getUser$() is a method because options can be passed if desired
   // https://auth0.github.io/auth0-spa-js/classes/auth0client.html#getuser
@@ -129,7 +134,16 @@ export class LoginService {
       this.accessTokenSubject$.next(token);
       this.loggedIn = loggedIn;
       // Redirect to target route after callback processing
-      this.router.navigate([targetRoute]);
+      var github = this.userProfileSubject$.value.nickname;
+      this.membersService.getMemberByGithub(github)
+        .subscribe( user => {
+          if(user == null){
+            targetRoute = 'signup'
+          }
+          console.log(user);
+          console.log(targetRoute);
+          this.router.navigate([targetRoute]);
+        })
     });
   }
 
@@ -144,4 +158,8 @@ export class LoginService {
     });
   }
 
+  //Thomas added  
+  userInfo(){
+    return this.userProfileSubject$.value;
+  }
 }

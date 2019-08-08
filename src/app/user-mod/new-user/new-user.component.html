@@ -1,0 +1,16 @@
+<br />
+<form [formGroup]="newUserForm" (ngSubmit)="addNewUser(newUserForm)">
+  <div class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="First name" formControlName="firstname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last name" formControlName="lastname">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="email" formControlName="email">
+    </mat-form-field>
+    <button mat-button class='btn btn-default' [disabled]="!newUserForm.valid">Submit</button>
+  </div>
+</form>
+

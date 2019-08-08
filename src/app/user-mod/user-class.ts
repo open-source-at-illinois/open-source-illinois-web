@@ -5,7 +5,7 @@ export class User{
   firstname: string;
   github: string;
   lastname: string;
-  password: string;
+  picture: string;
   position: string;
   workshops: null;
 
@@ -14,7 +14,7 @@ export class User{
     firstname: string,
     github: string,
     lastname: string,
-    password: string,
+    picture: string,
     position: string,
     workshops: null
   ){
@@ -22,7 +22,7 @@ export class User{
     this.firstname = firstname;
     this.github = github;
     this.lastname = lastname;
-    this.password = password;
+    this.picture = picture;
     this.position = position;
     this.workshops = workshops;
   }
