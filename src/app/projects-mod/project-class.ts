@@ -1,3 +1,5 @@
+import { Member } from '../members-mod/member-class';
+
 export class Project{
   id: string;
   title: string;
@@ -5,4 +7,6 @@ export class Project{
   status: string;
   github: string;
   category: string;
+  leader: string;
+  members: Member[];
 };

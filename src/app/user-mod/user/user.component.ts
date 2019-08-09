@@ -29,9 +29,4 @@ export class UserComponent implements OnInit {
     this.membersService.getMemberByGithub(this.githubInfo.nickname)
     .subscribe(user => this.user = user);
   }
-
-  // getUserMember(): void{
-  //   this.userService.getUserMember()
-  //   .subscribe(user => this.user = user[0]);
-  // }
 }

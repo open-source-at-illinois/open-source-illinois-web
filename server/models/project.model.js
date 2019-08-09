@@ -7,6 +7,8 @@ const projectSchema = new mongoose.Schema({
   status: String,
   github: String,
   category: String,
+  leader:  {type: mongoose.Schema.ObjectId, ref: 'Member'},
+  members: [{type: mongoose.Schema.ObjectId, ref: 'Member'}]
 });
 
 module.exports = mongoose.model('Project', projectSchema);

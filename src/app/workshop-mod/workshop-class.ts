@@ -1,4 +1,6 @@
 import { User } from "../user-mod/user-class";
+import { Member } from '../members-mod/member-class';
+
 export class Workshop{
   id: string;
   title: string;
@@ -8,6 +10,7 @@ export class Workshop{
   status: string;
   category: string;
   presenter: User;
+  attending: Member[];
 
   constructor(title: string,
     description: string,

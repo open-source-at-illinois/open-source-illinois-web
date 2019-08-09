@@ -1,5 +1,3 @@
-import { Workshop } from '../workshop-mod/workshop-class';
-
 export class User{
   email: string;
   firstname: string;
@@ -7,7 +5,6 @@ export class User{
   lastname: string;
   picture: string;
   position: string;
-  workshops: null;
 
   constructor(
     email: string,
@@ -16,7 +13,6 @@ export class User{
     lastname: string,
     picture: string,
     position: string,
-    workshops: null
   ){
     this.email = email;
     this.firstname = firstname;
@@ -24,6 +20,5 @@ export class User{
     this.lastname = lastname;
     this.picture = picture;
     this.position = position;
-    this.workshops = workshops;
   }
 };

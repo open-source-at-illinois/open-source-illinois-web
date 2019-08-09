@@ -39,7 +39,7 @@ class ProjectController extends BaseController{
   }
   async suggested(req, res, next){
     var position = req.params.position;
-    if(position == 'Web Director'){
+    if(position === 'Web Director'){
       var category = 'web development';
     }
     this.model.find({category: category, status: "suggested"}, (err, projects)=>{

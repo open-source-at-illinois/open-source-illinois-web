@@ -51,7 +51,6 @@ export class WorkshopComponent implements OnInit {
       null,
       this.workshopForm.controls['lastname'].value,
       null,
-      null,
       null
     )
     this.memberService.getMember(user)
