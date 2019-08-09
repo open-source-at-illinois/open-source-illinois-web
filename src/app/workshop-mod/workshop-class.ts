@@ -2,7 +2,7 @@ import { User } from "../user-mod/user-class";
 import { Member } from '../members-mod/member-class';
 
 export class Workshop{
-  id: string;
+  _id: string;
   title: string;
   description: string;
   date: Date;
@@ -10,7 +10,7 @@ export class Workshop{
   status: string;
   category: string;
   presenter: User;
-  attending: Member[];
+  attending: string[];
 
   constructor(title: string,
     description: string,

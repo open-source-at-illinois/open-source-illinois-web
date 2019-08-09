@@ -14,19 +14,10 @@ export class UserComponent implements OnInit {
   user: User;
   githubInfo: any;
 
-  constructor(
-    private auth: LoginService,
-    private userService: UserService,
-    private membersService: MembersService) { 
+  constructor(private auth: LoginService) { 
   }
 
   ngOnInit() {
-    this.githubInfo = this.auth.userInfo();
-    this.getUser();
-  }
-
-  getUser(): void{
-    this.membersService.getMemberByGithub(this.githubInfo.nickname)
-    .subscribe(user => this.user = user);
+    this.user = this.auth.getGlobalUser();
   }
 }

@@ -4,6 +4,7 @@ import { User } from '../../user-mod/user-class';
 import { WorkshopService } from '../workshop.service';
 import { MembersService } from '../../members-mod/members.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from 'src/app/login-mod/login.service';
 
 @Component({
   selector: 'app-workshop',
@@ -14,6 +15,7 @@ export class WorkshopComponent implements OnInit {
 
   workshops: Workshop[];
   selectedWorkshop: Workshop;
+  user: User;
 
   workshopForm = new FormGroup({
     title: new FormControl(null, Validators.required),
@@ -27,10 +29,12 @@ export class WorkshopComponent implements OnInit {
 
   constructor(
     private workshopService: WorkshopService,
-    private memberService: MembersService
+    private memberService: MembersService,
+    private loginService: LoginService
     ) { }
 
   ngOnInit() {
+    this.user = this.loginService.getGlobalUser();
     this.getAllWorkshops();
   }
 
@@ -66,7 +70,7 @@ export class WorkshopComponent implements OnInit {
           user
         );
         console.log(newWorkshop);
-        this.workshopService.suggestWorkshop(newWorkshop)
+        this.workshopService.createWorkshop(newWorkshop)
           .subscribe(workshop => console.log(workshop));
         this.workshopForm.reset();
         });

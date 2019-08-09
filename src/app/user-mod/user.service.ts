@@ -24,33 +24,12 @@ export class UserService {
     // .pipe(
     //   tap(project => console.log(project))
     // );
-  }
-
-  getSuggestedWorkshops(position: string): Observable<Workshop[]>{
-    return this.http.get<Workshop[]>('http://localhost:3000/api/workshop/suggested/'+position);
-    // .pipe(
-    //   tap(project => console.log(project))
-    // );
-  }
+  } 
 
   statusProject(project: Project): Observable<Project> {
-    return this.http.put<Project>('http://localhost:3000/api/project/updateStatus', project, httpOptions)
+    return this.http.put<Project>('http://localhost:3000/api/project/updateStatus', project, {responseType: 'text' as 'json'})
     .pipe(
       tap(project => console.log(project))
-    );
-  }
-
-  statusWorkshop(workshop: Workshop): Observable<Workshop> {
-    return this.http.put<Workshop>('http://localhost:3000/api/workshop/updateStatus', workshop, httpOptions)
-    .pipe(
-      tap(workshop => console.log(workshop))
-    );
-  }
-
-  createWorkshop(workshop: Workshop): Observable<Workshop> {
-    return this.http.post<Workshop>('http://localhost:3000/api/workshop/add', workshop, httpOptions)
-    .pipe(
-      tap(workshop => console.log(workshop))
     );
   }
 }
