@@ -1,8 +1,4 @@
 <mat-list>
-    <h3 mat-subheader>Position</h3>
-    <mat-list-item>
-        <p><span>{{user.position}}</span></p>
-    </mat-list-item>
     <mat-divider></mat-divider>
 
     <h3 mat-subheader>Suggested Projects</h3>
@@ -38,36 +34,5 @@
         </mat-card>
 </mat-list>
 <br />
-<form [formGroup]="workshopForm" (ngSubmit)="createWorkshop(workshopForm)">
-    <div class="form-container">
-        <h3>Create Workshop</h3>
-        <mat-form-field>
-            <input matInput placeholder="Title" formControlName="title">
-        </mat-form-field>
 
-        <mat-form-field>
-            <textarea matInput placeholder="Description" formControlName="description"></textarea>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-select placeholder="Select" formControlName="category">
-                <mat-option value="web development">Web</mat-option>
-                <mat-option value="desktop development">Desktop</mat-option>
-                <mat-option value="mobile development">App</mat-option>
-                <mat-option value="operating system">Operating System</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker" formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-            <mat-datepicker #myDatepicker></mat-datepicker>
-        </mat-form-field>
-        
-        <mat-form-field>
-            <input matInput placeholder="Location" formControlName="location">
-        </mat-form-field>
-        <button mat-button class='btn btn-default' [disabled]="!workshopForm.valid">Submit</button>
-    </div>
-</form>
   

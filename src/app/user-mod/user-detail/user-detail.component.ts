@@ -73,21 +73,4 @@ export class UserDetailComponent implements OnInit {
       .subscribe(workshop => console.log(workshop));
     this.workshops = this.workshops.filter(allworkshop => allworkshop != workshop);
   }
-  createWorkshop(form: any){
-    this.workshopForm = form;
-
-    var newWorkshop = new Workshop(
-      this.workshopForm.controls['title'].value,
-      this.workshopForm.controls['description'].value,
-      this.workshopForm.controls['date'].value,
-      this.workshopForm.controls['location'].value,
-      'active',
-      this.workshopForm.controls['category'].value,      
-      this.user
-    );
-    console.log(newWorkshop);
-    this.workshopService.createWorkshop(newWorkshop)
-      .subscribe(workshop => console.log(workshop));
-    this.workshopForm.reset();
-  }
 }
