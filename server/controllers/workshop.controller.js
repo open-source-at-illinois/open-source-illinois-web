@@ -8,6 +8,7 @@ class WorkshopController extends BaseController{
     this.suggested = this.suggested.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
     this.addAttendee = this.addAttendee.bind(this);
+    this.byUser = this.byUser.bind(this);
   }
 
   async all(req, res, next){
@@ -33,6 +34,18 @@ class WorkshopController extends BaseController{
         console.log('Error occured');
       }
       else{
+        return res.send(workshops);
+      }
+    })
+  }
+
+  async byUser(req, res, next){
+    var id = req.params.id;
+    this.model.find({presenter: id}, (err, workshops) => {
+      if(err){
+        console.log('Error occurred');
+      }
+      else {
         return res.send(workshops);
       }
     })

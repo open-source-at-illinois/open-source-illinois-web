@@ -6,6 +6,7 @@ import { AngularMaterialsModModule } from '../angular-materials-mod/angular-mate
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MemberDetailComponent } from './member-detail/member-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MemberDetailComponent } from './member-detail/member-detail.component';
   imports: [
     CommonModule,
     AngularMaterialsModModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class UserModModule { }

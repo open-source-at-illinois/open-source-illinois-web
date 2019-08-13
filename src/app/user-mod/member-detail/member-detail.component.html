@@ -43,3 +43,17 @@
       <button mat-button class='btn btn-default' [disabled]="!workshopForm.valid">Submit</button>
   </div>
 </form>
+
+<ngb-carousel *ngIf='workshops && workshops.length > 0'>
+  <ng-template  *ngFor='let workshop of workshops' ngbSlide>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{workshop.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          Description: {{workshop.description}} <br />
+          Presenter: {{workshop.presenter}}
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</ngb-carousel>

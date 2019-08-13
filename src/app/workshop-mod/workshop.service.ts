@@ -31,6 +31,13 @@ export class WorkshopService {
     //   tap(project => console.log(project))
     // );
   }
+
+  getWorkshopByUser(userId:string): Observable<Workshop[]> {
+    return this.http.get<Workshop[]>('http://localhost:3000/api/workshop/byUser/'+userId)
+    .pipe(
+      tap(workshop => console.log(workshop))
+    );
+  }
   
   createWorkshop(workshop: Workshop): Observable<Workshop> {
     return this.http.post<Workshop>('http://localhost:3000/api/workshop/add', workshop, {responseType: 'text' as 'json'})
@@ -52,6 +59,8 @@ export class WorkshopService {
       tap(workshop => console.log(workshop))
     );
   }
+
+
 }
 
 

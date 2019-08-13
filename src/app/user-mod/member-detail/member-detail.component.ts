@@ -4,6 +4,7 @@ import { WorkshopService } from 'src/app/workshop-mod/workshop.service';
 import { Workshop } from 'src/app/workshop-mod/workshop-class';
 import { User } from '../user-class';
 import { MembersService } from 'src/app/members-mod/members.service';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-member-detail',
@@ -12,6 +13,8 @@ import { MembersService } from 'src/app/members-mod/members.service';
 })
 export class MemberDetailComponent implements OnInit {
   @Input() user: User;
+
+  workshops : Workshop[];
 
   workshopForm = new FormGroup({
     title: new FormControl(null, Validators.required),
@@ -29,6 +32,15 @@ export class MemberDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getWorkshopByUser();
+  }
+
+  getWorkshopByUser(){
+    this.workshopService.getWorkshopByUser(this.user._id)
+      .subscribe(userWorkshops => {
+        this.workshops = userWorkshops;
+        console.log(this.workshops);
+      });
   }
 
   suggestWorkshop(form: any){

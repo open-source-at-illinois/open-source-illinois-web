@@ -139,7 +139,7 @@ export class LoginService {
       var github = this.userProfileSubject$.value.nickname;
       this.membersService.getMemberByGithub(github)
         .subscribe( user => {
-          if(user == null){
+          if(user === null){
             targetRoute = 'signup'
           }
           this.globalUser = user;
