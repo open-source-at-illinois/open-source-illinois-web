@@ -1,11 +1,13 @@
 <br />
-<!-- <mat-card>
-  <mat-card-header>
-    <mat-card-title>{{project.github}}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>{{project.description}}</mat-card-content>
-</mat-card> -->
 <div class='selected-description' *ngIf='project'>
   <p class='github'>Github: {{project.github}}</p>
   {{project.description}}
 </div>
+<div *ngIf='!project.members.includes(user._id); else elseBlock'>
+  <button (click)="addAttendee()">Join</button>
+</div>
+<ng-template #elseBlock>
+  <div>
+    <button>Attending!</button>
+  </div>
+</ng-template>

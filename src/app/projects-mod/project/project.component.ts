@@ -3,6 +3,8 @@ import { Project} from '../project-class';
 // import { PROJECTS } from '../projects';
 import { ProjectDetailComponent } from '../project-detail/project-detail.component';
 import { ProjectService } from '../project.service';
+import { User } from 'src/app/user-mod/user-class';
+import { LoginService } from 'src/app/login-mod/login.service';
 
 @Component({
   selector: 'app-project',
@@ -11,13 +13,18 @@ import { ProjectService } from '../project.service';
 })
 export class ProjectComponent implements OnInit {
   // Potentially turn projects into a service
+  user: User;
   projects: Project[]
   selectedProject: Project;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectService: ProjectService,
+    private loginService: LoginService
+  ) { }
 
   ngOnInit() {
     this.getAllProjects();
+    this.user = this.loginService.getGlobalUser();
   }
 
   getAllProjects(): void {

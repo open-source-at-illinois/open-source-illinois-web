@@ -4,15 +4,14 @@ Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open
 
 ## Installation
 1) Follow the instructions to download Angular from its website
-2) Download from the master branch on Github
+2) Clone from the master branch on Github
   - If you do not have git installed, download it!
 3) Run "npm install" in open-source-illinois-web root folder
+4) Reach out to an active developer to get the secret key to the database
+5) Run "npm run serve" to launch
 
-## Running
-*As of July 15th, 2019*
-1) Since this is still development, please open two terminals(or command line in Windows)
-2) In the first, navigate to the "server" folder of open-source-illinois-web and run "node index.js"
-3) In the second, navigate to the root folder of open-source-illinois-web and run "ng serve --o"
+# Troubleshooting
+A common problem new developers have faced on entering the project are plug-ins and other security features blocking the cross-origin requests between the front-end and back-end. Thomas has addressed this as best he can with a proxy server but, for development, please disable these. As you encounter other initial problems, please make an issue on the Github page.
 
 ## Angular
 The front-end is implemented using Angular. The choice was multi-faceted. Angular uses Typescript (a typed flavor of Javascript), which would allow a singular language across the stack; it is open-source, keeping in the methodology of the club; and, most importantly, Thomas used Angular at his summer internship, allowing him to develop and teach others.

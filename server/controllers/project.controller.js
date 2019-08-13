@@ -24,9 +24,13 @@ class ProjectController extends BaseController{
     var newProject = new this.model({
       title: body.title,
       description: body.description,
+      location: body.description,
+      meetup: body.meetup,
       status: body.status,
       github: body.github,
       category: body.category,
+      leader: body.leader,
+      leaderId: body.leaderId
     });
     newProject.save((err) => {
       if(err){

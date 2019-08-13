@@ -17,4 +17,11 @@ export class ProjectService {
         tap(projects => console.log(projects))
       );
   }
+
+  addProjectMember(userId:string, projectId: string): Observable<Project> {
+    return this.http.put<Project>('http://localhost:3000/api/project/addAttendee', [userId, projectId], {responseType: 'text' as 'json'})
+    .pipe(
+      tap(workshop => console.log(workshop))
+    );
+  }
 }
