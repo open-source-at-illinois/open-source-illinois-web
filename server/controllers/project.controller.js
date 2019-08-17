@@ -5,6 +5,8 @@ class ProjectController extends BaseController{
     super(name);
     this.suggested = this.suggested.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
+    this.addProjectMember = this.addProjectMember.bind(this);
+    this.byUser = this.byUser.bind(this);
   }
 
   async all(req, res, next){
@@ -57,6 +59,19 @@ class ProjectController extends BaseController{
     })
   }
 
+  async byUser(req, res, next){
+    var id = req.params.id;
+    this.model.find({leaderId: id}, (err, projects) => {
+      console.log('Getting projects led by '+id)
+      if(err){
+        console.log('rip broski, you done fucked up');
+      }
+      else{
+        res.send(projects);
+      }
+    })
+  }
+
   async updateStatus(req, res, next){
     //
     var project = req.body;
@@ -65,6 +80,16 @@ class ProjectController extends BaseController{
     var updatingProject = await this.model.findOne({_id: id});
     updatingProject.status = status;
     await updatingProject.save();
+  }
+
+  async addProjectMember(req, res, next){
+    var userId = req.body[0];
+    var projectId = req.body[1];
+    await this.model.updateOne(
+      {_id: projectId},
+      {$push: {pendingMembers: userId}}
+    );
+    res.sendStatus(200);
   }
 }
 

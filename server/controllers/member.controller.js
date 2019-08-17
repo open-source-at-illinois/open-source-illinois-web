@@ -19,6 +19,11 @@ class MemberController extends BaseController{
       }
     })
   }
+
+  async pendingMembers(req, res, next){
+    console.log(req.params);
+    res.send(null);
+  }
   //Add new member
   add(req, res, next){
     var body = req.body;

@@ -5,6 +5,8 @@ import { Workshop } from 'src/app/workshop-mod/workshop-class';
 import { User } from '../user-class';
 import { MembersService } from 'src/app/members-mod/members.service';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
+import { ProjectService } from 'src/app/projects-mod/project.service';
+import { Project } from 'src/app/projects-mod/project-class';
 
 @Component({
   selector: 'app-member-detail',
@@ -15,6 +17,9 @@ export class MemberDetailComponent implements OnInit {
   @Input() user: User;
 
   workshops : Workshop[];
+  projects: Project[];
+  allPendingMembers: User[];
+  currPendingMembers: string[];
 
   workshopForm = new FormGroup({
     title: new FormControl(null, Validators.required),
@@ -28,19 +33,42 @@ export class MemberDetailComponent implements OnInit {
 
   constructor(
     private workshopService: WorkshopService,
+    private projectService: ProjectService,
     private memberService: MembersService
   ) { }
 
   ngOnInit() {
     this.getWorkshopByUser();
+    this.getProjectByUser();
   }
 
   getWorkshopByUser(){
     this.workshopService.getWorkshopByUser(this.user._id)
       .subscribe(userWorkshops => {
         this.workshops = userWorkshops;
-        console.log(this.workshops);
       });
+  }
+
+  getProjectByUser(){
+    this.projectService.getProjectByUser(this.user._id)
+      .subscribe(function(userProjects) {
+        this.projects = userProjects;
+        if(this.projects === []){
+          return;
+        };
+        console.log(typeof(this.currPendingMembers));
+        for(var i=0; i < this.projects.length; i++){
+          for(var j=0; j < this.projects[i].pendingMembers.length; j++){
+            if(!this.currPendingMembers.includes(this.projects[i].pendingMembers[j])){
+              this.currPendingMembers.push(this.projects[i].pendingMembers[j]);
+            }
+          }
+        }
+        this.memberService.getPendingMembers(this.currPendingMembers)
+          .subscribe(pending => {
+            this.allPendingMembers = pending;
+          });
+      })
   }
 
   suggestWorkshop(form: any){

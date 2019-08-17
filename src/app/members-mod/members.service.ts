@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Member } from './member-class';
 import { User } from '../user-mod/user-class';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -24,11 +24,11 @@ export class MembersService {
 
   getAllMembers(): Observable<Member[]> {
     return this.http.get<Member[]>('http://localhost:3000/api/member/all')
-                    .pipe(
-                      tap(members => console.log(members)),
-                      // map(members => members)
-                      // map()
-                      // catchError(this.handleError<Member[]>('getAllMembers', []))
+      .pipe(
+        tap(members => console.log(members)),
+        // map(members => members)
+        // map()
+        // catchError(this.handleError<Member[]>('getAllMembers', []))
       );
   }
 
@@ -44,6 +44,14 @@ export class MembersService {
     .pipe(
       tap(member => console.log(member))
     );
+  }
+
+  getPendingMembers(pending: string[]): Observable<User[]>{
+    const options = {params: new HttpParams().set('pending', JSON.stringify(pending))}
+    return this.http.get<User[]>('http://localhost:3000/api/member/pending', options)
+      .pipe(
+        tap(members => console.log(members))
+      );
   }
 
   addMember(member: Member): Observable<Member>{

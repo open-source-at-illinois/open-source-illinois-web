@@ -9,6 +9,7 @@ var member_controller = new MemberController('member');
 router.get('/all', member_controller.all);
 router.get('/github/:github', member_controller.getMember);
 router.get('/name/:firstname/:lastname', member_controller.getone); 
+router.get('/pending', member_controller.pendingMembers);
 
 //Add member
 router.post('/add', member_controller.add);

@@ -85,11 +85,10 @@ class WorkshopController extends BaseController{
   async addAttendee(req, res, next){
     var userId = req.body[0];
     var workshopId = req.body[1];
-    console.log(userId);
-    console.log(workshopId);
     await this.model.updateOne(
       {_id: workshopId},
-      {$push: {attending: userId}});
+      {$push: {attending: userId}}
+    );
     res.sendStatus(200);
   }
 }

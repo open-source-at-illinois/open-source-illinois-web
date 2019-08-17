@@ -18,8 +18,15 @@ export class ProjectService {
       );
   }
 
+  getProjectByUser(userId: string): Observable<Project[]>{
+    return this.http.get<Project[]>('http://localhost:3000/api/project/byUser/'+userId)
+      .pipe(
+        tap(projects => console.log(projects))
+      );
+  }
+
   addProjectMember(userId:string, projectId: string): Observable<Project> {
-    return this.http.put<Project>('http://localhost:3000/api/project/addAttendee', [userId, projectId], {responseType: 'text' as 'json'})
+    return this.http.put<Project>('http://localhost:3000/api/project/addProjectMember', [userId, projectId], {responseType: 'text' as 'json'})
     .pipe(
       tap(workshop => console.log(workshop))
     );
