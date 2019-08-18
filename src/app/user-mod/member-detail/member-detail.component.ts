@@ -19,7 +19,7 @@ export class MemberDetailComponent implements OnInit {
   workshops : Workshop[];
   projects: Project[];
   allPendingMembers: User[];
-  currPendingMembers: string[];
+  currPendingMembers: any;
 
   workshopForm = new FormGroup({
     title: new FormControl(null, Validators.required),
@@ -51,24 +51,37 @@ export class MemberDetailComponent implements OnInit {
 
   getProjectByUser(){
     this.projectService.getProjectByUser(this.user._id)
-      .subscribe(function(userProjects) {
+      .subscribe( (userProjects) => {
         this.projects = userProjects;
+        this.currPendingMembers = this.projects[0].pendingMembers;
         if(this.projects === []){
           return;
         };
-        console.log(typeof(this.currPendingMembers));
-        for(var i=0; i < this.projects.length; i++){
+        for(var i=1; i < this.projects.length; i++){
           for(var j=0; j < this.projects[i].pendingMembers.length; j++){
             if(!this.currPendingMembers.includes(this.projects[i].pendingMembers[j])){
               this.currPendingMembers.push(this.projects[i].pendingMembers[j]);
             }
           }
         }
+        console.log(typeof(this.currPendingMembers));
         this.memberService.getPendingMembers(this.currPendingMembers)
           .subscribe(pending => {
             this.allPendingMembers = pending;
           });
       })
+  }
+
+  approvePendingMember(id: string){
+    this.projectService.approveProjectMember(id)
+      .subscribe(member => console.log(member));
+    this.allPendingMembers = this.allPendingMembers.filter(allproject => allproject._id != id);
+  }
+
+  rejectPendingMember(id: string){
+    this.projectService.rejectProjectMember(id)
+      .subscribe(member => console.log(member));
+    this.allPendingMembers = this.allPendingMembers.filter(allproject => allproject._id != id);
   }
 
   suggestWorkshop(form: any){

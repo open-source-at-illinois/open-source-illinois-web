@@ -46,7 +46,7 @@ export class MembersService {
     );
   }
 
-  getPendingMembers(pending: string[]): Observable<User[]>{
+  getPendingMembers(pending: any): Observable<User[]>{
     const options = {params: new HttpParams().set('pending', JSON.stringify(pending))}
     return this.http.get<User[]>('http://localhost:3000/api/member/pending', options)
       .pipe(

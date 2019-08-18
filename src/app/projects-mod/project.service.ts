@@ -31,4 +31,18 @@ export class ProjectService {
       tap(workshop => console.log(workshop))
     );
   }
+
+  approveProjectMember(userId: string): Observable<Project>{
+    return this.http.put<Project>('http://localhost:3000/api/project/approveProjectMember', userId, {responseType: 'text' as 'json'})
+    .pipe(
+      tap(workshop => console.log(workshop))
+    );
+  }
+
+  rejectProjectMember(userId: string): Observable<Project>{
+    return this.http.delete<Project>('http://localhost:3000/api/project/rejectProjectMember/'+userId)
+    .pipe(
+      tap(workshop => console.log(workshop))
+    );
+  }
 }
