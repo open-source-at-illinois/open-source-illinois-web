@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../project-class';
 import { ProjectService } from '../project.service';
-import { MatCardModule } from '@angular/material';
+import { User } from 'src/app/user-mod/user-class';
 
 @Component({
   selector: 'app-project-detail',
@@ -10,11 +10,18 @@ import { MatCardModule } from '@angular/material';
 })
 export class ProjectDetailComponent implements OnInit {
   @Input() project: Project;
+  @Input() user: User;
 
   projects: Project[];
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
+  }
+
+  addAttendee(){
+    this.project.members.push(this.user._id);
+    this.projectService.addProjectMember(this.user._id, this.project._id)
+      .subscribe(workshop => console.log('reached bitch'));
   }
 }

@@ -9,7 +9,6 @@ const officerModel = Member.discriminator('Officer',
   new mongoose.Schema({
     id: ObjectId,
     position: String,
-    workshops: [{type: mongoose.Schema.ObjectId, ref: 'Workshop'}]
   })
 );
 module.exports = officerModel;

@@ -13,10 +13,9 @@ class OfficerController extends BaseController{
       firstname: body.firstname,
       lastname: body.lastname,
       email: body.email,
-      password: body.password,
+      picture: body.picture,
       github: body.github,
       position: body.position,
-      workshops: body.workshops
     });
     newOfficer.save((err) => {
       if(err){

@@ -4,6 +4,7 @@ import { Project } from '../../projects-mod/project-class';
 import { Workshop } from '../../workshop-mod/workshop-class';
 import { UserService } from '../user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { WorkshopService } from 'src/app/workshop-mod/workshop.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -25,7 +26,10 @@ export class UserDetailComponent implements OnInit {
   });
   
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private workshopService: WorkshopService
+    ) { }
 
   ngOnInit() {
     this.getSuggestedProjects(this.user.position);
@@ -38,7 +42,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   getSuggestedWorkshops(position: string): void{
-    this.userService.getSuggestedWorkshops(position)
+    this.workshopService.getSuggestedWorkshops(position)
     .subscribe(workshops => this.workshops = workshops);
   }
 
@@ -58,32 +62,15 @@ export class UserDetailComponent implements OnInit {
 
   approveWorkshop(workshop: Workshop) {
     workshop.status = 'active';
-    this.userService.statusWorkshop(workshop)
+    this.workshopService.statusWorkshop(workshop)
       .subscribe(workshop => console.log(workshop));
     this.workshops = this.workshops.filter(allworkshop => allworkshop != workshop);
   }
 
   rejectWorkshop(workshop: Workshop) {
     workshop.status = 'rejected';
-    this.userService.statusWorkshop(workshop)
+    this.workshopService.statusWorkshop(workshop)
       .subscribe(workshop => console.log(workshop));
     this.workshops = this.workshops.filter(allworkshop => allworkshop != workshop);
-  }
-  createWorkshop(form: any){
-    this.workshopForm = form;
-
-    var newWorkshop = new Workshop(
-      this.workshopForm.controls['title'].value,
-      this.workshopForm.controls['description'].value,
-      this.workshopForm.controls['date'].value,
-      this.workshopForm.controls['location'].value,
-      'active',
-      this.workshopForm.controls['category'].value,      
-      this.user
-    );
-    console.log(newWorkshop);
-    this.userService.createWorkshop(newWorkshop)
-      .subscribe(workshop => console.log(workshop));
-    this.workshopForm.reset();
   }
 }

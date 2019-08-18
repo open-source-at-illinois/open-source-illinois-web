@@ -9,16 +9,33 @@
   padding-right: 20px;
 }
 
-mat-list{
-  background-color: blue;
-  h6{
-    color: white;
+.container{
+  display: flex;
+  flex-direction: row;
+  img{
+    width: 50%;
+    height: auto;
   }
-  span{
-    color: white;
+  mat-list{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    h6{
+      background-color: blue;
+      color: white;
+    }
+    mat-list-item{
+      background-color: white;
+      border-color: blue;
+      border-width: 5px;
+      p{          
+        color: black;
+      }
+    }  
   }
 }
 
-@media (max-width: 750px){
-  margin-top: 30%;
-}
+
+// @media (max-width: 750px){
+//   margin-top : 30%;
+// }

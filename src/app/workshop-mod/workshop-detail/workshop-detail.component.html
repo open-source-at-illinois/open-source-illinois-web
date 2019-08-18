@@ -2,3 +2,11 @@
 <div class='selected-description' *ngIf='workshop'>
   {{workshop.description}}
 </div>
+<div *ngIf='!workshop.attending.includes(user._id); else elseBlock'>
+  <button (click)="addAttendee()">Join</button>
+</div>
+<ng-template #elseBlock>
+  <div>
+    <button>Attending!</button>
+  </div>
+</ng-template>

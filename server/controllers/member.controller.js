@@ -1,10 +1,12 @@
 // const Member = require('../models/member.model');
 const BaseController = require('./base.controller');
+const util = require('util');
 
 class MemberController extends BaseController{
   constructor(name){
     super(name);
     this.getMember = this.getMember.bind(this);
+    this.pendingMembers = this.pendingMembers.bind(this);
   }
   getMember(req, res, next){
     console.log("Getting record of " + req.params.github + " in members");
@@ -16,6 +18,20 @@ class MemberController extends BaseController{
       else{
         console.log(member);
         return res.send(member);
+      }
+    })
+  }
+
+  async pendingMembers(req, res, next){
+    var pendingMembers = JSON.parse(req.query.pending);
+    this.model.find({_id: pendingMembers}, (err, members) => {
+      if(err){
+        console.log('Error occurred');
+        console.log(err);
+      }
+      else {
+        console.log('Pending Members are ' + members);
+        return res.send(members);
       }
     })
   }

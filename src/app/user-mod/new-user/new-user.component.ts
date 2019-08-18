@@ -3,6 +3,8 @@ import { LoginService } from 'src/app/login-mod/login.service';
 import { MembersService } from 'src/app/members-mod/members.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Member } from '../../members-mod/member-class';
+import { Router } from '@angular/router';
+import { User } from '../user-class';
 
 @Component({
   selector: 'app-new-user',
@@ -13,6 +15,7 @@ export class NewUserComponent implements OnInit {
   githubInfo : any;
   waiting = true;
   badActor = true;
+  user : User;
 
   newUserForm = new FormGroup({
     firstname: new FormControl(null, Validators.required),
@@ -21,27 +24,26 @@ export class NewUserComponent implements OnInit {
   });
   constructor(
     private loginService: LoginService,
-    private membersService: MembersService
+    private membersService: MembersService,
+    private router: Router,
+
   ) { }
 
   ngOnInit() {
     this.githubInfo = this.loginService.userInfo();
+    this.user = this.loginService.getGlobalUser();
     this.badActorCheck();
   }
 
   badActorCheck() {
-    this.membersService.getMemberByGithub(this.githubInfo.nickname)
-      .subscribe( member => {
-        this.waiting = false;
-        if(member === null){         
-          this.badActor = false;
-        }
-        else{
-          this.badActor = true;
-          //Enable push notifications
-          this.loginService.logout();
-        }
-      });
+    this.waiting = false;
+    if(this.user === null){
+      this.badActor = false;
+    }
+    else{
+      this.badActor = true;
+      this.loginService.logout();
+    }
   }
   addNewUser(form: any){
     this.newUserForm = form;
@@ -55,6 +57,6 @@ export class NewUserComponent implements OnInit {
     );
     this.membersService.addMember(newMember)
       .subscribe(member => console.log(member));
-    this.newUserForm.reset();
+    this.router.navigate([''])
   }
 }

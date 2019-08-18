@@ -1,12 +1,14 @@
 const BaseController = require('./base.controller');
 const mongoose = require('mongoose');
-const Officer = require('../models/officer.model');
+const Member = require('../models/officer.model');
 
 class WorkshopController extends BaseController{
   constructor(name){
     super(name);
     this.suggested = this.suggested.bind(this);
     this.updateStatus = this.updateStatus.bind(this);
+    this.addAttendee = this.addAttendee.bind(this);
+    this.byUser = this.byUser.bind(this);
   }
 
   async all(req, res, next){
@@ -26,13 +28,25 @@ class WorkshopController extends BaseController{
     if(position == 'Web Director'){
       var category = 'web development';
     }
-    this.model.find({category: category, status: "suggested"}, (err, projects)=>{
+    this.model.find({category: category, status: "suggested"}, (err, workshops)=>{
       console.log('Getting suggested workshops for '+position)
       if(err){
         console.log('Error occured');
       }
       else{
-        return res.send(projects);
+        return res.send(workshops);
+      }
+    })
+  }
+
+  async byUser(req, res, next){
+    var id = req.params.id;
+    this.model.find({presenter: id}, (err, workshops) => {
+      if(err){
+        console.log('Error occurred');
+      }
+      else {
+        return res.send(workshops);
       }
     })
   }
@@ -66,6 +80,16 @@ class WorkshopController extends BaseController{
     var updatingWorkshop = await this.model.findOne({_id: id});
     updatingWorkshop.status = status;
     await updatingWorkshop.save();
+  }
+
+  async addAttendee(req, res, next){
+    var userId = req.body[0];
+    var workshopId = req.body[1];
+    await this.model.updateOne(
+      {_id: workshopId},
+      {$push: {attending: userId}}
+    );
+    res.sendStatus(200);
   }
 }
 

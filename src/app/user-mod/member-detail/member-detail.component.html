@@ -1,0 +1,60 @@
+<form [formGroup]="workshopForm" (ngSubmit)="suggestWorkshop(workshopForm)">
+  <div class="form-container">
+      <div *ngIf ="user.position; else elseBlock">
+        <h3>Create Workshop</h3>
+      </div>
+      <ng-template>
+        <h3>Suggest Workshop</h3>
+      </ng-template>
+      <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field>
+          <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+          <mat-select placeholder="Select" formControlName="category">
+              <mat-option value="web development">Web</mat-option>
+              <mat-option value="desktop development">Desktop</mat-option>
+              <mat-option value="mobile development">App</mat-option>
+              <mat-option value="operating system">Operating System</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput [matDatepicker]="myDatepicker" formControlName="date" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field>
+          <input matInput placeholder="Location" formControlName="location">
+      </mat-form-field>
+      <div *ngIf='!user.position' class='presenter'>
+        <mat-form-field>
+            <input matInput placeholder="Presenter's first name" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Presenter's last name" formControlName="lastname">           
+        </mat-form-field>
+      </div>
+      <button mat-button class='btn btn-default' [disabled]="!workshopForm.valid">Submit</button>
+  </div>
+</form>
+<div *ngFor = 'let member of allPendingMembers'>  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{member.firstname}} {{member.lastname}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Github: {{member.github}} <br />
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="approvePendingMember(member)">Reject</button>
+      <button mat-button (click)="rejectPendingMember(member)">Approve</button>
+    </mat-card-actions>
+  </mat-card>
+  <br />
+</div>

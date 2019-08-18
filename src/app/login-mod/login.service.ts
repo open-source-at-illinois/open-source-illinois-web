@@ -46,6 +46,8 @@ export class LoginService {
   private accessTokenSubject$ = new BehaviorSubject<string>(null);
   accessToken$ = this.accessTokenSubject$.asObservable();
 
+  globalUser: User;
+
   constructor(
     private router: Router,
     private membersService: MembersService
@@ -137,11 +139,10 @@ export class LoginService {
       var github = this.userProfileSubject$.value.nickname;
       this.membersService.getMemberByGithub(github)
         .subscribe( user => {
-          if(user == null){
+          if(user === null){
             targetRoute = 'signup'
           }
-          console.log(user);
-          console.log(targetRoute);
+          this.globalUser = user;
           this.router.navigate([targetRoute]);
         })
     });
@@ -161,5 +162,9 @@ export class LoginService {
   //Thomas added  
   userInfo(){
     return this.userProfileSubject$.value;
+  }
+
+  getGlobalUser(){
+    return this.globalUser;
   }
 }

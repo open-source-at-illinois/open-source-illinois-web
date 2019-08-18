@@ -1,6 +1,6 @@
 <br />
-+<div *ngIf = 'user'>
-  <div class = 'grid grid-pad'>
+<div *ngIf = 'user'>
+  <div class = 'container'>
     <img src= "{{user.picture}}">
     <mat-list>
       <h6 mat-subheader>Name</h6>
@@ -12,10 +12,20 @@
       <h6 mat-subheader>Github</h6>
       <mat-list-item>
         <p><span>{{user.github}}</span></p>
-      </mat-list-item>      
+      </mat-list-item>   
+      
+      <div *ngIf='user.position'>
+        <h6 mat-subheader>Position</h6>
+        <mat-list-item>
+            <p><span>{{user.position}}</span></p>
+        </mat-list-item>
+      </div>
     </mat-list>
   </div>
+  <br />
   <div *ngIf = 'user.position'>
     <app-user-detail [user]="user"></app-user-detail>
   </div>
+  <app-member-detail [user]="user"></app-member-detail>
+
 </div>

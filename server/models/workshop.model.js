@@ -10,7 +10,8 @@ var workshopSchema = new mongoose.Schema({
   location: String,
   status: String,
   category: String,
-  presenter: {type: mongoose.Schema.ObjectId, ref: 'Officer'}
+  presenter: {type: mongoose.Schema.ObjectId, ref: 'Officer'},
+  attending: [{type: mongoose.Schema.ObjectId, ref: 'Member'}]
 });
 
 module.exports = mongoose.model('Workshop', workshopSchema);
