@@ -23,35 +23,32 @@ export class MembersService {
   constructor(private http: HttpClient) { }
 
   getAllMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>('http://localhost:3000/api/member/all')
-      .pipe(
-        tap(members => console.log(members)),
-        // map(members => members)
-        // map()
-        // catchError(this.handleError<Member[]>('getAllMembers', []))
-      );
+    return this.http.get<Member[]>('http://localhost:3000/api/member/all');
+      // .pipe(
+      //   tap(members => console.log(members))
+      // );
   }
 
   getMember(member: User): Observable<User>{
-    return this.http.get<User>('http://localhost:3000/api/member/name/'+member.firstname+'/'+member.lastname)
-    .pipe(
-      tap(member => console.log(member))
-    );
+    return this.http.get<User>('http://localhost:3000/api/member/name/'+member.firstname+'/'+member.lastname);
+    // .pipe(
+    //   tap(member => console.log(member))
+    // );
   }
 
   getMemberByGithub(github: string): Observable<User>{
-    return this.http.get<User>('http://localhost:3000/api/member/github/'+github)
-    .pipe(
-      tap(member => console.log(member))
-    );
+    return this.http.get<User>('http://localhost:3000/api/member/github/'+github);
+    // .pipe(
+    //   tap(member => console.log(member))
+    // );
   }
 
   getPendingMembers(pending: any): Observable<User[]>{
     const options = {params: new HttpParams().set('pending', JSON.stringify(pending))}
-    return this.http.get<User[]>('http://localhost:3000/api/member/pending', options)
-      .pipe(
-        tap(members => console.log(members))
-      );
+    return this.http.get<User[]>('http://localhost:3000/api/member/pending', options);
+      // .pipe(
+      //   tap(members => console.log(members))
+      // );
   }
 
   addMember(member: Member): Observable<Member>{

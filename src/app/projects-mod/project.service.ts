@@ -12,37 +12,37 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>('http://localhost:3000/api/project/all')
-      .pipe(
-        tap(projects => console.log(projects))
-      );
+    return this.http.get<Project[]>('http://localhost:3000/api/project/all');
+      // .pipe(
+      //   tap(projects => console.log(projects))
+      // );
   }
 
   getProjectByUser(userId: string): Observable<Project[]>{
-    return this.http.get<Project[]>('http://localhost:3000/api/project/byUser/'+userId)
-      .pipe(
-        tap(projects => console.log(projects))
-      );
+    return this.http.get<Project[]>('http://localhost:3000/api/project/byUser/'+userId);
+      // .pipe(
+      //   tap(projects => console.log(projects))
+      // );
   }
 
   addProjectMember(userId:string, projectId: string): Observable<Project> {
-    return this.http.put<Project>('http://localhost:3000/api/project/addProjectMember', [userId, projectId], {responseType: 'text' as 'json'})
-    .pipe(
-      tap(workshop => console.log(workshop))
-    );
+    return this.http.put<Project>('http://localhost:3000/api/project/addProjectMember', [userId, projectId], {responseType: 'text' as 'json'});
+    // .pipe(
+    //   tap(workshop => console.log(workshop))
+    // );
   }
 
-  approveProjectMember(userId: string): Observable<Project>{
-    return this.http.put<Project>('http://localhost:3000/api/project/approveProjectMember', userId, {responseType: 'text' as 'json'})
-    .pipe(
-      tap(workshop => console.log(workshop))
-    );
+  approveProjectMember(userId: string, projectId: string): Observable<Project>{
+    return this.http.put<Project>('http://localhost:3000/api/project/approveProjectMember', [userId, projectId], {responseType: 'text' as 'json'});
+    // .pipe(
+    //   tap(workshop => console.log(workshop))
+    // );
   }
 
-  rejectProjectMember(userId: string): Observable<Project>{
-    return this.http.delete<Project>('http://localhost:3000/api/project/rejectProjectMember/'+userId)
-    .pipe(
-      tap(workshop => console.log(workshop))
-    );
+  rejectProjectMember(userId: string, projectId: string): Observable<Project>{
+    return this.http.delete<Project>('http://localhost:3000/api/project/rejectProjectMember/'+projectId+'/'+userId, {responseType: 'text' as 'json'});
+    // .pipe(
+    //   tap(workshop => console.log(workshop))
+    // );
   }
 }

@@ -7,6 +7,8 @@ class ProjectController extends BaseController{
     this.updateStatus = this.updateStatus.bind(this);
     this.addProjectMember = this.addProjectMember.bind(this);
     this.byUser = this.byUser.bind(this);
+    this.approveProjectMember = this.approveProjectMember.bind(this);
+    this.rejectProjectMember = this.rejectProjectMember.bind(this);
   }
 
   async all(req, res, next){
@@ -90,6 +92,31 @@ class ProjectController extends BaseController{
       {$push: {pendingMembers: userId}}
     );
     res.sendStatus(200);
+  }
+
+  async approveProjectMember(req, res, next){
+    var userId = req.body[0];
+    var projectId = req.body[1];
+    var project = await this.model.findOne({_id: projectId});
+    var index = project.pendingMembers.indexOf(userId);
+    var hold = project.pendingMembers[index];
+    project.pendingMembers.splice(index, 1);
+    project.members.push(hold);
+    await project.save();
+  }
+
+  async rejectProjectMember(req, res, next){
+    var userId = req.params.userId;
+    var projectId = req.params.projectId;
+
+    console.log('this projectId is '+projectId+ ' and this userId is '+userId);
+    var project = await this.model.findOne({_id: projectId});
+    var index = project.pendingMembers.indexOf(userId);
+    project.pendingMembers.splice(index, 1);
+    await project.save();
+
+    res.sendStatus(200);
+
   }
 }
 

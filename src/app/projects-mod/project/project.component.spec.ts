@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { ProjectComponent } from './project.component';
 import { ProjectDetailComponent } from '../project-detail/project-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
@@ -13,7 +14,8 @@ describe('ProjectComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         AngularMaterialsModModule, 
-        HttpClientTestingModule        
+        HttpClientTestingModule,
+        RouterTestingModule        
       ],
       declarations: [ 
         ProjectComponent,

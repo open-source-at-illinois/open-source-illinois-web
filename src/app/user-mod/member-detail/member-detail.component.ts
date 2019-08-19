@@ -64,7 +64,6 @@ export class MemberDetailComponent implements OnInit {
             }
           }
         }
-        console.log(typeof(this.currPendingMembers));
         this.memberService.getPendingMembers(this.currPendingMembers)
           .subscribe(pending => {
             this.allPendingMembers = pending;
@@ -72,16 +71,16 @@ export class MemberDetailComponent implements OnInit {
       })
   }
 
-  approvePendingMember(id: string){
-    this.projectService.approveProjectMember(id)
+  approvePendingMember(user: User, project: Project){
+    this.projectService.approveProjectMember(user._id, project._id)
       .subscribe(member => console.log(member));
-    this.allPendingMembers = this.allPendingMembers.filter(allproject => allproject._id != id);
+    // this.allPendingMembers = this.allPendingMembers.filter(allproject => allproject._id != id);
   }
 
-  rejectPendingMember(id: string){
-    this.projectService.rejectProjectMember(id)
+  rejectPendingMember(user: User, project: Project){
+    this.projectService.rejectProjectMember(user._id, project._id)
       .subscribe(member => console.log(member));
-    this.allPendingMembers = this.allPendingMembers.filter(allproject => allproject._id != id);
+    // this.allPendingMembers = this.allPendingMembers.filter(allproject => allproject._id != id);
   }
 
   suggestWorkshop(form: any){
