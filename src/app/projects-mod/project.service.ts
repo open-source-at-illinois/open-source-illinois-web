@@ -11,38 +11,28 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
+  //Gets all active projects in the database
   getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>('http://localhost:3000/api/project/all');
-      // .pipe(
-      //   tap(projects => console.log(projects))
-      // );
   }
 
+  //Gets all projects led by user with given userId
   getProjectByUser(userId: string): Observable<Project[]>{
     return this.http.get<Project[]>('http://localhost:3000/api/project/byUser/'+userId);
-      // .pipe(
-      //   tap(projects => console.log(projects))
-      // );
   }
 
+  //Adds user to the pendingMembers array to a given project
   addProjectMember(userId:string, projectId: string): Observable<Project> {
     return this.http.put<Project>('http://localhost:3000/api/project/addProjectMember', [userId, projectId], {responseType: 'text' as 'json'});
-    // .pipe(
-    //   tap(workshop => console.log(workshop))
-    // );
   }
 
+  //Moves a pending member from pendingMembers array to members array
   approveProjectMember(userId: string, projectId: string): Observable<Project>{
     return this.http.put<Project>('http://localhost:3000/api/project/approveProjectMember', [userId, projectId], {responseType: 'text' as 'json'});
-    // .pipe(
-    //   tap(workshop => console.log(workshop))
-    // );
   }
 
+  //Removes a pending member from pendingMembers array permanently
   rejectProjectMember(userId: string, projectId: string): Observable<Project>{
     return this.http.delete<Project>('http://localhost:3000/api/project/rejectProjectMember/'+projectId+'/'+userId, {responseType: 'text' as 'json'});
-    // .pipe(
-    //   tap(workshop => console.log(workshop))
-    // );
   }
 }

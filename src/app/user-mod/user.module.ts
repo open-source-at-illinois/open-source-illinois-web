@@ -19,11 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     AngularMaterialsModModule,
     FormsModule, ReactiveFormsModule,
-    MemberDetailComponent,
     NgbModule
-  ],
-  exports: [
-    MemberDetailComponent
   ]
 })
 export class UserModModule { }
