@@ -189,8 +189,8 @@ describe('WorkshopService', () => {
     expect(createResponse).toEqual(JSON.stringify(newWorkshop));
   });
 
-  //Test(s) for createWorkshop(workshop: Workshop)
-  it('should post a new Workshop on createWorkshop', () => {
+  //Test(s) for statusWorkshop(workshop: Workshop)
+  it('should post a new Workshop on statusWorkshop', () => {
     const service: WorkshopService = TestBed.get(WorkshopService);
     const newWorkshop = {
       "_id": "123456789",
@@ -233,8 +233,8 @@ describe('WorkshopService', () => {
     expect(createResponse).toEqual(JSON.stringify(newWorkshop));
   });
 
-    //Test(s) for createWorkshop(workshop: Workshop)
-    it('should post a new Workshop on createWorkshop', () => {
+    //Test(s) for addAttendee(userId: string, workshopId: string)
+    it('should put a new member in workshop on addAttendee', () => {
       const service: WorkshopService = TestBed.get(WorkshopService);
       const newWorkshop = {
         "_id": "123456789",

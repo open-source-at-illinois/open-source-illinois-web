@@ -37,10 +37,12 @@ export class WorkshopService {
     return this.http.post<Workshop>('http://localhost:3000/api/workshop/add', workshop, {responseType: 'text' as 'json'});
   }
 
+  //Change status of workshop -- accepted values are 'suggested', 'active', 'rejected'
   statusWorkshop(workshop: Workshop): Observable<Workshop> {
     return this.http.put<Workshop>('http://localhost:3000/api/workshop/updateStatus', workshop, {responseType: 'text' as 'json'});
   }
 
+  // Add attendee to attending array
   addAttendee(userId:string, workshopId: string): Observable<Workshop> {
     return this.http.put<Workshop>('http://localhost:3000/api/workshop/addAttendee', [userId, workshopId], {responseType: 'text' as 'json'});
   }

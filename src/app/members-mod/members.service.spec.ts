@@ -6,8 +6,9 @@ import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular
 import { MembersService } from './members.service';
 import { Member } from './member-class';
 import { HttpClient } from 'selenium-webdriver/http';
+import { HttpParams } from '@angular/common/http';
 
-describe('MembersService', () => {
+fdescribe('MembersService', () => {
   //Declare spy object as a global variable
   // let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
@@ -63,15 +64,131 @@ describe('MembersService', () => {
     expect(service).toBeTruthy();
   });
   
-  // it('getAllMembers should return an array', () => {
-  //   const service: MembersService = TestBed.get(MembersService);
-  //   httpClient.get<Data>('http://localhost:3000/api/member/all')
+  //Tests for getAllMembers()
+  it('getAllMembers should return an array', () => {
+    const service: MembersService = TestBed.get(MembersService);
+    // Call service
+    service.getAllMembers()
+      .subscribe(members => {      
+        expect(members.length).toBe(3);
+        expect(members).toEqual(expectedMembers);
+    });
+    
+    //Set expectations for HttpClient mock
+    const req = httpTestingController.expectOne('http://localhost:3000/api/member/all');
+    expect(req.request.method).toEqual('GET');
 
-  //   service.getAllMembers().subscribe(
-  //     members => expect(members).toEqual(expectedMembers, 'expected members'),
-  //     fail
-  //   );
+    //Set fake data to be returned by mock
+    req.flush(expectedMembers);
+  });
 
+  //Test(s) for getMember(member: User)
+  it('getMember should return a User', () => {
+    const service: MembersService = TestBed.get(MembersService);
+    const newUser = {
+      _id: '123456789',
+      email: 'myemail@myemail.com',
+      firstname: 'Thomas',
+      github: 'thomasdriscoll',
+      lastname: 'Driscoll',
+      picture: 'https://mypicture.com',
+      position: null
+    }
+    // Call service
+    
+    service.getMember(newUser)
+      .subscribe(workshops => {      
+        expect(workshops).toEqual(newUser);
+    });
+    
+    //Set expectations for HttpClient mock
+    const req = httpTestingController.expectOne('http://localhost:3000/api/member/name/Thomas/Driscoll');
+    expect(req.request.method).toEqual('GET');
 
-  // })
+    //Set fake data to be returned by mock
+    req.flush(newUser);
+  });
+
+  //Test(s) for getMemberByGithub(github: string)
+  it('getMemberByGithub should return a User', () => {
+    const service: MembersService = TestBed.get(MembersService);
+    const newUser = {
+      _id: '123456789',
+      email: 'myemail@myemail.com',
+      firstname: 'Thomas',
+      github: 'thomasdriscoll',
+      lastname: 'Driscoll',
+      picture: 'https://mypicture.com',
+      position: null
+    }
+    // Call service
+    
+    service.getMemberByGithub(newUser.github)
+      .subscribe(workshops => {      
+        expect(workshops).toEqual(newUser);
+    });
+    
+    //Set expectations for HttpClient mock
+    const req = httpTestingController.expectOne('http://localhost:3000/api/member/github/'+newUser.github);
+    expect(req.request.method).toEqual('GET');
+
+    //Set fake data to be returned by mock
+    req.flush(newUser);
+  });
+
+  //Test(s) for getPendingMembers(pending: any)
+  it('getPendingMembers should return array of User', () => {
+    const service: MembersService = TestBed.get(MembersService);
+    const newUser = {
+      _id: '123456789',
+      email: 'myemail@myemail.com',
+      firstname: 'Thomas',
+      github: 'thomasdriscoll',
+      lastname: 'Driscoll',
+      picture: 'https://mypicture.com',
+      position: null
+    }
+    const mockParams = new HttpParams().set('pending', JSON.stringify([newUser._id]));
+
+    // Call service    
+    service.getPendingMembers([newUser._id])
+      .subscribe(workshops => {      
+        expect(workshops).toEqual([newUser]);
+    });
+    
+    //Set expectations for HttpClient mock
+    //Since this service uses params, must use match
+    // %5B%22 === '[' %22%5D === ']'
+    const req = httpTestingController.match('http://localhost:3000/api/member/pending?pending=%5B%22123456789%22%5D');
+    expect(req[0].request.method).toEqual('GET');
+    expect(req[0].request.params.get('pending')).toEqual(JSON.stringify([newUser._id]));
+
+    //Set fake data to be returned by mock
+    req[0].flush([newUser]);
+  });
+
+   //Test(s) for addMember(member: Member)
+   it('should post a new member in addMember', () => {
+    const service: MembersService = TestBed.get(MembersService);
+  
+    let addResponse: Member;
+    //Call service
+    service.addMember(expectedMembers[0])
+      .subscribe((response) => {
+        addResponse = response;
+      }
+    );
+    
+    //Set expectations for HttpClient mock
+    const req = httpTestingController.expectOne('http://localhost:3000/api/member/add');
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual(expectedMembers[0]);
+
+    //Set fake data to be returned by mock
+    req.flush(expectedMembers[0]);
+
+    // Response type is text as json, so easiest test method is to convert response to text
+    expect(req.request.responseType).toEqual('json');
+    expect(addResponse).toEqual(expectedMembers[0]);
+  });
 });
