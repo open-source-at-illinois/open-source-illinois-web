@@ -27,7 +27,7 @@
       <div *ngIf ="user.position; else elseBlock">
         <h3>Create Workshop</h3>
       </div>
-      <ng-template>
+      <ng-template #elseBlock>
         <h3>Suggest Workshop</h3>
       </ng-template>
       <mat-form-field>
