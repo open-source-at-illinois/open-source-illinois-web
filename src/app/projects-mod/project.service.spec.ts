@@ -4,9 +4,7 @@ import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular
 
 import { ProjectService } from './project.service';
 import { HttpClient } from '@angular/common/http';
-import { Member } from '../members-mod/member-class';
 import { Project } from './project-class';
-import { response } from 'express';
 
 describe('ProjectService', () => {
    //Mock data
@@ -55,7 +53,6 @@ describe('ProjectService', () => {
       ['345', '678']
     )];
   //Declare spy object as a global variable
-  let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -66,7 +63,6 @@ describe('ProjectService', () => {
       providers: [ProjectService]
     });
     // Inject the http service and test controller for each test
-    httpClient = TestBed.get(HttpClient);
     httpTestingController = TestBed.get(HttpTestingController);
  
   }));

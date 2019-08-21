@@ -1,5 +1,4 @@
 import { User } from "../user-mod/user-class";
-import { Member } from '../members-mod/member-class';
 
 export class Workshop{
   _id: string;
