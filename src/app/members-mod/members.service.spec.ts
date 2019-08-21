@@ -8,7 +8,7 @@ import { Member } from './member-class';
 import { HttpClient } from 'selenium-webdriver/http';
 import { HttpParams } from '@angular/common/http';
 
-fdescribe('MembersService', () => {
+describe('MembersService', () => {
   //Declare spy object as a global variable
   // let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;

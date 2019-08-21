@@ -21,11 +21,21 @@ export class ProjectService {
     return this.http.get<Project[]>('http://localhost:3000/api/project/byUser/'+userId);
   }
 
+  //Get all projects with suggested status whose category is associated with user's position -- applies only to Officers
+  getSuggestedProjects(position: string): Observable<Project[]>{
+    return this.http.get<Project[]>('http://localhost:3000/api/project/suggested/'+position);
+  } 
+
   //Adds user to the pendingMembers array to a given project
   addProjectMember(userId:string, projectId: string): Observable<Project> {
     return this.http.put<Project>('http://localhost:3000/api/project/addProjectMember', [userId, projectId], {responseType: 'text' as 'json'});
   }
 
+  //Updates status of project
+  statusProject(project: Project): Observable<Project> {
+    return this.http.put<Project>('http://localhost:3000/api/project/updateStatus', project, {responseType: 'text' as 'json'})
+  }
+  
   //Moves a pending member from pendingMembers array to members array
   approveProjectMember(userId: string, projectId: string): Observable<Project>{
     return this.http.put<Project>('http://localhost:3000/api/project/approveProjectMember', [userId, projectId], {responseType: 'text' as 'json'});

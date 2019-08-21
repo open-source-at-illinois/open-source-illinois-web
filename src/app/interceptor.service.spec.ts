@@ -16,4 +16,7 @@ describe('InterceptorService', () => {
     const service: InterceptorService = TestBed.get(InterceptorService);
     expect(service).toBeTruthy();
   });
+
+  // BIG OOF -- I copied the code for this from Auth0 and they don't have great documentation describing how to test
+
 });

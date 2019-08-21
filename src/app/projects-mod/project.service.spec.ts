@@ -43,7 +43,7 @@ describe('ProjectService', () => {
       'A mock project lolz',
       'Siebel 1790',
       'Mondays at 7:00PM',
-      'active',
+      'suggested',
       'mockproject3',
       'desktop development',
       'https://mypicture.com',
@@ -95,7 +95,7 @@ describe('ProjectService', () => {
     req.flush(mockProjects);
   });
 
-  //Tests for getProjectByUser(userId)
+  //Tests for getProjectByUser(userId: string)
   it('should return array on getProjectByUser', () => {
     const service: ProjectService = TestBed.get(ProjectService);
     // Call service
@@ -111,10 +111,27 @@ describe('ProjectService', () => {
 
     //Set fake data to be returned by mock
     req.flush([mockProjects[0], mockProjects[1]]);
-
   });
 
-  //Tests for addProjectMember(userId, projectId)
+  //Tests for getSuggestedProjects(position: string)
+  it('should return array on getSuggestedProjects', () => {
+    const service: ProjectService = TestBed.get(ProjectService);
+    // Call service
+    service.getSuggestedProjects('President')
+      .subscribe(projects => {      
+        expect(projects.length).toBe(1);
+        expect(projects).toEqual([mockProjects[2]]);
+    });
+    
+    //Set expectations for HttpClient mock
+    const req = httpTestingController.expectOne('http://localhost:3000/api/project/suggested/President');
+    expect(req.request.method).toEqual('GET');
+
+    //Set fake data to be returned by mock
+    req.flush([mockProjects[2]]);
+  });
+
+  //Tests for addProjectMember(userId: string, projectId: string)
   it('should have addProjectMember make proper PUT call', () => {
     const service: ProjectService = TestBed.get(ProjectService);
     const form = new Project(
@@ -151,6 +168,47 @@ describe('ProjectService', () => {
     // Response type is text as json, which JSON.parses the text received
     expect(req.request.responseType).toEqual('text');
     var temp = JSON.parse(addResponse);
+    var realResponse = Object.assign(new Project('','','','','','','','','','','',[],[]), temp);
+    expect(realResponse).toEqual(form);
+  });
+
+  //Tests for approveProjectMember(userId, projectId)
+  it('should have approveProjectMember make proper PUT call', () => {
+    const service: ProjectService = TestBed.get(ProjectService);
+    const form = new Project(
+      '123',
+      'MockProject1',
+      'A mock project lolz',
+      'Siebel 1790',
+      'Fridays at 7:00PM',
+      'active',
+      'mockproject1',
+      'web development',
+      'https://mypicture.com',
+      'Thomas Driscoll',
+      '123456789',
+      ['123', '456', '789', '345'],
+      [ '678']
+    );
+    let statusResponse: any;
+    // Call service
+    service.statusProject(form)
+      .subscribe((response) => {      
+        statusResponse = response;
+      }
+    );
+    
+    //Set expectations for HttpClient mock
+    const req = httpTestingController.expectOne('http://localhost:3000/api/project/updateStatus');
+    expect(req.request.method).toEqual('PUT');
+    expect(req.request.body).toEqual(form);
+
+    //Set fake data to be returned by mock
+    req.flush(form);
+
+    // Response type is text as json, which JSON.parses the text received
+    expect(req.request.responseType).toEqual('text');
+    var temp = JSON.parse(statusResponse);
     var realResponse = Object.assign(new Project('','','','','','','','','','','',[],[]), temp);
     expect(realResponse).toEqual(form);
   });
