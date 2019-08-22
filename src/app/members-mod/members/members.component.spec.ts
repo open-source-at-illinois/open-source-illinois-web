@@ -46,9 +46,10 @@ describe('MembersComponent', () => {
   // it('should return get all', async() => {
 
   //   let membersService = jasmine.createSpyObj('MemberService', ['getAllMembers']);
-  //   membersService.getAllMembers.and.returnValue(member);
-  //   await fixture.whenStable();
-  //   fixture.detectChanges();
+  //   membersService.getAllMembers
+  //     .subscribe(members => {
+        
+  //     })
   //   // let members = membersService.getAllMembers();
   //   expect(component.members).toBe(membersServiceStub.getAllMembers());
 
