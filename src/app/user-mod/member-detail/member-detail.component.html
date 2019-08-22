@@ -1,9 +1,33 @@
+<ng-container *ngIf='projects !== []' >
+  <ng-container *ngFor = 'let project of projects'>
+    <div *ngFor = 'let member of allPendingMembers' class='pendingMembers'>
+      <h3 mat-subheader>Approve Members</h3>
+      <ng-container *ngIf='project.pendingMembers.includes(member._id)'>  
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{member.firstname}} {{member.lastname}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            Github: {{member.github}} <br />
+            Project: {{project.title}}
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="rejectPendingMember(member, project)">Reject</button>
+            <button mat-button (click)="approvePendingMember(member, project)">Approve</button>
+          </mat-card-actions>
+        </mat-card>
+        <br />
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>
+<br />
 <form [formGroup]="workshopForm" (ngSubmit)="suggestWorkshop(workshopForm)">
   <div class="form-container">
       <div *ngIf ="user.position; else elseBlock">
         <h3>Create Workshop</h3>
       </div>
-      <ng-template>
+      <ng-template #elseBlock>
         <h3>Suggest Workshop</h3>
       </ng-template>
       <mat-form-field>
@@ -43,18 +67,4 @@
       <button mat-button class='btn btn-default' [disabled]="!workshopForm.valid">Submit</button>
   </div>
 </form>
-<div *ngFor = 'let member of allPendingMembers'>  
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{member.firstname}} {{member.lastname}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      Github: {{member.github}} <br />
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="approvePendingMember(member)">Reject</button>
-      <button mat-button (click)="rejectPendingMember(member)">Approve</button>
-    </mat-card-actions>
-  </mat-card>
-  <br />
-</div>
+

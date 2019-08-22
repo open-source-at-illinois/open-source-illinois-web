@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { MembersService } from '../members-mod/members.service';
 
 @NgModule({
-  declarations: [LoginComponent],
+  // declarations: [LoginComponent],
   imports: [
     CommonModule
   ],

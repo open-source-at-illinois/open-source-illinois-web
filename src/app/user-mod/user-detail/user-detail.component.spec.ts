@@ -5,6 +5,7 @@ import { UserDetailComponent } from './user-detail.component';
 import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular-materials-mod.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MemberDetailComponent } from '../member-detail/member-detail.component';
 
 describe('UserDetailComponent', () => {
   let component: UserDetailComponent;
@@ -19,7 +20,8 @@ describe('UserDetailComponent', () => {
       ],
       declarations: [ 
         UserDetailComponent,
-        UserComponent  
+        UserComponent,
+        MemberDetailComponent
       ]
     })
     .compileComponents();
@@ -29,13 +31,13 @@ describe('UserDetailComponent', () => {
     fixture = TestBed.createComponent(UserDetailComponent);
     component = fixture.componentInstance;
     component.user = {
+      _id: "1234567890-",
       email: "thomasdriscoll98@gmail.com",
       firstname: "Thomas",
       github: "thomasdriscoll",
       lastname: "Driscoll",
-      password: "password",
+      picture: "https://mypicture.com",
       position: "Web Director",
-      workshops: null
     };
     fixture.detectChanges();
   });

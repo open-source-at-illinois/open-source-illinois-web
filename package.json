@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "prod": "lite-server --baseDir=\"dist\"",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve": "concurrently \"ng serve\" \"node server/index.js\""
@@ -65,6 +66,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lite-server": "^2.5.4",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",

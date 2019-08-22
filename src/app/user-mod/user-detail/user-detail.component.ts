@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../user-class';
 import { Project } from '../../projects-mod/project-class';
 import { Workshop } from '../../workshop-mod/workshop-class';
-import { UserService } from '../user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { WorkshopService } from 'src/app/workshop-mod/workshop.service';
+import { ProjectService } from 'src/app/projects-mod/project.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -27,7 +27,7 @@ export class UserDetailComponent implements OnInit {
   
 
   constructor(
-    private userService: UserService,
+    private projectService: ProjectService,
     private workshopService: WorkshopService
     ) { }
 
@@ -37,7 +37,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   getSuggestedProjects(position : string): void{
-    this.userService.getSuggestedProjects(position)
+    this.projectService.getSuggestedProjects(position)
     .subscribe(projects => this.projects = projects);
   }
 
@@ -48,14 +48,14 @@ export class UserDetailComponent implements OnInit {
 
   approveProject(project: Project){
     project.status = 'active';
-    this.userService.statusProject(project)
+    this.projectService.statusProject(project)
       .subscribe(project => console.log(project));
     this.projects = this.projects.filter(allproject => allproject != project);
   }
 
   rejectProject(project: Project){
     project.status = 'rejected';
-    this.userService.statusProject(project)
+    this.projectService.statusProject(project)
       .subscribe(project => console.log(project));
     this.projects = this.projects.filter(allproject => allproject != project);
   }

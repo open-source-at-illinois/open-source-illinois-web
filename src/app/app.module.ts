@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login-mod/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+// import { ProfileComponent } from './profile/profile.component';
 
 import { ProjectsModModule } from './projects-mod/projects-mod.module';
 import { WorkshopModModule } from './workshop-mod/workshop-mod.module';
@@ -26,7 +26,7 @@ const appRoutes: Routes = [];
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    // ProfileComponent
   ],
   imports: [
     BrowserModule,

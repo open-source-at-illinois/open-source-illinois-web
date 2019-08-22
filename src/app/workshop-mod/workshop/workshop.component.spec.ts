@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { WorkshopComponent } from './workshop.component';
 import { WorkshopDetailComponent } from '../workshop-detail/workshop-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('WorkshopComponent', () => {
   let component: WorkshopComponent;
@@ -13,7 +14,8 @@ describe('WorkshopComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         AngularMaterialsModModule, 
-        HttpClientTestingModule    
+        HttpClientTestingModule,
+        RouterTestingModule
       ],
       declarations: [ 
         WorkshopComponent,

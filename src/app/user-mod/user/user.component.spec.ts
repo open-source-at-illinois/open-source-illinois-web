@@ -5,6 +5,8 @@ import { UserComponent } from './user.component';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MemberDetailComponent } from '../member-detail/member-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -15,11 +17,13 @@ describe('UserComponent', () => {
       imports: [ 
         AngularMaterialsModModule,
         ReactiveFormsModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        RouterTestingModule
       ],
       declarations: [ 
         UserComponent,
-        UserDetailComponent
+        UserDetailComponent,
+        MemberDetailComponent
       ]
     })
     .compileComponents();
@@ -28,6 +32,15 @@ describe('UserComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
+    component.user = {
+      _id: "1234567890-",
+      email: "thomasdriscoll98@gmail.com",
+      firstname: "Thomas",
+      github: "thomasdriscoll",
+      lastname: "Driscoll",
+      picture: "https://mypicture.com",
+      position: "Web Director"
+    };
     fixture.detectChanges();
   });
 
