@@ -8,18 +8,23 @@ import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular
 
 const membersServiceStub = {
   getAllMembers() {
-    return of([{
-      firstname : 'Thomas',
-      lastname: 'Driscoll',
-      password: 'fake',
-      email: 'fake@fake.com',
-      github: 'fakegithub'
-    }])
+    return of()
   }
 }
-describe('MembersComponent', () => {
+fdescribe('MembersComponent', () => {
   let component: MembersComponent;
   let fixture: ComponentFixture<MembersComponent>;
+  //Create a fake MembersService object
+  const service = jasmine.createSpyObj('MembersService', ['getAllMembers']);
+  var getAllMembersSpy = service.getAllMembers.and.returnValue(of(
+    [new Member(
+      '123',
+      'Thomas',
+      'thomasdriscoll',
+      'Driscoll',
+      'https://mypicture.com'
+    )]
+  ));
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -30,7 +35,7 @@ describe('MembersComponent', () => {
       declarations: [ 
         MembersComponent
       ],
-      providers: [{provide: MembersService, useValue:membersServiceStub}]
+      providers: [{provide: MembersService, useValue:service}]
     })
     .compileComponents();
 
@@ -43,15 +48,16 @@ describe('MembersComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should return get all', async() => {
-
-  //   let membersService = jasmine.createSpyObj('MemberService', ['getAllMembers']);
-  //   membersService.getAllMembers
-  //     .subscribe(members => {
-        
-  //     })
-  //   // let members = membersService.getAllMembers();
-  //   expect(component.members).toBe(membersServiceStub.getAllMembers());
-
-  // });
+  it('should set members to return value of getAllMembers', async() => {
+    fixture.detectChanges();
+    expect(component.members).toEqual(
+      [new Member(
+        '123',
+        'Thomas',
+        'thomasdriscoll',
+        'Driscoll',
+        'https://mypicture.com'
+      )]
+    );
+  });
 });

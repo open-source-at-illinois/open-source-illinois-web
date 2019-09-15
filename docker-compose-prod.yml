@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  angularapp-service:
+    image: wertydoo/angularapp-working:latest
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+      - 4200:4200
+    command: npm run serve
