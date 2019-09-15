@@ -6,6 +6,7 @@ import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MembersService } from '../members-mod/members.service';
 import { User } from '../user-mod/user-class';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class LoginService {
       domain: "dev-3mntwbjz.auth0.com",
       client_id: "eKMPJ2fOh2E8hLJyZ51WBqCuDQb4MOMz",
       redirect_uri: `${window.location.origin}/callback`,
-      audience: "http://localhost:3000/"
+      audience: environment.apiUrl
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value

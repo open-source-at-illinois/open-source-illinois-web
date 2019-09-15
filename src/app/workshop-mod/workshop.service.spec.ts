@@ -6,9 +6,8 @@ import { WorkshopService } from './workshop.service';
 import { Workshop } from './workshop-class';
 import { User } from '../user-mod/user-class';
 import { HttpClient } from '@angular/common/http';
-import { ProjectService } from '../projects-mod/project.service';
-import { Project } from '../projects-mod/project-class';
-import { $ } from 'protractor';
+import { environment } from 'src/environments/environment';
+
 
 describe('WorkshopService', () => {
   //Mock Data
@@ -100,7 +99,7 @@ describe('WorkshopService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/workshop/all');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/workshop/all');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -118,7 +117,7 @@ describe('WorkshopService', () => {
     });
 
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/workshop/suggested/President');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/workshop/suggested/President');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -138,7 +137,7 @@ describe('WorkshopService', () => {
     });
 
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/workshop/byUser/1234567890');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/workshop/byUser/1234567890');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -177,7 +176,7 @@ describe('WorkshopService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/workshop/add');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/workshop/add');
     expect(req.request.method).toEqual('POST');
     expect(req.request.body).toEqual(newWorkshop);
 
@@ -221,7 +220,7 @@ describe('WorkshopService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/workshop/updateStatus');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/workshop/updateStatus');
     expect(req.request.method).toEqual('PUT');
     expect(req.request.body).toEqual(newWorkshop);
 
@@ -265,7 +264,7 @@ describe('WorkshopService', () => {
       );
       
       //Set expectations for HttpClient mock
-      const req = httpTestingController.expectOne('http://localhost:3000/api/workshop/addAttendee');
+      const req = httpTestingController.expectOne(environment.apiUrl+'api/workshop/addAttendee');
       expect(req.request.method).toEqual('PUT');
       expect(req.request.body).toEqual([newWorkshop.presenter._id, newWorkshop._id]);
   

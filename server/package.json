@@ -1,0 +1,14 @@
+{
+  "name": "open-source-illinois-web-api",
+  "version": "1.0.0",
+  "description": "\"Web API for open-source@illinois website\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Driscoll",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -7,6 +7,7 @@ import { MembersService } from './members.service';
 import { Member } from './member-class';
 import { HttpClient } from 'selenium-webdriver/http';
 import { HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 describe('MembersService', () => {
   //Declare spy object as a global variable
@@ -75,7 +76,7 @@ describe('MembersService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/member/all');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/member/all');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -102,7 +103,7 @@ describe('MembersService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/member/name/Thomas/Driscoll');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/member/name/Thomas/Driscoll');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -129,7 +130,7 @@ describe('MembersService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/member/github/'+newUser.github);
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/member/github/'+newUser.github);
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -159,7 +160,7 @@ describe('MembersService', () => {
     //Set expectations for HttpClient mock
     //Since this service uses params, must use match
     // %5B%22 === '[' %22%5D === ']'
-    const req = httpTestingController.match('http://localhost:3000/api/member/pending?pending=%5B%22123456789%22%5D');
+    const req = httpTestingController.match(environment.apiUrl+'api/member/pending?pending=%5B%22123456789%22%5D');
     expect(req[0].request.method).toEqual('GET');
     expect(req[0].request.params.get('pending')).toEqual(JSON.stringify([newUser._id]));
 
@@ -180,7 +181,7 @@ describe('MembersService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/member/add');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/member/add');
     expect(req.request.method).toEqual('POST');
     expect(req.request.body).toEqual(expectedMembers[0]);
 
