@@ -5,6 +5,7 @@ import { AngularMaterialsModModule } from 'src/app/angular-materials-mod/angular
 import { ProjectService } from './project.service';
 import { HttpClient } from '@angular/common/http';
 import { Project } from './project-class';
+import { environment } from 'src/environments/environment';
 
 describe('ProjectService', () => {
    //Mock data
@@ -88,7 +89,7 @@ describe('ProjectService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/all');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/all');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -106,7 +107,7 @@ describe('ProjectService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/byUser/'+mockProjects[0].leaderId);
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/byUser/'+mockProjects[0].leaderId);
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -124,7 +125,7 @@ describe('ProjectService', () => {
     });
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/suggested/President');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/suggested/President');
     expect(req.request.method).toEqual('GET');
 
     //Set fake data to be returned by mock
@@ -158,7 +159,7 @@ describe('ProjectService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/addProjectMember');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/addProjectMember');
     expect(req.request.method).toEqual('PUT');
     expect(JSON.stringify(req.request.body)).toEqual(JSON.stringify(["123456", "123"]));
 
@@ -199,7 +200,7 @@ describe('ProjectService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/updateStatus');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/updateStatus');
     expect(req.request.method).toEqual('PUT');
     expect(req.request.body).toEqual(form);
 
@@ -240,7 +241,7 @@ describe('ProjectService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/approveProjectMember');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/approveProjectMember');
     expect(req.request.method).toEqual('PUT');
     expect(JSON.stringify(req.request.body)).toEqual(JSON.stringify(["345", "123"]));
 
@@ -281,7 +282,7 @@ describe('ProjectService', () => {
     );
     
     //Set expectations for HttpClient mock
-    const req = httpTestingController.expectOne('http://localhost:3000/api/project/rejectProjectMember/123/678');
+    const req = httpTestingController.expectOne(environment.apiUrl+'api/project/rejectProjectMember/123/678');
     expect(req.request.method).toEqual('DELETE');
     expect(req.request.body).toEqual(null);
 

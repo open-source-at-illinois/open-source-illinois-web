@@ -26,6 +26,7 @@
     "@auth0/auth0-spa-js": "^1.1.1",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
     "bootstrap": "^3.4.1",
+    "cloc": "^2.5.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "core-js": "^2.5.4",
