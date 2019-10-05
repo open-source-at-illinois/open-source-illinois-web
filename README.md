@@ -1,11 +1,8 @@
 # OpenSourceWeb #
 
-This is the repository for the Open Source @ Illinois website.
+This is the repository for the Open Source @ Illinois dynamic website.
 
 This project depends on Node.js and Angular (Angular CLI version 7.3.8 or later should be sufficient).  See the [Setup](#Setup) section for details on setting them up.
-
-To see the organization's other repositories, check out the [Open-Source @ Illinois](https://github.com/open-source-at-illinois) Github profile.
-
 
 ## Setup ##
 
@@ -16,8 +13,7 @@ Here is a general procedure for setting up the project:
 3. Install the project's dependencies by running `npm install`.
 4. Test the setup by running `ng serve` and navigating to `http://localhost:4200` in a browser.  The website's homepage should appear.
 
-For more information on setting up Angular, see the [*Setup* section in the Angular documentation.](https://angular.io/guide/setup-local)
-
+For more information on setting up Angular, see the [*Setup*](https://angular.io/guide/setup-local) section of the Angular documentation.
 
 ## Development server ##
 
