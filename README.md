@@ -2,6 +2,8 @@
 
 This is the repository for the Open Source @ Illinois website.
 
+Contributions should be made in forks of this repository and submitted through pull requests.
+
 This project depends on Node.js and Angular (Angular CLI version 7.3.8 or later should be sufficient).  See the [Setup](#Setup) section for details on setting them up.
 
 To see the organization's other repositories, check out the [Open-Source @ Illinois](https://github.com/open-source-at-illinois) Github profile.
@@ -13,7 +15,7 @@ Here is a general procedure for setting up the project:
 
 1. Install the latest stable Node.js version (10.16.3 LTS as of September 21, 2019).  The latest version can be installed from the [Node.js website.](https://nodejs.org/en/)
 2. Install the latest Angular version (8.3.5 as of September 21, 2019) globally by running `npm install -g @angular/cli`.
-3. Install the project's dependencies by running `npm install`.
+3. In your fork of the project, install the project's dependencies by running `npm install`.
 4. Test the setup by running `ng serve` and navigating to `http://localhost:4200` in a browser.  The website's homepage should appear.
 
 For more information on setting up Angular, see the [*Setup* section in the Angular documentation.](https://angular.io/guide/setup-local)
