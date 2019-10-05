@@ -2,7 +2,7 @@
 
 This is the repository for the Open Source @ Illinois dynamic website.
 
-This project depends on Node.js and Angular (Angular CLI version 7.3.8 or later should be sufficient).  See the [Setup](#Setup) section for details on setting them up.
+This project depends on Node.js and Angular (Angular CLI version 7.3.8 or later should be sufficient).  See the [*Setup*](#Setup) section for details on setting them up.
 
 ## Setup ##
 
@@ -37,4 +37,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help ##
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI, use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
