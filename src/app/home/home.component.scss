@@ -40,6 +40,8 @@
     }
     .Logo{
         display: flex;
+        flex-direction: column;
+        width: 20%;
         margin-top: 150px;
     }
 }
