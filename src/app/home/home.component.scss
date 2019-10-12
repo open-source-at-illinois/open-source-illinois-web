@@ -6,33 +6,6 @@
     display: flex;
     width: 100vw;
     height: 100%;
-    .side-container{
-        width: 15%;
-        height: 100%;
-        align-self: left;
-        .large-box{
-            background-color: darkblue;
-            width: 100%;
-            height: 80px;
-        }
-        .box{
-            width: 80%;
-            height: 80px;
-            margin-top: 24px;
-        }
-        .lightblue{
-            background-color: lightblue;
-        }
-        .green{
-            background-color: green;
-        }
-        .darkred{
-            background-color: darkred;
-        }
-        .orange{
-            background-color: orange;
-        }
-    }
     .content-container{
         font-family: Raleway;
         display: flex;
@@ -45,8 +18,8 @@
     .Logo{
         display: flex;
         flex-direction: column;
-        padding: 100px 50px 100px 50px; 
-        margin: 100px 50px 100px 50px;
+        padding: 100px 60px 100px 60px; 
+        margin: 90px 60px 90px 140px;
         border-right:3px solid #FFA91D;
     }
 }
