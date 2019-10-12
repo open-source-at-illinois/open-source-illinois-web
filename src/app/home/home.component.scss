@@ -1,5 +1,6 @@
 *, *:before, *:after {
     box-sizing: border-box;
+    background-color: #182249;
 }
 .container{
     display: flex;
@@ -33,15 +34,19 @@
         }
     }
     .content-container{
+        font-family: Raleway;
         display: flex;
         flex-direction: column;
         width: 80%;
-        padding-left: 5%;
+        margin-top: 100px;
+        padding-left: 20px;
+        padding-right: 15%;
     }
     .Logo{
         display: flex;
         flex-direction: column;
-        width: 20%;
-        margin-top: 150px;
+        padding: 100px 50px 100px 50px; 
+        margin: 100px 50px 100px 50px;
+        border-right:3px solid #FFA91D;
     }
 }
