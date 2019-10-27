@@ -4,7 +4,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background-color: white;
+  background-color: #003366;
   margin:0;
   padding: 0;
   // height: 100%;
@@ -15,17 +15,17 @@
   align-content: right;
   .collapse, .navbar-collapse{
     ul{
-      border-bottom: 5px solid limegreen;
+//      border-bottom: 5px solid limegreen;
       list-style-type: none;
       float: right;
       .module {
         padding: 20px;
         text-align: center;
-        color: blue;
+        color: white;
         font-family: 'Julius Sans One', sans-serif;
         max-height: 120px;
         min-width: 120px;
-        background-color: white;
+        background-color: #003366;
         border-radius: 2px;
         font-size: 24px;
       }
@@ -67,5 +67,3 @@
     min-width: 60px;
   }
 }
-
-
