@@ -9,7 +9,7 @@
     "prod": "lite-server --baseDir=\"dist\"",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"node server/index.js\""
+    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"cd server && npm start "
   },
   "private": true,
   "dependencies": {

@@ -10,9 +10,11 @@
 # sensitive info
 /server/config/config.js
 .env
+/server/.env
 
 #node modules
 /node_modules
+/server/node_modules
 
 # profiling files
 chrome-profiler-events.json
