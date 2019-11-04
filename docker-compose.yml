@@ -1,12 +1,19 @@
 version: '3'
 
 services:
-  angularapp-service:
+  angular:
     build: .
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - 3000:3000
       - 4200:4200
-    command: npm run serve
+    command: ng serve
+  express:
+    build: .
+    volumes:
+      - .:/usr/src/app/server
+      - /usr/src/app/server/node_modules
+    ports:
+      - 3000:3000
+    command: npm start

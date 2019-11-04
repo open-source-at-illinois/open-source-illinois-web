@@ -7,4 +7,4 @@ RUN npm install
 
 COPY . .
 #ENTRYPOINT ["ng", "serve", "-H", "0.0.0.0"]
-CMD [ "npm", "run", "serve" ]
+CMD [ "ng", "serve" ]

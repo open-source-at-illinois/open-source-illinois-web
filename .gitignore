@@ -1,19 +1,19 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
-/out-tsc
+/front-end/dist
+/front-end/tmp
+/front-end/out-tsc
 # Only exists if Bazel was run
 /bazel-out
 
 # sensitive info
 /server/config/config.js
-.env
+/front-end/.env
 /server/.env
 
 #node modules
-/node_modules
+/front-end/node_modules
 /server/node_modules
 
 # profiling files
