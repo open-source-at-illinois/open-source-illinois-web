@@ -13,6 +13,7 @@
 /server/.env
 
 #node modules
+/node_modules
 /front-end/node_modules
 /server/node_modules
 
