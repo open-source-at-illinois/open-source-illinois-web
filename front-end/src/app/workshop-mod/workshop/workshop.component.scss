@@ -1,9 +1,106 @@
-.module {
-  padding: 20px;
-  text-align: center;
-  color: black;
-  max-height: 120px;
-  min-width: 120px;
-  background-color: blue;
-  border-radius: 2px;
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+$font-color--dark-grey: #999EAF;
+$font-color--medium-grey: #BDC0CB;
+$font-color--light-grey: #E7E8EC;
+$project-border--dark-yellow: #A77B3A;
+$project-border--light-yellow: #FBA120;
+$project-title--dark-yellow: $project-border--dark-yellow;
+$project-title--light-yellow: $project-border--light-yellow;
+
+* {
+  background-color: #182249;
+  color: $font-color--dark-grey;
+  border-radius: 0px !important;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  padding-left: 265px;
+  overflow-x: scroll;
+}
+
+.project {
+  border: solid 5px $project-border--dark-yellow;
+  box-sizing: border-box;
+  margin-right: 100px;
+  padding: 30px;
+  height: 741px;
+  width: 420px;
+
+  &:hover {
+    border: solid 5px $project-border--light-yellow;
+
+    .project-title {
+      color: $project-title--light-yellow;
+    }
+
+    mat-card-content, .project-content-info span {
+      color: $font-color--medium-grey;
+    }
+
+    .project-content-info .font--light-bold {
+      color: $font-color--light-grey;
+    }
+
+    .project-detail-button-container {
+      visibility: visible;
+    }
+  }
+}
+
+.project-title {
+  margin: 0;
+  padding: 70px 50px 60px 0px;
+  font-size: 2.4em;
+  letter-spacing: .05em;
+  line-height: 60px;
+  color: $project-title--dark-yellow;
+  text-transform: uppercase;
+}
+
+.project-content {
+  margin: -30px 13px 0 0;
+  padding-bottom: 28px;
+  box-sizing: border-box;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.project-content-info {
+  margin: 0;
+  padding: 0 0 20px 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.project-detail-button-container {
+  position: absolute;
+  bottom: 0;
+  margin-left: -30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+  visibility: hidden;
+
+  .project-detail-button {
+    height: 60px;
+    width: 60px;
+    padding-bottom: 64px;
+  }
+}
+
+.font--light-bold {
+  color: $font-color--dark-grey;
+  font-weight: bolder;
 }

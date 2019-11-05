@@ -1,11 +1,40 @@
 <br />
-<div class='grid grid-pad'>
-  <div *ngFor='let workshop of workshops'
-  (click) = onSelect(workshop)>
-    <div class='module'>+ {{workshop.title}}</div>
-    <div *ngIf = 'workshop === selectedWorkshop'>
-      <app-workshop-detail [workshop]='selectedWorkshop' [user]='user'></app-workshop-detail>
+<div class="container">
+  <mat-card
+    class="project"
+    *ngFor="let workshop of workshops">
+    <mat-card-title class="project-title">{{workshop.title}}</mat-card-title>
+    <!-- for date, category, presenter, and location -->
+    <mat-card-content class="project-content">
+      <ul>
+        <li class="project-content-info">
+          <span class="font--light-bold">Date:</span>
+          <span>{{workshop.date}}</span>
+
+        </li>
+        <li class="project-content-info">
+          <span class="font--light-bold">Presenter:</span>
+          <span>{{workshop.presenter}}</span>
+        </li>
+        <li class="project-content-info">
+          <span class="font--light-bold">Location:</span>
+          <span>{{workshop.location}}</span>
+        </li>
+        <li class="project-content-info">
+          <span class="font--light-bold">Category:</span>
+          <span>{{workshop.category}}</span>
+        </li>
+      </ul>
+    </mat-card-content>
+    <!-- for description and email -->
+    <mat-card-content>{{workshop.description}}</mat-card-content>
+    <div class="project-detail-button-container">
+      <a href="#">
+        <img
+          src="assets/project_detail_button@2x.png"
+          alt="Read More"
+          class="project-detail-button">
+      </a>
     </div>
-    <br />
-  </div>  
+  </mat-card>
 </div>
