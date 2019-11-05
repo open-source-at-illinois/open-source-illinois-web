@@ -4,12 +4,12 @@ const cors = require('cors');
 const routes = require('./routes/index.route');
 const bodyParser = require('body-parser');
 const checkJwt = require('./config/auth');
+const environment = require('./config/environment');
 require('./config/mongodb');  //Sets up database connection
 
 //Set up app
 
 const app = express();
-const port = 3000;
 // app.set('port', port);
 
 

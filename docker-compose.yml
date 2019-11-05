@@ -2,18 +2,18 @@ version: '3'
 
 services:
   angular:
-    build: .
+    build: front-end/.
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - .:/usr/front-end/src/app
+      - /usr/front-end/src/app/node_modules
     ports:
       - 4200:4200
-    command: ng serve
+    command: npm start
   express:
-    build: .
+    build: server/.
     volumes:
-      - .:/usr/src/app/server
-      - /usr/src/app/server/node_modules
+      - .:/usr/server
+      - /usr/server/node_modules
     ports:
       - 3000:3000
     command: npm start

@@ -6,5 +6,8 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+# ENV PATH /app/node_modules/.bin:$PATH
+
+EXPOSE 4200
 #ENTRYPOINT ["ng", "serve", "-H", "0.0.0.0"]
-CMD [ "ng", "serve" ]
+CMD [ "npm", "start" ]
