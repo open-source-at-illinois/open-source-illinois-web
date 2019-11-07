@@ -4,20 +4,17 @@ const BaseController = require('./base.controller');
 class AnnouncementController extends BaseController {
   constructor(name) {
     super(name);
-    this.get = this.get.bind(this);
-    this.getByCategory = this.getByCategory.bind(this);
+    this.getByType = this.getByType.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
   }
   add(req, res, next) {
-    var body = req.body[0];
-
     var newAnnouncement = new this.model({
-      title: body.title,
-      content: body.content,
-      author: body.author,
+      title: req.body.title,
+      content: req.body.content,
+      author: req.body.author,
       date: Date.now(),
-      categories: body.categories,
+      categories: req.body.categories,
     });
 
     newAnnouncement.save((err) => {
@@ -36,13 +33,16 @@ class AnnouncementController extends BaseController {
       }
     })
   }
-  getByCategory() {
+
+  getByType(req, res, next) {
 
   }
-  update() {
+
+  update(req, res, next) {
 
   }
-  delete() {
+  
+  delete(req, res, next) {
 
   }
 }
