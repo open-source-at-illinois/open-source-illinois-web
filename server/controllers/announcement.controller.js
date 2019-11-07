@@ -1,31 +1,40 @@
+const Announcement = require('../models/announcement.model');
 const BaseController = require('./base.controller');
-const mongoose = require('mongoose');
-
-class Announcement extends BaseController {
+class AnnouncementController extends BaseController {
   constructor(name) {
     super(name);
+    this.getByType = this.getByType.bind(this);
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
   add(req, res, next) {
-    var body = req.body[0];
-    // var ObjectId = mongoose.Schema.ObjectId;
     var newAnnouncement = new this.model({
-      // id: ObjectId,
-      title: body.title,
-      content: body.content,
-      date: body.date,
-      author: body.author,
-      category: body.category,
+      title: req.body.title,
+      content: req.body.content,
+      author: req.body.author,
+      date: Date.now(),
+      categories: req.body.categories,
     });
     newAnnouncement.save((err) => {
-      if(err){
+      if (err) {
         console.log('rip bro you done fucked up');
-      }
-      else{
+        res.status(404);
+        res.json({
+          message: "rip bro you done fucked up",
+        });
+      } else {
         res.status(200);
         res.json({
-          message: body.firstname + " "+ body.lastname + ' successfully registered'
+          message: "save announcement success!",
         });
       }
     })
   }
+  getByType(req, res, next) {
+  }
+  update(req, res, next) {
+  }
+  delete(req, res, next) {
+  }
 }
+module.exports = AnnouncementController;
