@@ -6,7 +6,7 @@ const announcementSchema = new mongoose.Schema({
   content: String,
   date: Date,
   author: String,
-  category: [String],
+  categories: [String],
 });
 
 module.exports = mongoose.model('Announcement', announcementSchema);
