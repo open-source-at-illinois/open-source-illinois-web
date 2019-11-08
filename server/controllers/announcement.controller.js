@@ -39,7 +39,27 @@ class AnnouncementController extends BaseController {
   }
 
   update(req, res, next) {
+    let id = req.params.id;
 
+    this.model.findOne({_id: id}, (err, announcement)=>{
+      if(err){
+        console.log('Error occured');
+
+      } else {
+        announcement.title = req.body.title || announcement.title;
+        announcement.content = req.body.content || announcement.content;
+        announcement.author = req.body.author || announcement.author;
+        announcement.date = Date.now();
+        announcement.categories = req.body.categories || announcement.categories;
+
+        announcement.save();
+
+        res.status(200);
+        res.json({
+          message: "nice! you updated an announcement!"
+        });
+      }
+    })
   }
   
   delete(req, res, next) {
