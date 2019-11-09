@@ -17,6 +17,7 @@ import { MembersModModule } from './members-mod/members-mod.module';
 import { UserModModule} from './user-mod/user.module';
 import { AngularMaterialsModModule } from './angular-materials-mod/angular-materials-mod.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NguCarouselModule } from '@ngu/carousel';
 
 const appRoutes: Routes = [];
 
@@ -37,6 +38,7 @@ const appRoutes: Routes = [];
     MembersModModule,
     HttpClientModule,
     AngularMaterialsModModule,
+    NguCarouselModule,
     NgbModule,
     UserModModule,
     RouterModule.forRoot(appRoutes)

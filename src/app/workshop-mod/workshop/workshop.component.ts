@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { Workshop } from '../workshop-class';
 import { User } from '../../user-mod/user-class';
 import { WorkshopService } from '../workshop.service';
@@ -9,8 +9,9 @@ import { LoginService } from 'src/app/login-mod/login.service';
 @Component({
   selector: 'app-workshop',
   templateUrl: './workshop.component.html',
-  styleUrls: ['./workshop.component.scss']
+  styleUrls: ['./workshop.component.scss'],
 })
+
 export class WorkshopComponent implements OnInit {
 
   workshops: Workshop[];

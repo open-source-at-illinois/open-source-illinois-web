@@ -4,11 +4,12 @@ const BaseController = require('./base.controller');
 class AnnouncementController extends BaseController {
   constructor(name) {
     super(name);
-    this.getByType = this.getByType.bind(this);
+    this.byCategory = this.byCategory.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
   }
-  add(req, res, next) {
+
+  async add(req, res, next) {
     var newAnnouncement = new this.model({
       title: req.body.title,
       content: req.body.content,
@@ -34,8 +35,17 @@ class AnnouncementController extends BaseController {
     })
   }
 
-  getByType(req, res, next) {
-
+  async byCategory(req, res, next) {
+    let category = req.params.category;
+    this.model.find({ categories: category }, (err, announcements) => {
+      console.log('Getting announcements by category', category);
+      if (err) {
+        console.log('rip bro, you done fucked up!');
+      }
+      else {
+        res.send(announcements);
+      }
+    })
   }
 
   update(req, res, next) {
