@@ -18,8 +18,9 @@ export class HomeComponent implements OnInit {
   }
 }
 @Component({
-  selector: 'announcement',
+  selector: 'home.announcement',
   templateUrl: 'home.announcement.html',
+  styleUrls: ['./home.announcement.scss']
 })
 export class Announcement {
   constructor(private _bottomSheetRef: MatBottomSheetRef<Announcement>) {}
