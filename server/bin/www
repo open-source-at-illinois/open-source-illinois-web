@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('open-source-api:server');
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -14,12 +16,25 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+console.log(process.cwd());
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+// var server = http.createServer(app);
+
+/**
+ * Create HTTPS server
+ */
+//Set up app -- production
+const credentials = {
+  key: fs.readFileSync(__dirname+'\\..\\key.pem'),
+  cert: fs.readFileSync(__dirname+'\\..\\cert.pem')
+}
+const server = https.createServer(credentials, (req, res)=>{
+  res.writeHead(200);
+});
 
 /**
  * Listen on provided port, on all network interfaces.
