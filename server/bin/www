@@ -32,10 +32,12 @@ const credentials = {
   key: fs.readFileSync(__dirname+'\\..\\key.pem'),
   cert: fs.readFileSync(__dirname+'\\..\\cert.pem')
 }
-const server = https.createServer(credentials, (req, res)=>{
-  res.writeHead(200);
-});
-
+// ADD APP TO OPTIONS
+// const server = https.createServer(credentials, (req, res)=>{
+//   res.writeHead(200, {'Content-Type': 'text/plain'});
+//   res.end('H')
+// });
+const server = https.createServer(credentials, app);
 /**
  * Listen on provided port, on all network interfaces.
  */
