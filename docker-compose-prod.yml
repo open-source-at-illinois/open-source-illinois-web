@@ -8,7 +8,7 @@ services:
       - /usr/front-end/src/app/node_modules
     ports:
       - 80:4200
-    command: npm start
+    command: npm run prod
   express:
     build: server/.
     volumes:
