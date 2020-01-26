@@ -26,10 +26,8 @@ console.log(process.cwd());
  */
 if(environment.production){
   const credentials = {
-    // key: fs.readFileSync(__dirname+'\\..\\key.pem'),
-    // cert: fs.readFileSync(__dirname+'\\..\\cert.pem')
-    key: fs.readFileSync(__dirname+'/../../../etc/letsencrypt/live/www.osai-web.com/fullchain.pem'),
-    cert: fs.readFileSync(__dirname+'/../../../etc/letsencrypt/live/www.osai-web.com/cert.pem')
+    key: fs.readFileSync(__dirname+'\\..\\key.pem'),
+    cert: fs.readFileSync(__dirname+'\\..\\cert.pem')
   }
   var server = https.createServer(credentials, app);
 }

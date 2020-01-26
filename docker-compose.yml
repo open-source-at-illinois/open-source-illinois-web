@@ -7,7 +7,7 @@ services:
       - .:/usr/front-end/src/app
       - /usr/front-end/src/app/node_modules
     ports:
-      - 80:4200
+      - 4200:4200
     command: npm start 
   express:
     build: server/.

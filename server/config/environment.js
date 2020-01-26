@@ -9,7 +9,7 @@ const prod_environment = {
     port: 3000,
     frontUrl: 'https://www.osai-web.com',
     backUrl: 'https://www.osai-web.com:3000',
-    production: true
+    production: false
 }
 // Comment out the one you don't want
 // module.exports = dev_environment; 
