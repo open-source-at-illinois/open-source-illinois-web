@@ -41,6 +41,7 @@
     "mongoose": "^5.7.8",
     "morgan": "^1.9.1",
     "ngx-bootstrap": "^4.3.0",
+    "ngx-deploy-npm": "^1.2.0",
     "nodemon": "^1.19.4",
     "passport": "^0.4.0",
     "passport-auth0": "^1.2.1",
