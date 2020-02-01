@@ -14,7 +14,7 @@ const app = express();
 
 //Set up cross-origin routing -- NOT USED YET
 var corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: environment.frontUrl,
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
