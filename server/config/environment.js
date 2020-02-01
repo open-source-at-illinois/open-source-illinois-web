@@ -8,7 +8,7 @@ const dev_environment = {
 const prod_environment = {
     port: 3000,
     frontUrl: 'https://www.osai-web.com',
-    backUrl: 'https://www.osai-web.com:3000',
+    backUrl: 'https://www.osai-web.com/api',
     production: false
 }
 // Comment out the one you don't want

@@ -25,6 +25,6 @@ app.use(cors(corsOptions));
 // Define an endpoint that must be called with an access token
 //Api
 app.use(bodyParser.json());
-app.use('/api', routes);
+app.use('/', routes);
 
 module.exports = app;
