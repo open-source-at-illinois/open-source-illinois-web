@@ -12,7 +12,7 @@
 export const environment = {
   production: true,
   selfUrl: 'https://www.osai-web.com/',
-  apiUrl:'https://www.osai-web.com:3000/',
+  apiUrl:'https://www.osai-web.com/',
   port: 4200
 };
 
