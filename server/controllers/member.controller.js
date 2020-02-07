@@ -13,6 +13,7 @@ class MemberController extends BaseController{
     var github = req.params.github;
     this.model.findOne({github: github}, (err, member)=>{
       if(err){
+        next(err);
         console.log('Error occured');
       }
       else{
