@@ -20,7 +20,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 //Authenticate api call
-// app.use(checkJwt);
+app.use(checkJwt);
 
 // Define an endpoint that must be called with an access token
 //Api
