@@ -34,6 +34,7 @@ if(environment.production){
 else{
   var server = http.createServer(app);
 }
+
 //Set up app -- production
 
 /**
@@ -46,7 +47,7 @@ server.on('listening', onListening);
 server.on('request', (req, res) => {
   console.log('Someone has connected');
   console.log(req.headers);
-  console.log(res.socket);
+  // console.log(bodyParser.json(res.body));
 });
 
 /**
