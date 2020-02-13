@@ -12,5 +12,5 @@ const prod_environment = {
     production: false
 }
 // Comment out the one you don't want
-// module.exports = dev_environment; 
-module.exports = prod_environment;
+module.exports = dev_environment; 
+// module.exports = prod_environment;
