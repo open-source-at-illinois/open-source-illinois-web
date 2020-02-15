@@ -1,8 +1,12 @@
 .selected-description{
+  display: flex;
+  flex-direction: column;
   background-color: white;
   color: black;
 }
 .github{
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
   background-color: white;
 }
