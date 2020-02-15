@@ -1,43 +1,42 @@
-// @import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
+// @import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+// *, *:after, *:before {
+//   -webkit-box-sizing: border-box;
+//   -moz-box-sizing: border-box;
+//   box-sizing: border-box;
+//   background-color: white;
+//   margin:0;
+//   padding: 0;
+//   // height: 100%;
+//   // width: 100%;
+// }
 
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background-color: white;
-  margin:0;
-  padding: 0;
-  // height: 100%;
-  // width: 100%;
-}
-
-.navbar{
-  align-content: right;
-  .collapse, .navbar-collapse{
-    ul{
-      border-bottom: 5px solid limegreen;
-      list-style-type: none;
-      float: right;
-      .module {
-        padding: 20px;
-        text-align: center;
-        color: blue;
-        font-family: 'Julius Sans One', sans-serif;
-        max-height: 120px;
-        min-width: 120px;
-        background-color: white;
-        border-radius: 2px;
-        font-size: 24px;
-      }
-      .module:hover {
-        background-color: white;
-        cursor: pointer;
-        color: #607d8b;
-      }
-    }
-  }
-}
+// .navbar{
+//   align-content: right;
+//   .collapse, .navbar-collapse{
+//     ul{
+//       border-bottom: 5px solid limegreen;
+//       list-style-type: none;
+//       float: right;
+//       .module {
+//         padding: 20px;
+//         text-align: center;
+//         color: blue;
+//         font-family: 'Julius Sans One', sans-serif;
+//         max-height: 120px;
+//         min-width: 120px;
+//         background-color: white;
+//         border-radius: 2px;
+//         font-size: 24px;
+//       }
+//       .module:hover {
+//         background-color: white;
+//         cursor: pointer;
+//         color: #607d8b;
+//       }
+//     }
+//   }
+// }
 // .btn-success, .btn-success:hover, .btn-success:active {
 //   background-color: blue;
 //   border-color: blue;
@@ -47,26 +46,59 @@
 //   font-size: 100%;
 // }
 
-.grid {
-  margin: 0;
-}
-.col-1-4 {
-  width: 25%;
-}
+// .grid {
+//   margin: 0;
+// }
+// .col-1-4 {
+//   width: 25%;
+// }
 
+// @media (max-width: 600px) {
+//   .module {
+//     font-size: 10px;
+//     max-height: 75px; }
+// }
+// @media (max-width: 1024px) {
+//   .grid {
+//     margin: 0;
+//   }
+//   .module {
+//     min-width: 60px;
+//   }
+// }
 
-@media (max-width: 600px) {
-  .module {
-    font-size: 10px;
-    max-height: 75px; }
-}
-@media (max-width: 1024px) {
-  .grid {
-    margin: 0;
+.navbar {
+  font-family: "Julius Sans One";
+  font-size: 24px;
+  #navbarNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .navbar-nav {
+      height: 45px;
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      // width: 70vw;
+      justify-content: flex-end;
+      align-items: center;
+      // align-content: flex-start;
+      border-bottom: 4px #f4a926 solid;
+      .nav-item {
+        a {
+          margin: 30px 30px;
+          color: #16224c;
+          font-weight: bold;
+          text-decoration: none;
+          .module{
+            margin-right: 20px;
+          }
+        }
+        a:hover{
+          color:#f4a926;
+          transition:color 0.15s;
+        }
+      }
+    }
   }
-  .module {
-    min-width: 60px;
-  }
 }
-
-
