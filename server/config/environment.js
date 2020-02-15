@@ -2,7 +2,7 @@ const dev_environment = {
     port : 3000,
     frontUrl : 'http://localhost:4200',
     backUrl: 'http://localhost:3000/',
-    production: true
+    production: false
 }
 
 const prod_environment = {

@@ -26,7 +26,6 @@ app.use(bodyParser.json());
 
 if(environment.production){
   app.use('/back-end/api', routes);
-  console.log('/back-end/api');
 }
 else{
   app.use('/api', routes);

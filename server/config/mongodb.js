@@ -8,7 +8,6 @@ const url = require('./config.js');
 //Connect to database and make sure it works
 if(environment.production){
   mongoose.connect(url.prodUrl(), {useNewUrlParser: true});
-  console.log('prod url');
 }
 else{
   mongoose.connect(url.testUrl(), {useNewUrlParser: true});
