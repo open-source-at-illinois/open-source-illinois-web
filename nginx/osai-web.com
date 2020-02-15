@@ -1,6 +1,4 @@
 server {
-    root /var/www/osai-web.com;
-    index index.nginx-debian.html;
     server_name www.osai-web.com;
 
     location / {
