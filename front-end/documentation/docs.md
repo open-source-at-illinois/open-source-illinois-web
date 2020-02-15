@@ -9,7 +9,12 @@ Implemented using a MEAN (MongoDB, Express.js, Angular, Node.js) stack, the open
 3) Run "npm install" in open-source-illinois-web root folder
 4) Reach out to an active developer to get the secret key to the database
   - If you are from a different area, please reach out to Thomas
-5) Run "npm run serve" to launch
+5) Navigate to server/config/environment.js and make sure the module.exports is set to dev_environment
+6) Navigate back to the root folder and run 'npm run serve".
+  - If you are testing the docker environment, run "docker-compose up --build"
+  - If you are testing the production docker environemtn, run "docker-compose -f docker-compose-prod.yml up --build"
+
+
 
 # Troubleshooting
 A common problem new developers have faced on entering the project are plug-ins and other security features blocking the cross-origin requests between the front-end and back-end. Thomas has addressed this as best he can with a proxy server but, for development, please disable these. As you encounter other initial problems, please make an issue on the Github page.

@@ -2,19 +2,19 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-// export const environment = {
-//   production: false,
-//   selfUrl: 'http://localhost:4200',
-//   apiUrl:'http://localhost:3000/',
-//   port: 4200
-// };
-
 export const environment = {
-  production: true,
-  selfUrl: 'https://www.osai-web.com/',
-  apiUrl:'https://www.osai-web.com:3000/',
+  production: false,
+  selfUrl: 'http://localhost:4200/',
+  apiUrl:'http://localhost:3000/',
   port: 4200
 };
+
+// export const environment = {
+//   production: true,
+//   selfUrl: 'https://www.osai-web.com/',
+//   apiUrl:'https://www.osai-web.com:3000/',
+//   port: 4200
+// };
 
 
 /*

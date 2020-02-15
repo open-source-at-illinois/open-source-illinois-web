@@ -8,11 +8,9 @@ const environment = require('./config/environment');
 require('./config/mongodb');  //Sets up database connection
 
 //Set up app
-
 const app = express();
 
-
-//Set up cross-origin routing -- NOT USED YET
+//Set up cross-origin routing
 var corsOptions = {
   origin: environment.frontUrl,
   optionsSuccessStatus: 200
@@ -25,19 +23,13 @@ app.use(checkJwt);
 // Define an endpoint that must be called with an access token
 //Api
 app.use(bodyParser.json());
-app.use('/back-end/api', routes);
 
-// app.use((req, res, next) => {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// })
+if(environment.production){
+  app.use('/back-end/api', routes);
+  console.log('/back-end/api');
+}
+else{
+  app.use('/api', routes);
+}
 
-// app.use((err, req, res, next) => {
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: err
-//   });
-// });
 module.exports = app;
