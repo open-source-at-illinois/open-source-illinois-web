@@ -4,11 +4,14 @@
 /front-end/dist
 /front-end/tmp
 /front-end/out-tsc
+
 # Only exists if Bazel was run
 /bazel-out
 
 # sensitive info
 /server/config/config.js
+/server/cert.pem
+/server/key.pem
 /front-end/.env
 /server/.env
 
