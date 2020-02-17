@@ -1,79 +1,90 @@
-// @import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@media (max-width: 500px) {
+  .navbar {
+    #slide-nav {
+      #slide-nav-content {
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        a {
+          text-decoration: none;
+          color:white;
+          margin:10px 0;
+        }
+      }
+      box-sizing: border-box;
+      background: #16224c;
+      position: absolute;
+      right: 0;
+      top:0;
+      color: #ffffff;
+      height: 100vh;
+      #hamburger2 {
+        // position:absolute;
+        // left:0;
+        align-items: flex-start;
+        margin-bottom: 50px;
+        #bar1,
+        #bar2,
+        #bar3 {
+          background: white;
+        }
+      }
+    }
+    ul {
+      display: none !important;
+    }
+    .hamburger {
+      // background:red;
+      margin-right: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      #bar1 {
+        background: #16224c;
+        height: 8px;
+        width: 60px;
+        margin-bottom: 6px;
+        border-radius: 2px;
+      }
+      #bar2 {
+        background: #16224c;
+        height: 8px;
+        width: 60px;
+        margin-bottom: 6px;
+        border-radius: 2px;
+      }
+      #bar3 {
+        background: #16224c;
+        height: 8px;
+        width: 60px;
+        margin-bottom: 6px;
+        border-radius: 2px;
+      }
+    }
+  }
+}
 
-// *, *:after, *:before {
-//   -webkit-box-sizing: border-box;
-//   -moz-box-sizing: border-box;
-//   box-sizing: border-box;
-//   background-color: white;
-//   margin:0;
-//   padding: 0;
-//   // height: 100%;
-//   // width: 100%;
-// }
-
-// .navbar{
-//   align-content: right;
-//   .collapse, .navbar-collapse{
-//     ul{
-//       border-bottom: 5px solid limegreen;
-//       list-style-type: none;
-//       float: right;
-//       .module {
-//         padding: 20px;
-//         text-align: center;
-//         color: blue;
-//         font-family: 'Julius Sans One', sans-serif;
-//         max-height: 120px;
-//         min-width: 120px;
-//         background-color: white;
-//         border-radius: 2px;
-//         font-size: 24px;
-//       }
-//       .module:hover {
-//         background-color: white;
-//         cursor: pointer;
-//         color: #607d8b;
-//       }
-//     }
-//   }
-// }
-// .btn-success, .btn-success:hover, .btn-success:active {
-//   background-color: blue;
-//   border-color: blue;
-// }
-// p {
-//   color: blue;
-//   font-size: 100%;
-// }
-
-// .grid {
-//   margin: 0;
-// }
-// .col-1-4 {
-//   width: 25%;
-// }
-
-// @media (max-width: 600px) {
-//   .module {
-//     font-size: 10px;
-//     max-height: 75px; }
-// }
-// @media (max-width: 1024px) {
-//   .grid {
-//     margin: 0;
-//   }
-//   .module {
-//     min-width: 60px;
-//   }
-// }
+@media (min-width:500px){
+  .navbar{
+    #slide-nav{
+      display:none;
+    }
+  }
+}
 
 .navbar {
+  
+  
   font-family: "Julius Sans One";
   font-size: 24px;
   #navbarNav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    img {
+      cursor: pointer;
+    }
     .navbar-nav {
       height: 45px;
       list-style-type: none;
@@ -90,13 +101,30 @@
           color: #16224c;
           font-weight: bold;
           text-decoration: none;
-          .module{
+          .module {
             margin-right: 20px;
           }
         }
-        a:hover{
-          color:#f4a926;
-          transition:color 0.15s;
+        a:hover {
+          color: #f4a926;
+          transition: color 0.15s;
+        }
+        .btn {
+          background-color: green;
+          height: 60px !important;
+          width: 50px !important;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: none;
+          margin-right: 20px;
+          position: relative;
+          bottom: 10px;
+          border-radius: 2.5px;
+        }
+        .btn:hover {
+          transition: background-color 0.15s;
+          background-color: rgb(5, 92, 5);
         }
       }
     }
