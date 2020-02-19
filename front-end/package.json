@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --port 4200",
+    "start": "ng serve --host 0.0.0.0 --port 4200 --disableHostCheck true",
     "build": "ng build",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "prod": "lite-server --baseDir=\"dist\"",
@@ -41,6 +41,7 @@
     "mongoose": "^5.7.8",
     "morgan": "^1.9.1",
     "ngx-bootstrap": "^4.3.0",
+    "ngx-deploy-npm": "^1.2.0",
     "nodemon": "^1.19.4",
     "passport": "^0.4.0",
     "passport-auth0": "^1.2.1",
@@ -50,7 +51,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.19",
+    "@angular-devkit/build-angular": "^0.803.23",
     "@angular/cli": "~8.3.19",
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",

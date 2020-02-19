@@ -10,12 +10,11 @@ require('./config/mongodb');  //Sets up database connection
 //Set up app
 
 const app = express();
-// app.set('port', port);
 
 
 //Set up cross-origin routing -- NOT USED YET
 var corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: environment.frontUrl,
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -23,15 +22,22 @@ app.use(cors(corsOptions));
 //Authenticate api call
 app.use(checkJwt);
 
-//Assert connection is working
-// app.listen(port, () => {
-//   console.log('Server started');
-//   console.log('Running on http://localhost:'+port);
-// });
-
-  // Define an endpoint that must be called with an access token
+// Define an endpoint that must be called with an access token
 //Api
 app.use(bodyParser.json());
-app.use('/api', routes);
+app.use('/back-end/api', routes);
 
+// app.use((req, res, next) => {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// })
+
+// app.use((err, req, res, next) => {
+//   res.status(err.status || 500);
+//   res.render('error', {
+//     message: err.message,
+//     error: err
+//   });
+// });
 module.exports = app;

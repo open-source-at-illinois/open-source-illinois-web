@@ -1,11 +1,11 @@
 //Authentication modules
 var jwt = require('express-jwt');
 var jwksRsa = require('jwks-rsa');
-
+var environment = require('./environment');
 // Set up Auth0 configuration
 const authConfig = {
     domain: "dev-3mntwbjz.auth0.com",
-    audience: "http://localhost:3000/"
+    audience: environment.backUrl
 };
 
 // Define middleware that validates incoming bearer tokens

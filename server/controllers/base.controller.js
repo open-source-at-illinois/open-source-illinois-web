@@ -17,6 +17,7 @@ class BaseController{
     this.model.find({}, (err, records) => {
       console.log("Getting all records of " + this.name);
       if(err){
+        next(err)
         console.log('Error occured');     //Write error handler
       }
       else{

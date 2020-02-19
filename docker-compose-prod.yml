@@ -1,12 +1,19 @@
-# version: '3'
+version: '3'
 
-# services:
-#   angularapp-service:
-#     image: wertydoo/angularapp-working:latest
-#     volumes:
-#       - .:/usr/src/app
-#       - /usr/src/app/node_modules
-#     ports:
-#       - 3000:3000
-#       - 4200:4200
-#     command: npm run serve
+services:
+  angular:
+    build: front-end/.
+    volumes:
+      - .:/usr/front-end/src/app
+      - /usr/front-end/src/app/node_modules
+    ports:
+      - 8080:4200
+    command: npm run prod
+  express:
+    build: server/.
+    volumes:
+      - .:/usr/server
+      - /usr/server/node_modules
+    ports:
+      - 3000:3000
+    command: npm start
