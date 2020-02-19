@@ -1,19 +1,54 @@
-.grid {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-rows: 50% 50%;
-  padding-left: 20%;
-  padding-right: 20%;
+@media screen and (min-width: 400px){ 
+  .container{
+    display: flex;
+    flex-direction: row;
+    .fun_graphics{
+      width: 33%;
+      min-height: 1px;
+      float: left;
+    }
+    .grid {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-rows: 50% 50%;
+      // padding-left: 33%;
+      // padding-right: 33%;
+      .ng-star-inserted{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        .img_title{
+          display: grid;
+          grid-row: 1;
+          height: 100%;
+          width: 100%;
+          align-self: center;
+        }
+        .content{
+          display: grid;
+          grid-row: 2;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px){
+  .fun_graphics{
+    content: hidden;
+  }
   .img_title{
     display: grid;
     grid-row: 1;
-    height: 400px;
-    width: 400px;
+    height: 375px;
+    width: 375px;
     align-self: center;
   }
   .content{
     display: grid;
     grid-row: 2;
+    padding-right: 10%;
+    padding-left: 10%;
   }
 }
