@@ -1,12 +1,15 @@
 .selected-description{
   display: flex;
   flex-direction: column;
+  overflow: auto;
   background-color: white;
   color: black;
 }
 .github{
   display: flex;
   flex-direction: column;
+  overflow: auto;
+
   font-weight: bold;
   background-color: white;
 }

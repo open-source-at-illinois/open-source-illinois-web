@@ -1,10 +1,16 @@
 <br />
-<div class='grid grid-pad'>
-  <div *ngFor='let project of projects' (click) = onSelect(project)>
-    <img class='img_title' src= "{{project.picture}}">
-    <div class='content' *ngIf = 'project === selectedProject'>
-      <app-project-detail [project]='selectedProject' [user]='user'></app-project-detail>
+<div class='container'>
+  <div class='fun_graphics'>
+  </div>
+  <div class='grid grid-pad'>
+    <div *ngFor='let project of projects' (click) = onSelect(project)>
+      <img class='img_title' src= "{{project.picture}}">
+      <div class='content' *ngIf = 'project === selectedProject'>
+        <app-project-detail [project]='selectedProject' [user]='user'></app-project-detail>
+      </div>
+      <br />
     </div>
-    <br />
+  </div>
+  <div class='fun_graphics'>
   </div>
 </div>
