@@ -7,6 +7,7 @@ RUN npm install
 
 COPY . .
 # ENV PATH /app/node_modules/.bin:$PATH
+RUN npm run build
 
 EXPOSE 4200
 #ENTRYPOINT ["ng", "serve", "-H", "0.0.0.0"]
