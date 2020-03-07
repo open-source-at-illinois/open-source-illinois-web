@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 10%;
+    padding-left: 10%;
+    .memContainer{
+        display: flex;
+        flex-wrap: wrap;
+        height: 50%;
+        width: 50%;
+        .pic{
+            height: 50%;
+            width: 50%;
+        }
+        .ng-star-inserted{
+            height: 50%;
+            width: 50%;
+            .card-container{
+                height: 80%;
+                width: 80%;
+                padding: 10%;
+            }
+        }        
+    }
+}

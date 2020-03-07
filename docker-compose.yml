@@ -1,12 +1,19 @@
 version: '3'
 
 services:
-  angularapp-service:
-    build: .
+  angular:
+    build: front-end/.
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - .:/usr/front-end/src/app
+      - /usr/front-end/src/app/node_modules
+    ports:
+      - 4200:4200
+    command: npm start --host 0.0.0.0 --disable-host-check
+  express:
+    build: server/.
+    volumes:
+      - .:/usr/server
+      - /usr/server/node_modules
     ports:
       - 3000:3000
-      - 4200:4200
-    command: npm run serve
+    command: npm start --host 0.0.0.0 --disable-host-check

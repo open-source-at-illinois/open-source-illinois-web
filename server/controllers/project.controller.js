@@ -33,6 +33,7 @@ class ProjectController extends BaseController{
       status: body.status,
       github: body.github,
       category: body.category,
+      picture: body.picture,
       leader: body.leader,
       leaderId: body.leaderId
     });

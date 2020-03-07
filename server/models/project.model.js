@@ -9,6 +9,7 @@ const projectSchema = new mongoose.Schema({
   status: String,
   github: String,
   category: String,
+  picture: String,
   leader: String,
   leaderId:  {type: mongoose.Schema.Types.ObjectId, ref: 'Member'},
   members: [{type: mongoose.Schema.Types.ObjectId, ref: 'Member'}],

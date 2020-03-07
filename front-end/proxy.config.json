@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://www.osai-web.com:3000",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": false
+  }
+}
