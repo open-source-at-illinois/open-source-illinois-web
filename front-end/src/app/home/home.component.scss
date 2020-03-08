@@ -28,3 +28,14 @@
         border-right:3px solid #FFA91D;
     }
 }
+
+a:link, a:active, a:visited {
+    color: whitesmoke;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #A2773A;
+    background-color: transparent;
+    text-decoration: underline;
+}
