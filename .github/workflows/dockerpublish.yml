@@ -45,12 +45,7 @@ jobs:
 
       - name: Build images
         run: |
-          pwd
-          ls
-          cd open-source-illinois-web
-          cd front-end
           docker build front-end --tag frontend
-          cd ../server
           docker build server --tag backend
 
       - name: Log into registry
