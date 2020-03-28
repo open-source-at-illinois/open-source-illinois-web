@@ -45,7 +45,9 @@ jobs:
 
       - name: Build images
         run: |
+          cd front-end
           docker build front-end --file Dockerfile --tag frontend
+          cd ../server
           docker build server --file Dockerfile --tag backend
 
       - name: Log into registry
