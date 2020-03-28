@@ -45,10 +45,11 @@ jobs:
 
       - name: Build images
         run: |
+          cd open-source-illinois-web
           cd front-end
-          docker build front-end --file Dockerfile --tag frontend
+          docker build front-end --tag frontend
           cd ../server
-          docker build server --file Dockerfile --tag backend
+          docker build server --tag backend
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
