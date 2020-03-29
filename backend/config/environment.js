@@ -11,6 +11,10 @@ const prod_environment = {
     backUrl: 'https://www.osai-web.com/back-end/',
     production: true
 }
-// Comment out the one you don't want
-module.exports = dev_environment; 
-// module.exports = prod_environment;
+
+if (process.env.PROD) {
+    module.exports = dev_environment;
+else {
+    module.exports = prod_environment;
+}
+

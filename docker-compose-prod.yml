@@ -10,6 +10,8 @@ services:
       - 8080:4200
     command: npm run prod
   express:
+    environment:
+      - MONGO_URI=${MONGO_URI}
     build: server/.
     volumes:
       - .:/usr/server

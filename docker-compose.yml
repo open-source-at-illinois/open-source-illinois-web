@@ -2,18 +2,21 @@ version: '3'
 
 services:
   angular:
-    build: front-end/.
+    build: frontend/.
     volumes:
-      - .:/usr/front-end/src/app
-      - /usr/front-end/src/app/node_modules
+      - .:/usr/frontend/src/app
+      - /usr/frontend/src/app/node_modules
     ports:
       - 4200:4200
-    command: npm start --host 0.0.0.0 --disable-host-check
+    command: lite-server --baseDir=\"dist\"
   express:
-    build: server/.
+    environment:
+      - MONGO_URI=${MONGO_URI}
+    build: backend/.
     volumes:
-      - .:/usr/server
-      - /usr/server/node_modules
+      - .:/usr/backend
+      - /usr/backend/node_modules
     ports:
       - 3000:3000
-    command: npm start --host 0.0.0.0 --disable-host-check
+    command: lite-server --baseDir=\"dist\"
+

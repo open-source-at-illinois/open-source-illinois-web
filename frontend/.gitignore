@@ -1,0 +1,9 @@
+
+# compiled output
+dist
+tmp
+out-tsc
+
+# node modules
+node_modules
+
