@@ -12,7 +12,7 @@ The frontend is located in `./frontend` and was written using Angular.
 The backend is located in `./backend`. The backend maintains the connection to the database and serves it up to the frontend and to the user directly
 
 ### Running in Development
-All you need installed prior to running the commands below is node.js and `npm`. `npm` will do the work of installing the rest for you.
+All you need installed prior to running the commands below is node.js, which registers the command `npm`. `npm` will do the work of installing the rest for you.
 
 
 #### Environment variables
