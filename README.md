@@ -3,7 +3,7 @@ This is main GitHub repository for the website hosted at [osai-web.com](https://
 
 Thomas Driscoll layed the foundation for the development of both the backend and frontend code.
 Since then, many club members have contributed and are still contributing. 
-Brian Wilens initially dockerized the website and Ben Thayer set up CI/CD
+Brian Wilens initially dockerized the website and Ben Thayer set up CI/CD.
 
 ### Frontend
 The frontend is located in `./frontend` and was written using Angular.
