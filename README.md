@@ -3,13 +3,13 @@ This is main GitHub repository for the website hosted at [osai-web.com](https://
 
 Thomas Driscoll layed the foundation for the development of both the backend and frontend code.
 Since then, many club members have contributed and are still contributing. 
-Thomas Driscoll, Brian Wilens and Ben Thayer worked together to push the site to production.
+Brian Wilens initially dockerized the website and Ben Thayer set up CI/CD
 
 ### Frontend
-The frontend is located in `./front-end` and was written using Angular.
+The frontend is located in `./frontend` and was written using Angular.
 
 ### Backend
-The backend is located in `./server`. The backend maintains the connection to the database and serves it up to the frontend and to the user directly
+The backend is located in `./backend`. The backend maintains the connection to the database and serves it up to the frontend and to the user directly
 
 ### Running in Development
 All you need installed prior to running the commands below is node.js and `npm`. `npm` will do the work of installing the rest for you.
