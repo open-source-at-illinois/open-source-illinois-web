@@ -15,16 +15,12 @@ The backend is located in `./server`. The backend maintains the connection to th
 All you need installed prior to running the commands below is node.js and `npm`. `npm` will do the work of installing the rest for you.
 
 
-#### server/config/config.js
-Contact Thomas or Ben for access to this file for the club's test database. It specifies the database to be used. Alternatively, you could use your own mongo host by including the following in `server/config/config.js`
-```
-module.exports = {
-  testUrl : function (){
-    return "mongodb+srv://user:password@mongohost/test?retryWrites=true&w=majority";
-  }
-}
-```
+#### Environment variables
+You'll need a `.env` file.
+I that file, specify the `MONGO_URI` variable to be the link to your MongoDB database. For a production environment, the precense of the `PROD` variable will configure everything else appropriately.
+Contact Thomas or Ben for access to the test database URI.
 
+#### Running the server
 ```
 # Clone this repo and cd into it
 cd backend
@@ -35,10 +31,4 @@ npm install
 npm run build
 npm run serve
 ```
-You'll need the server access information from Thomas, or you can use your own MongoDB server
 
-### Running in Production
- * `./runserver` - Builds and runs the server using Docker
- * `./killserver` - Stops the Docker containers
- * `./runold` - Skips the build process and reloads the old Docker container
- * `./refresh` - Deletes old Docker images
