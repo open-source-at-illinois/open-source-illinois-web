@@ -8,7 +8,7 @@
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"cd ../server && npm start\" "
+    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"cd ../backend && npm start\" "
   },
   "private": true,
   "dependencies": {

@@ -1,8 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 .env
+.env_prod
 
-<<<<<<< HEAD
-=======
 # compiled output
 frontend/dist
 frontend/tmp
@@ -14,7 +13,6 @@ frontend/out-tsc
 # node modules
 **node_modules/**
 
->>>>>>> 8d7c5fea... Added too much
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
