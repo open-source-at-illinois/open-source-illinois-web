@@ -54,20 +54,20 @@ jobs:
       - name: Push image
         run: |
           # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          REF=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
 
           # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && REF=$(echo $REF | sed -e 's/^v//')
 
-          # Use Docker `latest` tag convention if on master or staging
-          [ "$VERSION" == "master" ] && VERSION=latest
-          [ "$VERSION" == "staging" ] && VERSION=latest
-
-          [ "$VERSION" == "staging" ] && QUALIFIER=-staging
+          [ "$REF" == "staging" ] && QUALIFIER=-staging
 
           FRONTEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$FRONTEND_IMAGE_NAME$QUALIFIER
           BACKEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$BACKEND_IMAGE_NAME$QUALIFIER
           
+          # Use Docker `latest` tag convention if on master or staging
+          [ "$REF" == "master" ] && VERSION=latest
+          [ "$REF" == "staging" ] && VERSION=latest
+
           # Change all uppercase to lowercase
           FRONTEND_IMAGE_ID=$(echo $FRONTEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
           BACKEND_IMAGE_ID=$(echo $BACKEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
