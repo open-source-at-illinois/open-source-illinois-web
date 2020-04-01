@@ -53,22 +53,24 @@ jobs:
 
       - name: Push image
         run: |
-          FRONTEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$FRONTEND_IMAGE_NAME
-          BACKEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$BACKEND_IMAGE_NAME
-          
-          # Change all uppercase to lowercase
-          FRONTEND_IMAGE_ID=$(echo $FRONTEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
-          BACKEND_IMAGE_ID=$(echo $BACKEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
-
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
 
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
-          # Use Docker `latest` tag convention
+          # Use Docker `latest` tag convention if on master or staging
           [ "$VERSION" == "master" ] && VERSION=latest
-          [ "$VERSION" == "staging" ] && VERSION=staging-latest
+          [ "$VERSION" == "staging" ] && VERSION=latest
+
+          [ "$VERSION" == "staging" ] && QUALIFIER=-staging
+
+          FRONTEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$FRONTEND_IMAGE_NAME$QUALIFIER
+          BACKEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$BACKEND_IMAGE_NAME$QUALIFIER
+          
+          # Change all uppercase to lowercase
+          FRONTEND_IMAGE_ID=$(echo $FRONTEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
+          BACKEND_IMAGE_ID=$(echo $BACKEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           echo FRONTEND_IMAGE_ID=$FRONTEND_IMAGE_ID
           echo BACKEND_IMAGE_ID=$BACKEND_IMAGE_ID
