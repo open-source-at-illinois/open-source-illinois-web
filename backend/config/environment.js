@@ -11,8 +11,10 @@ const prod_environment = {
 };
 
 var environment = {
-    port: process.env.PORT || '3000'
+    port: process.env.PORT || '3000',
+    mongo_uri: process.env.MONGO_URI
 };
+
 
 if (process.env.PROD) {
     const credentials = {
