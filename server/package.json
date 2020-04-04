@@ -1,14 +1,22 @@
 {
-  "name": "open-source-illinois-web-api",
-  "version": "1.0.0",
-  "description": "\"Web API for open-source@illinois website\"",
-  "main": "index.js",
+  "name": "open-source-api",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "Thomas Driscoll",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "clean-css": "^4.2.1",
+    "constantinople": "^4.0.1",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-jwt": "^5.3.1",
+    "http-errors": "~1.6.3",
+    "jade": "^1.11.0",
+    "jwks-rsa": "^1.6.0",
+    "mongoose": "^5.7.14",
+    "morgan": "~1.9.1"
   }
 }

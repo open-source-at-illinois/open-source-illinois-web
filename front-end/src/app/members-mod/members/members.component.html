@@ -1,0 +1,28 @@
+<br />
+<!-- <div *ngFor='let member of members'>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{member.firstname}} {{member.lastname}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Github: {{member.github}} <br />
+    </mat-card-content>
+  </mat-card>
+  <br />
+</div> -->
+
+<div class='container'> 
+  <div *ngFor = 'let member of members' (click) = onSelect(member) class='memContainer'>
+    <img src="{{member.picture}}" class='pic'>
+    <div *ngIf = "member === selectedMember" >
+      <mat-card class='card-container'>
+        <mat-card-header>
+          <mat-card-title>{{member.firstname}} {{member.lastname}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          Github: {{member.github}} <br />
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

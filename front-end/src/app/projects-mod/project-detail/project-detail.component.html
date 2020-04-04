@@ -1,0 +1,15 @@
+<br />
+<div class='selected-description' *ngIf='project'>
+  <p class='github'>Title: {{project.title}}</p>
+  <p class='github'>Github: {{project.github}}</p>
+  {{project.description}}
+  
+</div>
+<div *ngIf='!project.members.includes(user._id) && !project.pendingMembers.includes(user._id) ; else elseBlock'>
+  <button (click)="addAttendee()">Request to Join</button>
+</div>
+<ng-template #elseBlock>
+  <div>
+    <p>Thanks! The review process to join the project will be handled by {{project.leader}}</p>
+  </div>
+</ng-template>
