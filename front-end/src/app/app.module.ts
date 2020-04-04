@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login-mod/login/login.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, Announcement } from './home/home.component';
 // import { ProfileComponent } from './profile/profile.component';
 
 import { ProjectsModModule } from './projects-mod/projects-mod.module';
@@ -17,6 +17,7 @@ import { MembersModModule } from './members-mod/members-mod.module';
 import { UserModModule} from './user-mod/user.module';
 import { AngularMaterialsModModule } from './angular-materials-mod/angular-materials-mod.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatBottomSheetModule } from '@angular/material';
 
 const appRoutes: Routes = [];
 
@@ -26,6 +27,7 @@ const appRoutes: Routes = [];
     NavbarComponent,
     LoginComponent,
     HomeComponent,
+    Announcement
     // ProfileComponent
   ],
   imports: [
@@ -39,7 +41,11 @@ const appRoutes: Routes = [];
     AngularMaterialsModModule,
     NgbModule,
     UserModModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatBottomSheetModule
+  ],
+  entryComponents: [
+    Announcement
   ],
   providers: [],
   bootstrap: [AppComponent]
