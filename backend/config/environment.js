@@ -4,6 +4,12 @@ const dev_environment = {
     production: false
 };
 
+const staging_environment = {
+    frontUrl: 'https://staging.osai-web.com',
+    backUrl: 'https://staging.osai-web.com/back-end/',
+    production: true
+};
+
 const prod_environment = {
     frontUrl: 'https://www.osai-web.com',
     backUrl: 'https://www.osai-web.com/back-end/',
@@ -17,14 +23,9 @@ var environment = {
 
 
 if (process.env.PROD) {
-    const credentials = {
-        key: process.env.PRIVKEY,
-        cert: process.env.PUBKEY
-    };
     Object.assign(environment, prod_environment);
-    Object.assign(environment, {
-        'credentials': credentials
-    });
+} else if (process.env.STAGING) {
+    Object.assign(environment, staging_environment);
 } else {
     Object.assign(environment, dev_environment);
 }

@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
@@ -15,19 +14,7 @@ var port = normalizePort(environment.port);
 app.set('port', port);
 console.log(process.cwd());
 
-/**
- * Create HTTP/HTTPS server 
- *  HTTP -- development
- *  HTTPS -- production
- */
-if(environment.production){
-  var server = https.createServer(environment.credentials, app);
-}
-else{
-  var server = http.createServer(app);
-}
-
-//Set up app -- production
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

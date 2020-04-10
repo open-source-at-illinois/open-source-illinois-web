@@ -4,11 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --port 4200 --disableHostCheck true",
-    "build": "ng build",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"cd ../backend && npm start\" "
+
+    "build": "ng build",
+    "serve": "concurrently \"ng serve --host 0.0.0.0\" \"cd ../backend && npm start\"",
+
+    "build-prod": "ng build --prod --configuration=prod",
+    "build-staging": "ng build --prod --configuration=staging",
+    "serve-public": "ng serve --host 0.0.0.0 --disableHostCheck true"
   },
   "private": true,
   "dependencies": {
