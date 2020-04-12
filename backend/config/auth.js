@@ -17,7 +17,7 @@ const checkJwt = jwt({
         jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
     }),
 
-    audience: authConfic.audience,
+    audience: authConfig.audience,
     issuer: `https://${authConfig.domain}/`,
     algorithm: ["RS256"]
 });
