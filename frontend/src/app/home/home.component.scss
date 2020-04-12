@@ -1,41 +1,41 @@
 *, *:before, *:after {
     box-sizing: border-box;
+    background-color: #182249;
 }
 .container{
     display: flex;
     width: 100vw;
     height: 100%;
-    .side-container{
-        width: 15%;
-        height: 100%;
-        align-self: left;
-        .large-box{
-            background-color: darkblue;
-            width: 100%;
-            height: 80px;
-        }
-        .box{
-            width: 80%;
-            height: 80px;
-            margin-top: 24px;
-        }
-        .lightblue{
-            background-color: lightblue;
-        }
-        .green{
-            background-color: green;
-        }
-        .darkred{
-            background-color: darkred;
-        }
-        .orange{
-            background-color: orange;
-        }
-    }
     .content-container{
+        font-family: Raleway;
         display: flex;
         flex-direction: column;
         width: 80%;
-        padding-left: 5%;
+        margin-top: 100px;
+        padding-left: 20px;
+        padding-right: 15%;
+
+        button {
+            color: #A2773A;
+            background-color: #182249;
+        }
     }
+    .Logo{
+        display: flex;
+        flex-direction: column;
+        padding: 100px 60px 100px 60px; 
+        margin: 90px 60px 90px 140px;
+        border-right:3px solid #FFA91D;
+    }
+}
+
+a:link, a:active, a:visited {
+    color: whitesmoke;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #A2773A;
+    background-color: transparent;
+    text-decoration: underline;
 }
