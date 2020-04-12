@@ -57,13 +57,14 @@ jobs:
           BACKEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$BACKEND_IMAGE_NAME$QUALIFIER
           
           # Use Docker `latest` tag convention if on master or staging
-          [ "$REF" == "master" ] && VERSION=latest && DOCKERFILE=Dockerfile.production
-          [ "$REF" == "staging" ] && VERSION=latest && DOCKERFILE=Dockerfile.staging
+          [ "$REF" == "master" ] && VERSION=latest && DOCKERFILE=Dockerfile.production && ENDPOINT=update-prod
+          [ "$REF" == "staging" ] && VERSION=latest && DOCKERFILE=Dockerfile.staging && ENDPOINT=update-staging
 
           # Change all uppercase to lowercase
           FRONTEND_IMAGE_ID=$(echo $FRONTEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
           BACKEND_IMAGE_ID=$(echo $BACKEND_IMAGE_ID | tr '[A-Z]' '[a-z]')
 
+          echo ::set-env name=ENDPOINT::$ENDPOINT
           echo ::set-env name=DOCKERFILE::$DOCKERFILE
           echo ::set-env name=FRONTEND_IMAGE_ID::$FRONTEND_IMAGE_ID
           echo ::set-env name=BACKEND_IMAGE_ID::$BACKEND_IMAGE_ID
@@ -79,9 +80,10 @@ jobs:
 
       - name: Push image
         run: |
-
           docker tag frontend $FRONTEND_IMAGE_ID:$VERSION
           docker tag backend $BACKEND_IMAGE_ID:$VERSION
           docker push $FRONTEND_IMAGE_ID:$VERSION
           docker push $BACKEND_IMAGE_ID:$VERSION
 
+      - name: Update live site
+        run: curl --data "deploy_key=$DEPLOY_KEY" https://triggers.osai-web.com/$ENDPOINT
