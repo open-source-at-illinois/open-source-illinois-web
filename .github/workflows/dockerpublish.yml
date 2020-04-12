@@ -68,7 +68,7 @@ jobs:
           echo ::set-env name=DOCKERFILE::$DOCKERFILE
           echo ::set-env name=FRONTEND_IMAGE_ID::$FRONTEND_IMAGE_ID
           echo ::set-env name=BACKEND_IMAGE_ID::$BACKEND_IMAGE_ID
-          echo ::set-env name=VERSION::VERSION
+          echo ::set-env name=VERSION::$VERSION
 
       - name: Build images
         run: |
