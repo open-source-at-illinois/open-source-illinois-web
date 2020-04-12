@@ -71,8 +71,8 @@ jobs:
 
       - name: Build images
         run: |
-          docker build frontend -f frontend/$DOCKERFILE --tag frontend
-          docker build backend --tag backend
+          docker build --no-cache frontend -f frontend/$DOCKERFILE --tag frontend
+          docker build --no-cache backend --tag backend
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
