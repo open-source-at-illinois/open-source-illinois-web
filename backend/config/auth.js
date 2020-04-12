@@ -2,12 +2,11 @@
 var jwt = require('express-jwt');
 var jwksRsa = require('jwks-rsa');
 var environment = require('./environment');
-// Set up Auth0 configuration
-const authConfig = {
-    domain: "dev-3mntwbjz.auth0.com",
-    audience: environment.backUrl
-};
 
+const authConfig = {
+    domain: environment.authDomain,
+    audience: environment.backUrl
+}
 // Define middleware that validates incoming bearer tokens
 // using JWKS from dev-3mntwbjz.auth0.com
 const checkJwt = jwt({
@@ -18,7 +17,7 @@ const checkJwt = jwt({
         jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
     }),
 
-    audience: authConfig.audience,
+    audience: authConfic.audience,
     issuer: `https://${authConfig.domain}/`,
     algorithm: ["RS256"]
 });
