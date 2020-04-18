@@ -2,9 +2,9 @@ name: Docker
 
 on:
   push:
-    # Publish `master` as Docker `latest` image.
+    # Publish `production` and ` tags as releases.
     branches:
-      - master
+      - production
       - staging
 
     # Publish `v1.2.3` tags as releases.
@@ -56,8 +56,8 @@ jobs:
           FRONTEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$FRONTEND_IMAGE_NAME$QUALIFIER
           BACKEND_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$BACKEND_IMAGE_NAME$QUALIFIER
           
-          # Use Docker `latest` tag convention if on master or staging
-          [ "$REF" == "master" ] && VERSION=latest && DOCKERFILE=Dockerfile.production && ENDPOINT=update-prod
+          # Use Docker `latest` tag convention if on production or staging
+          [ "$REF" == "production" ] && VERSION=latest && DOCKERFILE=Dockerfile.production && ENDPOINT=update-prod
           [ "$REF" == "staging" ] && VERSION=latest && DOCKERFILE=Dockerfile.staging && ENDPOINT=update-staging
 
           # Change all uppercase to lowercase
