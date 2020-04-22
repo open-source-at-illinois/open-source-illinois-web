@@ -86,4 +86,4 @@ jobs:
           docker push $BACKEND_IMAGE_ID:$VERSION
 
       - name: Update live site
-        run: curl --data "deploy_key=$DEPLOY_KEY" https://triggers.osai-web.com/$ENDPOINT
+        run: curl --data "token=${{ secrets.DEPLOY_TOKEN }}" https://triggers.osai-web.com/$ENDPOINT
